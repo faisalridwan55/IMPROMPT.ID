@@ -3,4 +3,5 @@ from .views import *
 #url for app
 urlpatterns = [
     url(r'^$', index, name='index'),
+    url(r'^login/', login, name='login'),
 ]
