@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block meta %}
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="419002796892-0tlg9tf8gr3do7ksjjbp23ckrcqnug35.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+{% endblock %}
+
+{% block title %}
+HOME
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+<h2>Test Login</h2>
+<div class="row">
+  <div class="col-md-4">
+    <h2>LOGIN EMPLOYER</h2>
+    <div class="g-signin2" data-onsuccess="onSignIn_employer" data-theme="dark"></div>
+  </div>
+  <div class="col-md-4">
+    <h2>LOGIN JOB SEEKER</h2>
+    <div class="g-signin2" data-onsuccess="onSignIn_job_seeker" data-theme="dark"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/app_auth.js' %}"></script>
+{% endblock %}

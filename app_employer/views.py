@@ -4,5 +4,7 @@ from django.shortcuts import render
 response = {}
 
 def home(request):
-    print('TEST EMPLOYER')
     return render(request, 'home_employer.html', response)
+
+def edit_company_profile(request):
+    return render(request, 'edit_company_profile.html', response)
