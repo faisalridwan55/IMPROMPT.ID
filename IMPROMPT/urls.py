@@ -17,9 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import RedirectView
 import app_auth.urls as app_auth
+import app_employer.urls as app_employer
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^public_home/', include(app_auth, namespace='app_auth')),
+    url(r'^employer/', include(app_employer, namespace='app_employer')),
     url(r'^$', RedirectView.as_view(permanent=True, url='/public_home/'), name='index'),
 ]

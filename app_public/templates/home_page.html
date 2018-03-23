@@ -30,46 +30,51 @@ HOME
 
 {% block javascript %}
 <script>
-// Post profile_id ke backend
-function loadDoc(profile_id, full_name, email, status) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      // document.getElementById("demo").innerHTML = this.responseText;
-    }
+  // Post profile_id ke backend
+  function loadDoc(profile_id, full_name, email, status) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // document.getElementById("demo").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("POST", "/public_home/login/", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("profile_id=" + profile_id + "&full_name=" + full_name + "&email=" + email + "&status=" + status + "");
+    // refresh();
+  }
+  // Untuk sign-in
+  function onSignIn_employer(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+    var profile_id = profile.getId();
+    var full_name = profile.getName();
+    var email = profile.getEmail();
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+    loadDoc(profile_id, full_name, email, "employer");
+    // refresh();
   };
-  xhttp.open("POST", "/public_home/login/", true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("profile_id=" + profile_id + "&full_name=" + full_name + "&email=" + email + "&status=" + status + "");
-}
-// Untuk sign-in
-function onSignIn_employer(googleUser) {
-  // Useful data for your client-side scripts:
-  var profile = googleUser.getBasicProfile();
-  console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-  console.log('Full Name: ' + profile.getName());
-  console.log('Given Name: ' + profile.getGivenName());
-  console.log('Family Name: ' + profile.getFamilyName());
-  console.log("Image URL: " + profile.getImageUrl());
-  console.log("Email: " + profile.getEmail());
-  var profile_id = profile.getId();
-  var full_name = profile.getName();
-  var email = profile.getEmail();
-  // The ID token you need to pass to your backend:
-  var id_token = googleUser.getAuthResponse().id_token;
-  console.log("ID Token: " + id_token);
-  loadDoc(profile_id, full_name, email, "employer");
-};
-function onSignIn_job_seeker(googleUser) {
-  // Useful data for your client-side scripts:
-  var profile = googleUser.getBasicProfile();
-  console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-  var profile_id = profile.getId();
+  function onSignIn_job_seeker(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    var profile_id = profile.getId();
 
-  // The ID token you need to pass to your backend:
-  var id_token = googleUser.getAuthResponse().id_token;
-  console.log("ID Token: " + id_token);
-  loadDoc(profile_id, full_name, email, "job_seeker");
-};
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+    loadDoc(profile_id, full_name, email, "job_seeker");
+  };
+  function refresh(){
+    window.open("test/", '_self');
+  }
 </script>
 {% endblock %}
