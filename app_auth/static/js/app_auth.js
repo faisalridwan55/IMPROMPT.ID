@@ -1,15 +1,5 @@
 // Post profile_id ke backend
 function loadDoc(profile_id, full_name, email, status) {
-  // var xhttp = new XMLHttpRequest();
-  // xhttp.onreadystatechange = function() {
-  //   if (this.readyState == 4 && this.status == 200) {
-  //     // document.getElementById("demo").innerHTML = this.responseText;
-  //   }
-  // };
-  // xhttp.open("POST", "/public_home/login/", true);
-  // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  // xhttp.send("profile_id=" + profile_id + "&full_name=" + full_name + "&email=" + email + "&status=" + status + "");
-  // // refresh();
   $.ajax({
     type: 'POST',
     url: "/public_home/login/",
@@ -37,6 +27,7 @@ function loadDoc(profile_id, full_name, email, status) {
     }
   })
 }
+
 // Untuk sign-in
 function onSignIn_employer(googleUser) {
   // Useful data for your client-side scripts:
@@ -49,8 +40,8 @@ function onSignIn_employer(googleUser) {
   console.log("ID Token: " + id_token);
   signOut();
   loadDoc(profile_id, full_name, email, "employer");
-  // refresh("employer");
 };
+
 function onSignIn_job_seeker(googleUser) {
   // Useful data for your client-side scripts:
   var profile = googleUser.getBasicProfile();
@@ -62,11 +53,8 @@ function onSignIn_job_seeker(googleUser) {
   console.log("ID Token: " + id_token);
   signOut();
   loadDoc(profile_id, full_name, email, "job_seeker");
-  // refresh("job_seeker");
 };
-// function refresh(status){
-//   window.open("test/"+status+"/", '_self');
-// }
+
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut();

@@ -8,16 +8,8 @@ import requests
 # Create your views here.
 response = {}
 
-def index(request):
+def login_page(request):
     return render(request, 'login_page.html', response)
-
-# def test(request, status):
-#     print(status)
-#     if status == "job_seeker":
-#         pass
-#     if status == "employer":
-#         pass
-#     return render(request, 'test.html', response)
 
 @csrf_exempt
 def login(  request):
@@ -51,5 +43,4 @@ def login(  request):
             # return redirect(reverse('app_job_seeker:edit_profile'))
             return HttpResponse("job_seeker baru")
         return HttpResponse("job_seeker lama")
-
     return HttpResponse("berhasil umum")

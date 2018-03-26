@@ -19,11 +19,13 @@ from django.views.generic import RedirectView
 import app_auth.urls as app_auth
 import app_employer.urls as app_employer
 import app_job_seeker.urls as app_job_seeker
+import app_public.urls as app_public
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^public_home/', include(app_auth, namespace='app_auth')),
-    url(r'^employer/', include(app_employer, namespace='app_employer')),
-    url(r'^job_seeker/', include(app_job_seeker, namespace='app_job_seeker')),
-    url(r'^$', RedirectView.as_view(permanent=True, url='/public_home/'), name='index'),
+    url(r'^login/', include(app_auth, namespace='app-auth')),
+    url(r'^employer/', include(app_employer, namespace='app-employer')),
+    url(r'^job_seeker/', include(app_job_seeker, namespace='app-job_seeker')),
+    url(r'^public/', include(app_public, namespace='app-public')),
+    url(r'^$', RedirectView.as_view(permanent=True, url='public/home/'), name='index'),
 ]
