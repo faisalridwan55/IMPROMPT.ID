@@ -14,10 +14,11 @@ def login_page(request):
 @csrf_exempt
 def login(  request):
     profile_id = request.POST.get('profile_id', False)
-    full_name = request.POST.get('full_name', False)
+    first_name = request.POST.get('first_name', False)
+    last_name = request.POST.get('last_name', False)
     email = request.POST.get('email', False)
     status = request.POST.get('status', False)
-    print(profile_id + " " + full_name + " " + email + " " + status)
+    print(profile_id + " " + first_name + " " + last_name + " " + email + " " + status)
 
     # Employer login
     if status == "employer":
@@ -26,7 +27,7 @@ def login(  request):
         query_size = query.count()
         # Kalo belum ada di db
         if query_size == 0:
-            Employer.objects.create(profile_id=profile_id, name=full_name, email=email)
+            Employer.objects.create(profile_id=profile_id, first_name=first_name, last_name=last_name, email=email)
             # return redirect(reverse('app_employer:edit_company_profile'))
             return HttpResponse("employer baru")
         return HttpResponse("employer lama")
@@ -39,7 +40,7 @@ def login(  request):
 
         # Kalo belum ada di db
         if query_size == 0:
-            Job_Seeker.objects.create(profile_id=profile_id, name=full_name, email=email)
+            Job_Seeker.objects.create(profile_id=profile_id, first_name=first_name, last_name=last_name, email=email)
             # return redirect(reverse('app_job_seeker:edit_profile'))
             return HttpResponse("job_seeker baru")
         return HttpResponse("job_seeker lama")

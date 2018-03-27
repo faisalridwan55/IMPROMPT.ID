@@ -19,7 +19,6 @@ def news_detail(request, pk):
 def opportunity_page(request, id):
     if id == 1:
         # Ambil kumpulan opportunity dari masing2 db
-
         pass
     elif id == 2:
         # Ambil kumpulan opportunity dari masing2 db
@@ -30,7 +29,6 @@ def opportunity_page(request, id):
     elif id == 4:
         # Ambil kumpulan opportunity dari masing2 db
         pass
-
     return render(request, 'opportunity_page.html', response)
 
 def opportunity_detail(request, id, pk):
@@ -46,5 +44,4 @@ def opportunity_detail(request, id, pk):
     elif id == 4:
         # Ambil kumpulan opportunity dari masing2 db dengan pk terkait
         pass
-
     return render(request, 'opportunity_detail.html', response)

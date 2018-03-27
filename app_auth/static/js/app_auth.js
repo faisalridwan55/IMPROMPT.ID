@@ -1,12 +1,13 @@
 // Post profile_id ke backend
-function loadDoc(profile_id, full_name, email, status) {
+function loadDoc(profile_id, first_name, last_name, email, status) {
   $.ajax({
     type: 'POST',
     url: "/public_home/login/",
     data: {
       profile_id : profile_id,
       email : email,
-      full_name : full_name,
+      first_name : first_name,
+      last_name : last_name,
       status : status,
     },
     success: function(data){
@@ -33,26 +34,26 @@ function onSignIn_employer(googleUser) {
   // Useful data for your client-side scripts:
   var profile = googleUser.getBasicProfile();
   var profile_id = profile.getId();
-  var full_name = profile.getName();
+  var first_name = profile.getGivenName());
+  var last_name = profile.getFamilyName());
   var email = profile.getEmail();
   // The ID token you need to pass to your backend:
   var id_token = googleUser.getAuthResponse().id_token;
-  console.log("ID Token: " + id_token);
   signOut();
-  loadDoc(profile_id, full_name, email, "employer");
+  loadDoc(profile_id, first_name, last_name, email, "employer");
 };
 
 function onSignIn_job_seeker(googleUser) {
   // Useful data for your client-side scripts:
   var profile = googleUser.getBasicProfile();
   var profile_id = profile.getId();
-  var full_name = profile.getName();
+  var first_name = profile.getGivenName());
+  var last_name = profile.getFamilyName());
   var email = profile.getEmail();
   // The ID token you need to pass to your backend:
   var id_token = googleUser.getAuthResponse().id_token;
-  console.log("ID Token: " + id_token);
   signOut();
-  loadDoc(profile_id, full_name, email, "job_seeker");
+  loadDoc(profile_id, first_name, last_name, email, "job_seeker");
 };
 
 function signOut() {
