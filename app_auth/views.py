@@ -19,12 +19,14 @@ def login(  request):
     email = request.POST.get('email', False)
     status = request.POST.get('status', False)
     print(profile_id + " " + first_name + " " + last_name + " " + email + " " + status)
+    request.session['profile_id'] = profile_id
 
     # Employer login
     if status == "employer":
         # Check sudah pernah login belum
         query = Employer.objects.filter(profile_id=profile_id)
         query_size = query.count()
+        request.session['status'] = "employer"
         # Kalo belum ada di db
         if query_size == 0:
             Employer.objects.create(profile_id=profile_id, first_name=first_name, last_name=last_name, email=email)
@@ -37,7 +39,7 @@ def login(  request):
         # Check sudah pernah login belum
         query = Job_Seeker.objects.filter(profile_id=profile_id)
         query_size = query.count()
-
+        request.session['status'] = "job_seeker"
         # Kalo belum ada di db
         if query_size == 0:
             Job_Seeker.objects.create(profile_id=profile_id, first_name=first_name, last_name=last_name, email=email)

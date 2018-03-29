@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Company_Profile
 # Create your views here.
 response = {}
 
@@ -7,6 +7,9 @@ def home_public(request):
     return render(request, 'home_public.html', response)
 
 def about_company(request):
+    company_profile = Company_Profile.objects.get(status=True)
+    response['baris_atas'] = company_profile.baris_atas
+    response['baris_bawah'] = company_profile.baris_bawah
     return render(request, 'about_company.html', response)
 
 def news_page(request):
