@@ -1,4 +1,5 @@
 {% load static %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +9,11 @@
     {% block meta %}
     <!-- Title masing2 page bedaiin -->
     {% endblock %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="  sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>
       {% block title %}
       <!-- Title masing2 page bedaiin -->
@@ -17,12 +21,13 @@
     </title>
       {% block css %}
       <!-- CSS TAROH DI APPS MASING2 AJA YA BUAT NYESUAIIN -->
+      
       {% endblock %}
 </head>
 
 <body >
     <header>
-      <!-- {% include "partials/header.html" %} -->
+      {% include "partials/header.html" %}
     </header>
 
     <content>
@@ -32,7 +37,7 @@
     </content>
 
     <footer>
-      <!-- {% include "partials/footer.html" %} -->
+      {% include "partials/footer.html" %}
     </footer>
 </body>
 <!-- Bootstrap n JQuery Script -->

@@ -9,24 +9,29 @@
 {% endblock %}
 
 {% block title %}
-HOME
+LOGIN
 {% endblock %}
 
 {% block css %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
 {% endblock %}
 
 {% block content %}
-<h2>Test Login</h2>
-<div class="row">
-  <div class="col-md-4">
-    <h2>LOGIN EMPLOYER</h2>
-    <div class="g-signin2" data-onsuccess="onSignIn_employer" data-theme="dark"></div>
-  </div>
-  <div class="col-md-4">
-    <h2>LOGIN JOB SEEKER</h2>
-    <div class="g-signin2" data-onsuccess="onSignIn_job_seeker" data-theme="dark"></div>
-  </div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-2 col-sm-8 text-center">
+			<div class="box">
+				<h3 style="margin-bottom: 50px">Choose your role and get your opportunities now!</h3>
+				<h4>Login as Employer</h4>
+				<div class="g-signin2 button-google" data-width="300" data-onsuccess="onSignIn_employer" data-theme="dark"></div>
+				<br>
+				<br>
+				<hr class="style14">
+				<h4>Login as Job Seeker</h4>
+				<div class="g-signin2 button-google" data-width="300" data-onsuccess="onSignIn_job_seeker" data-theme="dark"></div>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}
 

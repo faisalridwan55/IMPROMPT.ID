@@ -1,0 +1,77 @@
+    body {
+            background: lightgrey;
+            font-family: Lato, Open Sans;
+        }
+        .img-icon{
+            width: 55px;
+        }
+        .navbar-nav li a {
+            color: #bdc3c7 !important;
+            top: 7px;
+            background: transparent;
+            margin-bottom: 6px;
+        }
+        .navbar {
+            overflow: hidden;
+            background: #134E5E;  /* fallback for old browsers */
+            -webkit-box-shadow: 0 12px 8px -8px #333;
+            -moz-box-shadow: 0 12px 8px -8px #333;
+            box-shadow: 0 12px 8px -8px #333;
+            border-radius: 0px;
+            border: none;
+        }
+        .navbar-nav li a:hover {
+            color: #ecf0f1 !important;
+            background: none;
+        }
+        .navbar-nav li.active a {
+            color: #fff !important;
+            background-color: transparent !important;
+            border-bottom: 3px solid #ecf0f1;
+        }
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: white !important;
+        }
+        .navbar-toggle{
+            background: transparent;
+            border: none;
+        }
+        .navbar-toggle:focus, .navbar-toggle:hover{
+            background: rgba(236, 240, 241, 0.1) !important;
+        }
+       
+        .img-footer {
+            width:100px;
+            padding-bottom: 10px;
+        }
+       
+        footer {
+            background: #232526;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            padding: 10px;
+            color: #f5f5f5;
+            margin-top: 15px;
+        }
+
+        footer a {
+            color: #f5f5f5;
+        }
+
+        footer a:hover {
+            color: #777;
+            text-decoration: none;
+        }
+        
+        /* Large devices (desktops, 992px and up) */
+        @media (max-width: 992px) { 
+            .navbar-nav li.active a {
+                border-bottom: none;
+                background: rgba(236, 240, 241, 0.1) !important;
+                
+            }
+            .img-icon {
+                width: 40px;
+            }
+           
+        }
