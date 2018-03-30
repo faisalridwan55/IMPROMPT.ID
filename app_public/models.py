@@ -7,5 +7,6 @@ class Imprompt_Profile(models.Model):
     active = models.BooleanField(default=False, unique=True)
 
 class News(models.Model):
+    news_title = models.CharField(max_length=140, blank=False)
     news_short_description = models.CharField(max_length=140, blank=False)
     news_description = models.TextField(blank=False)
