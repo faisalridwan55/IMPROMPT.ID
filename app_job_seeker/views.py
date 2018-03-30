@@ -11,7 +11,7 @@ def edit_profile(request):
     if request.session['status'] == "job_seeker":
         return render(request, 'edit_profile.html', response)
 
-def submit_profile(request):
+def submit__job_seeker_profile(request):
     if request.session['status'] == "job_seeker":
         if(request.method == 'POST'):
             first_name = request.POST.get('first_name', False)

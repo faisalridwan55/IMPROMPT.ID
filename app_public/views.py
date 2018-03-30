@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Company_Profile
+from .models import Imprompt_Profile
 # Create your views here.
 response = {}
 

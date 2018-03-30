@@ -4,5 +4,9 @@ from .views import *
 urlpatterns = [
     url(r'^home/', home_employer, name='home-employer'),
     url(r'^edit_company_profile/', edit_company_profile, name='edit-company-profile'),
+    url(r'^edit_employer_profile/', edit_employer_profile, name='edit-employer-profile'),
+    url(r'^company_profile/', company_profile, name='company-profile'),
+    url(r'^employer_profile/', employer_profile, name='employer-profile'),
     url(r'^home/post/', opportunity_posting, name='opportunity-posting'),
+
 ]

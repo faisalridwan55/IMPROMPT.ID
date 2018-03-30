@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Company_Profile(models.Model):
+class Imprompt_Profile(models.Model):
     baris_atas = models.TextField(blank=False)
     baris_bawah = models.TextField(blank=True)
     active = models.BooleanField(default=False, unique=True)

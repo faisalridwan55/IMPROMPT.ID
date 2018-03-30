@@ -1,5 +1,6 @@
 from django.contrib import admin
-from app_public.models import Company_Profile
+from app_public.models import Imprompt_Profile, News
 
 # Register your models here.
-admin.site.register(Company_Profile)
+admin.site.register(Imprompt_Profile)
+admin.site.register(News)
