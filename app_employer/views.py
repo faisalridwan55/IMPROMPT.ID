@@ -8,12 +8,16 @@ def home_employer(request):
     if request.session['status'] == "employer":
         return render(request, 'home_employer.html', response)
 
-def company_profile(request):
+def my_company_profile(request):
     if request.session['status'] == "employer":
+        company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
+        response['company'] = company
         return render(request, 'company_profile.html', response)
 
 def employer_profile(request):
     if request.session['status'] == "employer":
+        employer = Employer.objects.get(company_creator_profile_id=request.session['profile_id'])
+        response['employer'] = employer
         return render(request, 'employer_profile.html', response)
 
 def edit_company_profile(request):
@@ -39,7 +43,7 @@ def submit_company_profile(request):
             query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
             query_size = query.count()
             if query_size > 0:
-                company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
+                company = query[0]
                 company.country = country
                 company.province = province
                 company.city = city
@@ -72,7 +76,7 @@ def submit_employer_profile(request):
             query = Employer.objects.filter(profile_id=request.session['profile_id'])
             query_size = query.count()
             if query_size > 0:
-                employer = Employer.objects.get(profile_id=request.session['profile_id'])
+                employer = query[0]
                 employer.first_name = first_name
                 employer.last_name = last_name
                 employer.email = email
@@ -88,7 +92,17 @@ def submit_employer_profile(request):
                 )
         return redirect(reverse('app_employer:employer_profile'))
 
-def opportunity_posting(request):
+def submit_opportunity_posting(request):
+    # opportunity posting nya pake bootstrap modal
     if request.session['status'] == "employer":
-        # Ambil data dari form untuk buat objek opportunity di database
+        if(request.method == 'POST'):
+            opportunity_category = request.POST.get('opportunity_category', False)
+            opportunity_field = request.POST.get('opportunity_field', False)
+            durations = request.POST.get('durations', False)
+            salary = request.POST.get('salary', False)
+            participants_needed = request.POST.get('participants_needed', False)
+            requirements = request.POST.get('requirements', False)
+            description = request.POST.get('description', False)
+            contact_person_phone_number = request.POST.get('contact_person_phone_number', False)
+            opportunity_owner = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
         return render(request, 'opportunity_posting.html', response)

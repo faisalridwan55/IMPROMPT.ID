@@ -28,3 +28,4 @@ class Opportunity(models.Model):
     description = models.TextField(blank=False)
     contact_person_phone_number = models.CharField(max_length=140, blank=False)
     opportunity_owner = models.ForeignKey('Company')
+    created_at = models.DateTimeField(auto_now_add=True)
