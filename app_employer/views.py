@@ -39,19 +39,25 @@ def submit_company_profile(request):
             query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
             query_size = query.count()
             if query_size > 0:
-                profile = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
-                profile.first_name = first_name
-                profile.last_name = last_name
-                profile.email = email
-                profile.phone_number = phone_number
-                profile.save()
+                company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
+                company.country = country
+                company.province = province
+                company.city = city
+                company.company_name = company_name
+                company.company_description = company_description
+                company.company_website = company_website
+                company.company_logo = company_logo
+                company.save()
             else:
-                Employer.objects.create(
+                Company.objects.create(
                     company_creator_profile_id=request.session['profile_id'],
-                    first_name = first_name,
-                    last_name = last_name,
-                    email = email,
-                    phone_number = phone_number
+                    country = country,
+                    province = province,
+                    city = city,
+                    company_name = company_name,
+                    company_description = company_description,
+                    company_website = company_website,
+                    company_logo = company_logo
                 )
         return redirect(reverse('app_employer:company_profile'))
 
@@ -66,12 +72,12 @@ def submit_employer_profile(request):
             query = Employer.objects.filter(profile_id=request.session['profile_id'])
             query_size = query.count()
             if query_size > 0:
-                profile = Employer.objects.get(profile_id=request.session['profile_id'])
-                profile.first_name = first_name
-                profile.last_name = last_name
-                profile.email = email
-                profile.phone_number = phone_number
-                profile.save()
+                employer = Employer.objects.get(profile_id=request.session['profile_id'])
+                employer.first_name = first_name
+                employer.last_name = last_name
+                employer.email = email
+                employer.phone_number = phone_number
+                employer.save()
             else:
                 Employer.objects.create(
                     profile_id=request.session['profile_id'],
