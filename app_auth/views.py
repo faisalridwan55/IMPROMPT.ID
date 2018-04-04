@@ -9,6 +9,11 @@ import requests
 response = {}
 
 def login_page(request):
+    response['login_page'] = True
+    response['about'] = False
+    response['news_page'] = False
+    response['home'] = False
+    response['opportunity_page'] = False
     return render(request, 'login_page.html', response)
 
 @csrf_exempt

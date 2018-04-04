@@ -11,11 +11,22 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+        {% if home %}
         <li class="active"><a href="/public/home">Home</a></li>
-        
+        {% else %}
+        <li><a href="/public/home">Home</a></li>
+        {% endif %}
+        {% if about %}
+        <li class="active"><a href="/public/about">About Us</a></li>
+        {% else %}
         <li><a href="/public/about">About Us</a></li>
-        <li><a href="#">For Companies</a></li>
-        <li><a href="#">News</a></li>
+        {% endif %}
+        {% if news_page %}
+        <li class="active"><a href="/public/news">News</a></li>
+        {% else %}
+        <li><a href="/public/news">News</a></li>
+        {% endif %}
+        
         <!--kalo udah login dan udah ada if, uncomment this
         <li><a href="#">Volunteer</a></li>
         <li><a href="#">Internship</a></li>
@@ -26,7 +37,12 @@
       <!--nanti bikin if buat kalo login or tidak-->
   
       <ul class="nav navbar-nav navbar-right">
+        {% if login_page %}
+        <li class="active"><a href="/login/" style="font-size: 16px"><strong>Login</strong></a></li>
+        {% else %}
         <li><a href="/login/" style="font-size: 16px"><strong>Login</strong></a></li>
+        {% endif %}
+        
         <!--kalo udah ada if login uncomment this
         <li><a href="#"><span class="fa fa-user-circle" style="font-size: 20px"></span> Hi, User!</a></li>-->
         
