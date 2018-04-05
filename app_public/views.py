@@ -76,3 +76,22 @@ def get_opportunity_detail(request, category, pk):
         return opportunity
     except Exception as e:
         pass
+
+def search_by_drop_down(request):
+    opportunity_category = request.POST.get('opportunity_category', False)
+    opportunity_field = request.POST.get('opportunity_field', False)
+
+    if opportunity_category != "null" and opportunity_field != "null":
+        list_opportunity = Opportunity.objects.filter(opportunity_category=opportunity_category, opportunity_field=opportunity_field)
+        response['opportunity_list'] = opportunity_list
+        return render(request, 'opportunity_page.html', response)
+    elif opportunity_category == "null":
+        list_opportunity = Opportunity.objects.filter(opportunity_field=opportunity_field)
+        response['opportunity_list'] = opportunity_list
+        return render(request, 'opportunity_page.html', response)
+    elif opportunity_field == "null":
+        list_opportunity = Opportunity.objects.filter(opportunity_category=opportunity_category)
+        response['opportunity_list'] = opportunity_list
+        return render(request, 'opportunity_page.html', response)
+    else:
+        return HttpResponse("null")

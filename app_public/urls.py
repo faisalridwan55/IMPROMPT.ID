@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^news/(?P<pk>\d)/', news_detail, name='news-detail'),
     url(r'^opportunity/(?P<id>\d)/', opportunity_page, name='news-detail'),
     url(r'^opportunity/(?P<id>\d)/(?P<pk>\d)/', opportunity_detail, name='news-detail'),
-
+    url(r'^search/', search_by_drop_down, name='search-by-drop-down'),
 ]
