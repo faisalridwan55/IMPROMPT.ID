@@ -55,26 +55,26 @@ def news_detail(request, pk):
         pass
     return render(request, 'news_detail.html', response)
 
-def opportunity_page(request, id):
+def opportunity_page(request, categories):
     response['opportunity_page'] = True
     response['home'] = False
     response['about']= False
     response['news_page'] = False
-    if id == 1:
+    if categories == 1:
         # Ambil kumpulan job dari db
         response['opportunity_list'] = get_opportunity('job')
-    elif id == 2:
+    elif categories == 2:
         # Ambil kumpulan internship dari db
         response['opportunity_list'] = get_opportunity('internship')
-    elif id == 3:
+    elif categories == 3:
         # Ambil kumpulan community dari db
         response['opportunity_list'] = get_opportunity('community')
-    elif id == 4:
+    elif categories == 4:
         # Ambil kumpulan conference dari db
         response['opportunity_list'] = get_opportunity('conference')
     return render(request, 'opportunity_page.html', response)
 
-def opportunity_detail(request, id, pk):
+def opportunity_detail(request, categories, pk):
     if request.session['status'] == "job_seeker":
         current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
         query = Application_Form.objects.filter(job_seeker=current_job_seeker)
@@ -88,20 +88,20 @@ def opportunity_detail(request, id, pk):
     response['home'] = False
     response['about']= False
     response['news_page'] = False
-    
-    if id == 1:
+
+    if categories == 1:
         # Ambil kumpulan job dari db
         opportunity = get_opportunity_detail('job', pk)
         response['opportunity'] = opportunity
-    elif id == 2:
+    elif categories == 2:
         # Ambil kumpulan internship dari db
         opportunity = get_opportunity_detail('internship', pk)
         response['opportunity'] = opportunity
-    elif id == 3:
+    elif categories == 3:
         # Ambil kumpulan community dari db
         opportunity = get_opportunity_detail('community', pk)
         response['opportunity'] = opportunity
-    elif id == 4:
+    elif categories == 4:
         # Ambil kumpulan conference dari db
         opportunity = get_opportunity_detail('conference', pk)
         response['opportunity'] = opportunity
