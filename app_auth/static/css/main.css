@@ -19,6 +19,7 @@
             box-shadow: 0 12px 8px -8px #333;
             border-radius: 0px;
             border: none;
+            z-index: 2;
         }
         .navbar-nav li a:hover {
             color: #ecf0f1 !important;

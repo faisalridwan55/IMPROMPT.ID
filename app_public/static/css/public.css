@@ -26,6 +26,9 @@
             background-size: cover;
             
         }
+        .fit-the-img {
+            position: relative;
+        }
         .header2 {
             background: url('https://image.ibb.co/bAZuen/pexels_photo_380769.jpg') center center;
             position: relative;
@@ -84,4 +87,33 @@
             .dropdown {
                 width: 100%;
             }
+        }
+        .news-container {
+            background: #f9f9f9;
+            margin-top: 45px;
         } 
+        .news-image {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+        .news-image img {
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-inner > .item > img {
+          width:100%;
+          height:360px;
+          object-fit: cover;
+
+        }
+        .thumbnail {
+            border-top: 5px solid #134E5E;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        a:hover {
+            text-decoration: none;
+        }

@@ -7,11 +7,20 @@ from app_job_seeker.models import Job_Seeker, Application_Form
 response = {}
 
 def home_public(request):
+    response['home'] = True
+    response['news_page'] = False
+    response['about'] = False
+    response['opportunity_page'] = False
+
     return render(request, 'home_public.html', response)
 
 def about_company(request):
     # Pake try selama belum ngisi db
     try:
+        response['about'] = True
+        response['news_page'] = False
+        response['home'] = False
+        response['opportunity_page'] = False
         company_profile = Imprompt_Profile.objects.get(active=True)
         response['baris_atas'] = company_profile.baris_atas
         response['baris_bawah'] = company_profile.baris_bawah
@@ -22,6 +31,10 @@ def about_company(request):
 def news_page(request):
     # Pake try selama belum ngisi db
     try:
+        response['about'] = False
+        response['news_page'] = True
+        response['home'] = False
+        response['opportunity_page'] = False
         news_list = News.objects.all()
         response['news_list'] = news_list
     except Exception as e:
@@ -32,6 +45,10 @@ def news_detail(request, pk):
     # Ambil objek dari database
     # Pake try selama belum ngisi db
     try:
+        response['about'] = False
+        response['news_page'] = True
+        response['home'] = False
+        response['opportunity_page'] = False
         news = News.objects.get(pk=pk)
         response['news'] = news
     except Exception as e:
@@ -39,6 +56,10 @@ def news_detail(request, pk):
     return render(request, 'news_detail.html', response)
 
 def opportunity_page(request, id):
+    response['opportunity_page'] = True
+    response['home'] = False
+    response['about']= False
+    response['news_page'] = False
     if id == 1:
         # Ambil kumpulan job dari db
         response['opportunity_list'] = get_opportunity('job')
@@ -63,6 +84,11 @@ def opportunity_detail(request, id, pk):
         else:
             response['applied'] = False
 
+    response['opportunity_page'] = True
+    response['home'] = False
+    response['about']= False
+    response['news_page'] = False
+    
     if id == 1:
         # Ambil kumpulan job dari db
         opportunity = get_opportunity_detail('job', pk)
