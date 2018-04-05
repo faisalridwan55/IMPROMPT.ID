@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Employer, Company
+from .models import Employer, Company, Opportunity
+from app_job_seeker.models import Application_Form
 # Create your views here.
 response = {}
 
@@ -106,3 +107,14 @@ def submit_opportunity_posting(request):
             contact_person_phone_number = request.POST.get('contact_person_phone_number', False)
             opportunity_owner = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
         return render(request, 'opportunity_posting.html', response)
+
+# Check if the opportunity is ours
+def check_applicant(requests, opportunity):
+    if request.session['status'] == "employer":
+        if opportunity.opportunity_owner.company_creator_profile_id == request.session['profile_id']:
+            application_list = Application_Form.objects.filter(opportunity=opportunity)
+            return application_list
+        else:
+            return HttpResponse("null")
+    else:
+        return HttpResponse("null")

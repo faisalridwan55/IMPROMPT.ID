@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Imprompt_Profile, News
 from app_employer.models import Opportunity
+from app_employer.views import check_applicant
 from app_job_seeker.models import Job_Seeker, Application_Form
 # Create your views here.
 response = {}
@@ -61,19 +62,29 @@ def opportunity_detail(request, id, pk):
             response['applied'] = True
         else:
             response['applied'] = False
-            
+
     if id == 1:
         # Ambil kumpulan job dari db
-        response['opportunity'] = get_opportunity_detail('job', pk)
+        opportunity = get_opportunity_detail('job', pk)
+        response['opportunity'] = opportunity
     elif id == 2:
         # Ambil kumpulan internship dari db
-        response['opportunity'] = get_opportunity_detail('internship', pk)
+        opportunity = get_opportunity_detail('internship', pk)
+        response['opportunity'] = opportunity
     elif id == 3:
         # Ambil kumpulan community dari db
-        response['opportunity'] = get_opportunity_detail('community', pk)
+        opportunity = get_opportunity_detail('community', pk)
+        response['opportunity'] = opportunity
     elif id == 4:
         # Ambil kumpulan conference dari db
-        response['opportunity'] = get_opportunity_detail('conference', pk)
+        opportunity = get_opportunity_detail('conference', pk)
+        response['opportunity'] = opportunity
+
+    # Kalo yang buka employer dan ini adalah opportunity yang
+    # dia posting, maka dia bisa liat applicant
+    application_list = check_applicant(opportunity)
+    if application_list != "null":
+        response['application_list'] = application_list
     return render(request, 'opportunity_detail.html', response)
 
 def get_opportunity(request, category):
