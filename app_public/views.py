@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Imprompt_Profile, News
 from app_employer.models import Opportunity
+from app_job_seeker.models import Job_Seeker, Application_Form
 # Create your views here.
 response = {}
 
@@ -52,6 +53,15 @@ def opportunity_page(request, id):
     return render(request, 'opportunity_page.html', response)
 
 def opportunity_detail(request, id, pk):
+    if request.session['status'] == "job_seeker":
+        current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
+        query = Application_Form.objects.filter(job_seeker=current_job_seeker)
+        query_size = query.count()
+        if query_size > 0:
+            response['applied'] = True
+        else:
+            response['applied'] = False
+            
     if id == 1:
         # Ambil kumpulan job dari db
         response['opportunity'] = get_opportunity_detail('job', pk)

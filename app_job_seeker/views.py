@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse
-from .models import Job_Seeker
+from .models import Job_Seeker, Application_Form
 # Create your views here.
 response = {}
 
@@ -27,3 +27,13 @@ def submit__job_seeker_profile(request):
             profile.phone_number = phone_number
             profile.birthday = birthday
             profile.save()
+
+def apply(request):
+    if request.session['status'] == "job_seeker":
+        id_opportunity = request.POST.get('id_opportunity', False)
+        current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
+        current_opportunity = Opportunity.objects.get(pk=id_opportunity)
+        Application_Form.objects.create(job_seeker=current_job_seeker, opportunity=current_opportunity)
+        return HttpResponse("applied")
+    else:
+        return HttpResponse("can not apply")
