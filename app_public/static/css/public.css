@@ -214,3 +214,14 @@
           height: 200px;
           object-fit: cover;
         }
+        .bg-header-search {
+            background: url('https://image.ibb.co/mJB8Zx/pexels_photo_911738.jpg') center center;
+            position: relative;
+            z-index: -1;
+            top: -65px;
+            min-height: 250px;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
