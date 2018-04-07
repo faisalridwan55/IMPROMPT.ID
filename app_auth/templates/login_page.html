@@ -13,22 +13,28 @@ LOGIN
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-social.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container" style="padding-top: 78px">
 	<div class="row">
-		<div class="col-sm-offset-2 col-sm-8 text-center">
+		<div class="col-sm-offset-3 col-sm-6">
 			<div class="box">
-				<h3 style="margin-bottom: 50px">Choose your role and get your opportunities now!</h3>
-				<h4>Login as Employer</h4>
-				<div class="g-signin2 button-google" data-width="300" data-onsuccess="onSignIn_employer" data-theme="dark"></div>
-				<br>
-				<br>
-				<hr class="style14">
-				<h4>Login as Job Seeker</h4>
-				<div class="g-signin2 button-google" data-width="300" data-onsuccess="onSignIn_job_seeker" data-theme="dark"></div>
+				<div class="title text-center">
+					<h3 >Choose your role:</h3>
+					<hr style="border-bottom: 2px solid #29758A; width: 30%;">
+				</div>
+				
+				<div class="text-center text-on">
+					<p>Login as Employer</p>
+					<div class="g-signin2 button-google" data-onsuccess="onSignIn_employer" data-theme="dark"></div>
+					<hr class="style14">
+					<p>Login as Job Seeker</p>
+					<div class="g-signin2 button-google" data-onsuccess="onSignIn_job_seeker" data-theme="dark"></div>
+				</div>
+				
 			</div>
 		</div>
 	</div>
