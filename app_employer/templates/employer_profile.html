@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+COMPANY PROFILE
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="dashboard">
+				<div class="row">
+					<div class="col-md-2 col-sm-12 text-center">
+						<div class="company-logo">
+							<img src="https://image.ibb.co/m8UHgc/user.png" class="img-circle img-logo">
+						</div>
+					</div>
+					<div class="col-md-10 col-sm-12 info">
+						<div class="company-name">
+							<h3>Hi, Elizabeth!</h3>
+						</div>
+						<div class="email-employer">
+							<p><span class="fa fa-envelope" style="padding: 3px"></span> <a href="mailto:hello@world.com?subject=cv_volunteer">hello@world.com</a>  </p>
+						</div>
+						<div class="phone-employer">
+							<p><span class="fa fa-phone" style="padding: 3px"></span> +62 82 111 44 1015</p>
+						</div>
+						<button class="btn btn-customize"><span class="fa fa-pencil"></span> Edit Profile</button>
+						
+					
+					</div>
+				</div>
+				<hr class="style14">
+				<div class="short-desc">
+					<div class="text-title-post">
+						<h4>My Company</h4>
+						<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+					</div>
+					<div class="my-company">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3 text-center">
+								<div class="thumbnail">
+									<div class="company-logo">
+										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
+									</div>
+									<div class="company-name">
+										<h3>Apple Inc.</h3>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-sm-12">
+											<div class="view-profile btn-padding">
+												<button class="btn btn-customize btn-block"><span class="fa fa-briefcase" style="padding: 3px"></span> View Profile</button>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12">
+											<div class="edit-profile btn-padding">
+												<button class="btn btn-customize btn-block"><span class="fa fa-pencil" style="padding: 3px"></span> Edit Profile</button>
+											</div>
+										</div>
+									</div>
+									
+									
+									<div class="post btn-padding">
+										<button class="btn btn-warning btn-block" data-toggle="modal" data-target="#posting">Post an opportunity</button>
+									</div>
+									
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<!-- Modal -->
+  <div class="modal fade" id="posting" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Opportunity Posting</h4>
+        </div>
+        <div class="modal-body">
+          <form >
+          	<div class="row">
+          		<div class="col-sm-6">
+          			<div class="form-group">
+				      <label for="select-category">Opportunity Category:</label>
+				      <select class="form-control">
+					    <option value="0">Select Category</option>
+					    <option value="1">Internships</option>
+					    <option value="2">Volunteer</option>
+					    <option value="3">Jobs</option>
+					    <option value="4">Conferences</option>
+					    <option value="5">Communities</option>
+					  </select>
+				    </div>
+          		</div>
+          		<div class="col-sm-6">
+          			<div class="form-group">
+				      <label for="select-field">Opportunity Field:</label>
+				      <select class="form-control">
+					    <option value="0">Select Field</option>
+					    <option value="1">Design</option>
+					    <option value="2">Event Organizer</option>
+					    <option value="3">Teaching</option>
+					    <option value="4">Operations</option>
+					    <option value="5">Marketing</option>
+					    <option value="6">Photograph</option>
+					    <option value="7">Engineering</option>
+					    <option value="8">Media and Communication</option>
+					    <option value="9">Finance</option>
+					    <option value="10">Fashion</option>
+					    <option value="11">Web Developer</option>
+					    <option value="12">Other</option>
+					  </select>
+				    </div>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-sm-6">
+          			<div class="form-group">
+          				<label for="duration">Duration:</label>
+          				<input type="text" class="form-control" id="duration" placeholder="In days/weeks" name="duration">
+          			</div>
+
+          		</div>
+          		<div class="col-sm-6">
+          			<div class="form-group">
+          				<label for="salary">Salary:</label>
+          				<input type="text" class="form-control" id="salary" placeholder="Rp. 0 ,-" name="salary">
+          			</div>
+          		</div>
+          	</div>
+          	<div class="row">
+          		<div class="col-sm-6">
+          			<div class="form-group">
+          				<label for="req">Other Requirement(s):</label>
+          				<input type="text" class="form-control" id="duration" placeholder="Type here" name="req">
+          			</div>
+
+          		</div>
+          		<div class="col-sm-6">
+          			<div class="form-group">
+          				<label for="number">Number of participants needed:</label>
+          				<input type="text" class="form-control" id="number" placeholder="Number" name="number">
+          			</div>
+          		</div>
+          	</div>
+			<div class="row">
+          		<div class="col-sm-6">
+          			<div class="form-group">
+          				<label for="email">Your company's email:</label>
+          				<input type="email" class="form-control" id="email" placeholder="example@mail.com" name="email">
+          			</div>
+
+          		</div>
+          		<div class="col-sm-6">
+          			<div class="form-group">
+          				<label for="phone">Phone Number:</label>
+          				<input type="text" class="form-control" id="phone" placeholder="Type here" name="phone">
+          			</div>
+          		</div>
+          	</div>    
+			    
+			    
+			  </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}
