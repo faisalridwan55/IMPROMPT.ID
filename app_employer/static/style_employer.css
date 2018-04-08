@@ -87,3 +87,19 @@
             height: 380px
           }
         }
+        /* buat form */
+        .form-profile {
+          margin-top: 30px;
+        }
+        .btn-warning {
+          border-radius: 20px;
+
+        }
+        .btn-padding-form {
+          padding: 10px 0px;
+          text-align: center;
+          margin-top: 20px;
+        }
+        .text-file-name {
+          margin-top: 5px;
+        }
