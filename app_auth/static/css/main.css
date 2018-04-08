@@ -4,6 +4,7 @@
             width: 100%;
             min-height: 100%;
             position: relative;
+            margin: 0;
         }
         .img-icon{
             width: 55px;
