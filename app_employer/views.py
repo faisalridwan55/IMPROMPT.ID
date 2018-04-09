@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Employer, Company, Opportunity
+from .forms import EmployerProfileEdit, CompanyProfileEdit
 from app_job_seeker.models import Application_Form
 # Create your views here.
 response = {}
@@ -23,15 +24,18 @@ def employer_profile(request):
 
 def edit_company_profile(request):
     if request.session['status'] == "employer":
+        response['company_form'] = CompanyProfileEdit
         return render(request, 'edit_company_profile.html', response)
 
 def edit_employer_profile(request):
     if request.session['status'] == "employer":
+        response['employer_form'] = EmployerProfileEdit
         return render(request, 'edit_employer_profile.html', response)
 
 def submit_company_profile(request):
     if request.session['status'] == "employer":
-        if(request.method == 'POST'):
+        form = CompanyProfileEdit(request.POST or None)
+        if(request.method == 'POST' and form.is_valid()):
             company_creator_profile_id = request.session['profile_id']
             country = request.POST.get('country', False)
             province = request.POST.get('province', False)
@@ -67,8 +71,9 @@ def submit_company_profile(request):
         return redirect(reverse('app_employer:company_profile'))
 
 def submit_employer_profile(request):
+    form = CompanyProfileEdit(request.POST or None)
     if request.session['status'] == "employer":
-        if(request.method == 'POST'):
+        if(request.method == 'POST' and form.is_valid()):
             first_name = request.POST.get('first_name', False)
             last_name = request.POST.get('last_name', False)
             email = request.POST.get('email', False)

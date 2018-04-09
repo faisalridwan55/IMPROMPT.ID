@@ -7,7 +7,7 @@ EDIT PROFILE - EMPLOYER
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer1.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -20,6 +20,20 @@ EDIT PROFILE - EMPLOYER
           <hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
         </div>
         <div class="form-profile">
+					<form method="POST" action="{% url 'employer:submit_employer_profile' %}">
+						{% csrf_token %}
+						{% for field in employer_form %}
+						<div class="form-group">
+							{{field}}
+						</div>
+						{% endfor %}
+          </div>
+
+            <div class="btn-padding-form">
+							<input id="submit" type="submit" class="bbtn btn-info btn-md btn-block" value="Submit">
+            </div>
+          </form>
+					<!--
           <form>
             <div class="row">
               <div class="col-sm-6">
@@ -50,7 +64,7 @@ EDIT PROFILE - EMPLOYER
             <div class="btn-padding-form">
               <button class="btn btn-info btn-block btn-md">Submit</button>
             </div>
-          </form>
+          </form>-->
 
 
 			</div>

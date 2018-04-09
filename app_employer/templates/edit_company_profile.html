@@ -7,7 +7,7 @@ EDIT PROFILE - COMPANY
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer1.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -20,45 +20,13 @@ EDIT PROFILE - COMPANY
           <hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
         </div>
         <div class="form-profile">
-          <form>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="firstname">Country</label>
-                  <select class="form-control">
-      					    <option value="0">Select Country</option>
-      					    <option value="1">Indonesia</option>
-      					    <option value="2">Japan</option>
-      					    <option value="3">United States</option>
-      					    <option value="4">Hongkong</option>
-      					    <option value="5">Singapore</option>
-      					    <option value="6">South Korea</option>
-      					    <option value="7">North Korea</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <label for="lastname">State/Province</label>
-                  <input type="text" class="form-control" placeholder="State/Province">
-                </div>
-              </div>
-            </div>
-            <div class="form-group" style="margin-top:15px">
-              <label for="email">City</label>
-              <input type="text" class="form-control" placeholder="City">
-            </div>
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" placeholder="Enter company name">
-            </div>
-            <div class="form-group">
-              <label for="desc">Short Company Description</label>
-              <textarea class="form-control" placeholder="Tell us your company description briefly"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="web">Company Website</label>
-              <input type="url" class="form-control" placeholder="Enter your company website">
-            </div>
+          <form method="POST" action="{% url 'employer:submit_company_profile' %}">
+						{% csrf_token %}
+						{% for field in company_form %}
+						<div class="form-group">
+							{{field}}
+						</div>
+						{% endfor %}
             <div class="upload">
               <p><strong>Upload your company logo</strong></p>
               <div class="row">
@@ -74,7 +42,7 @@ EDIT PROFILE - COMPANY
           </div>
 
             <div class="btn-padding-form">
-              <button class="btn btn-info btn-md btn-block">Submit</button>
+							<input id="submit" type="submit" class="btn btn-info btn-md btn-block" value="Submit">
             </div>
           </form>
 
