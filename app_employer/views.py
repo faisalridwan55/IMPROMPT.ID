@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Employer, Company, Opportunity
 from .forms import EmployerProfileEdit, CompanyProfileEdit
 from app_job_seeker.models import Application_Form
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 # Create your views here.
 response = {}
 
@@ -24,7 +25,9 @@ def employer_profile(request):
 
 def edit_company_profile(request):
     if request.session['status'] == "employer":
+        print("flag edit company profile")
         response['company_form'] = CompanyProfileEdit
+        # return HttpResponse("test")
         return render(request, 'edit_company_profile.html', response)
 
 def edit_employer_profile(request):

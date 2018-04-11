@@ -2,7 +2,7 @@
 function loadDoc(profile_id, first_name, last_name, email, status) {
   $.ajax({
     type: 'POST',
-    url: "/public_home/login/",
+    url: "/login/login/",
     data: {
       profile_id : profile_id,
       email : email,
@@ -40,6 +40,7 @@ function onSignIn_employer(googleUser) {
   var email = profile.getEmail();
   // The ID token you need to pass to your backend:
   var id_token = googleUser.getAuthResponse().id_token;
+  console.log("Employer");
   signOut();
   loadDoc(profile_id, first_name, last_name, email, "employer");
 };
@@ -48,11 +49,12 @@ function onSignIn_job_seeker(googleUser) {
   // Useful data for your client-side scripts:
   var profile = googleUser.getBasicProfile();
   var profile_id = profile.getId();
-  var first_name = profile.getGivenName());
-  var last_name = profile.getFamilyName());
+  var first_name = profile.getGivenName();
+  var last_name = profile.getFamilyName();
   var email = profile.getEmail();
   // The ID token you need to pass to your backend:
   var id_token = googleUser.getAuthResponse().id_token;
+  console.log("Flag job_seeker");
   signOut();
   loadDoc(profile_id, first_name, last_name, email, "job_seeker");
 };
@@ -61,3 +63,4 @@ function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut();
 }
+console.log("hi");

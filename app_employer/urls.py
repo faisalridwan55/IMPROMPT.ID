@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^company_profile/', my_company_profile, name='company-profile'),
     url(r'^employer_profile/', employer_profile, name='employer-profile'),
     url(r'^home/post/', submit_opportunity_posting, name='opportunity-posting'),
+    url(r'^edit_company_profile/submit', submit_company_profile, name='submit-company-profile'),
 
 ]

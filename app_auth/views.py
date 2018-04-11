@@ -9,6 +9,13 @@ import requests
 response = {}
 
 def login_page(request):
+    try:
+        if request.session['status'] == 'employer':
+            return redirect(reverse('app_employer:home-employer'))
+        elif request.session['status'] == 'job_seeker':
+            return redirect(reverse('app-job-seeker:home-job-seeker'))
+    except Exception as e:
+        pass
     response['login_page'] = True
     response['about'] = False
     response['news_page'] = False
@@ -17,7 +24,7 @@ def login_page(request):
     return render(request, 'login_page.html', response)
 
 @csrf_exempt
-def login(  request):
+def login(request):
     profile_id = request.POST.get('profile_id', False)
     first_name = request.POST.get('first_name', False)
     last_name = request.POST.get('last_name', False)
@@ -47,8 +54,16 @@ def login(  request):
         request.session['status'] = "job_seeker"
         # Kalo belum ada di db
         if query_size == 0:
-            Job_Seeker.objects.create(profile_id=profile_id, first_name=first_name, last_name=last_name, email=email)
+            Job_Seeker.objects.create(profile_id=profile_id, first_name=first_name, last_name=last_name, email=email, birthday="1996-12-19T16:39:57-08:00")
             # return redirect(reverse('app_job_seeker:edit_profile'))
             return HttpResponse("job_seeker baru")
         return HttpResponse("job_seeker lama")
     return HttpResponse("berhasil umum")
+
+def logout(request):
+    try:
+        del request.session['status']
+        del request.session['profile_id']
+    except KeyError:
+        pass
+    return HttpResponse("You're logged out.")
