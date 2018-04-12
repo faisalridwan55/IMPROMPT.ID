@@ -24,6 +24,7 @@ EDIT PROFILE - COMPANY
 						{% csrf_token %}
 						{% for field in company_form %}
 						<div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
 							{{field}}
 						</div>
 						{% endfor %}
@@ -46,7 +47,7 @@ EDIT PROFILE - COMPANY
             </div>
           </form>
 
-
+        </div>
 			</div>
 		</div>
 	</div>
