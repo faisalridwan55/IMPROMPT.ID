@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Job_Seeker, Application_Form
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 response = {}
 
@@ -13,7 +14,8 @@ def edit_profile(request):
         response['logged_in'] = True
         return render(request, 'edit_profile.html', response)
 
-def submit__job_seeker_profile(request):
+@csrf_exempt
+def submit_job_seeker_profile(request):
     if request.session['status'] == "job_seeker":
         if(request.method == 'POST'):
             first_name = request.POST.get('first_name', False)

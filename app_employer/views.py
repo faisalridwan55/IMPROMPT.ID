@@ -3,6 +3,7 @@ from .models import Employer, Company, Opportunity
 from .forms import EmployerProfileEdit, CompanyProfileEdit
 from app_job_seeker.models import Application_Form
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 response = {}
 
@@ -78,6 +79,7 @@ def submit_company_profile(request):
                 )
         return redirect(reverse('app_employer:company_profile'))
 
+@csrf_exempt
 def submit_employer_profile(request):
     form = CompanyProfileEdit(request.POST or None)
     if request.session['status'] == "employer":
