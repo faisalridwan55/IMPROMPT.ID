@@ -5,10 +5,12 @@ response = {}
 
 def home_job_seeker(request):
     if request.session['status'] == "job_seeker":
+        response['logged_in'] = True
         return render(request, 'home_job_seeker.html', response)
 
 def edit_profile(request):
     if request.session['status'] == "job_seeker":
+        response['logged_in'] = True
         return render(request, 'edit_profile.html', response)
 
 def submit__job_seeker_profile(request):

@@ -9,22 +9,26 @@ response = {}
 def home_employer(request):
     # Pastikan yang login employer
     if request.session['status'] == "employer":
+        response['logged_in'] = True
         return render(request, 'home_employer.html', response)
 
 def my_company_profile(request):
     if request.session['status'] == "employer":
+        response['logged_in'] = True
         company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
         response['company'] = company
         return render(request, 'company_profile.html', response)
 
 def employer_profile(request):
     if request.session['status'] == "employer":
+        response['logged_in'] = True
         employer = Employer.objects.get(company_creator_profile_id=request.session['profile_id'])
         response['employer'] = employer
         return render(request, 'employer_profile.html', response)
 
 def edit_company_profile(request):
     if request.session['status'] == "employer":
+        response['logged_in'] = True
         print("flag edit company profile")
         response['company_form'] = CompanyProfileEdit
         # return HttpResponse("test")
@@ -32,6 +36,7 @@ def edit_company_profile(request):
 
 def edit_employer_profile(request):
     if request.session['status'] == "employer":
+        response['logged_in'] = True
         response['employer_form'] = EmployerProfileEdit
         return render(request, 'edit_employer_profile.html', response)
 
