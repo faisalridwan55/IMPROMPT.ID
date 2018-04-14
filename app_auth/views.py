@@ -66,4 +66,4 @@ def logout(request):
         del request.session['profile_id']
     except KeyError:
         pass
-    return HttpResponse("You're logged out.")
+    return HttpResponseRedirect(reverse('app-auth:login-page'))

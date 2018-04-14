@@ -41,6 +41,7 @@ def edit_employer_profile(request):
         response['employer_form'] = EmployerProfileEdit
         return render(request, 'edit_employer_profile.html', response)
 
+@csrf_exempt
 def submit_company_profile(request):
     if request.session['status'] == "employer":
         form = CompanyProfileEdit(request.POST or None)

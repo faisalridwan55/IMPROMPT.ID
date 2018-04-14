@@ -70,5 +70,5 @@ class CompanyProfileEdit(forms.Form):
     country = forms.CharField(label='Country', required=True, max_length=140, widget=forms.TextInput(attrs=country))
     province = forms.CharField(label='Province/State', required=True, max_length=140, widget=forms.TextInput(attrs=province))
     city = forms.CharField(label='City', required=True, max_length=140, widget=forms.TextInput(attrs=city))
-    website = forms.CharField(label='Company Website', required=True, max_length=140, widget=forms.TextInput(attrs=website))
+    company_website = forms.CharField(label='Company Website', required=True, max_length=140, widget=forms.TextInput(attrs=website))
     company_description = forms.CharField(label='Company Description', required=True, max_length=140, widget=forms.Textarea(attrs=company_description))

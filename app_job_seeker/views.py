@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Job_Seeker, Application_Form
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseRedirect
 # Create your views here.
 response = {}
 
@@ -16,8 +17,11 @@ def edit_profile(request):
 
 @csrf_exempt
 def submit_job_seeker_profile(request):
+    print("masuk fungsi")
     if request.session['status'] == "job_seeker":
+        print("berhasil")
         if(request.method == 'POST'):
+            print("masuk save")
             first_name = request.POST.get('first_name', False)
             last_name = request.POST.get('last_name', False)
             email = request.POST.get('email', False)
@@ -31,6 +35,7 @@ def submit_job_seeker_profile(request):
             profile.phone_number = phone_number
             profile.birthday = birthday
             profile.save()
+            return HttpResponseRedirect(reverse('app-job-seeker:home-job-seeker'))
 
 def apply(request):
     if request.session['status'] == "job_seeker":
