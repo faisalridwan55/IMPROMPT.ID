@@ -20,7 +20,7 @@ EDIT PROFILE - EMPLOYER
           <hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
         </div>
         <div class="form-profile">
-					<form method="POST" action="{% url 'app-employer:submit_employer_profile' %}">
+					<form method="POST" action="{% url 'app-employer:submit-employer-profile' %}">
 						{% csrf_token %}
 						{% for field in employer_form %}
 						<div class="form-group">
