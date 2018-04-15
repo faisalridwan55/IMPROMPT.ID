@@ -23,17 +23,17 @@ COMPANY PROFILE
 					</div>
 					<div class="col-md-10 col-sm-12 info">
 						<div class="company-name">
-							<h3>Apple Inc.</h3>
+							<h3>{{company.company_name}}</h3>
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="location">
-									<p><span class="fa fa-map-marker" style="padding: 3px"></span> Jakarta, Indonesia</p>
+									<p><span class="fa fa-map-marker" style="padding: 3px"></span> {{company.province}}, {{company.city}}, {{company.country}}</p>
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="website">
-									<p><span class="fa fa-globe" style="padding: 3px"></span> <a href="http://google.com">google.com</a></p>
+									<p><span class="fa fa-globe" style="padding: 3px"></span> <a href="{{company.company_website}}">{{company.company_website}}</a></p>
 								</div>
 							</div>
 						</div>
@@ -43,7 +43,7 @@ COMPANY PROFILE
 						<div class="contact">
 							<div class="row">
 								<div class="col-sm-6">
-									<p><span class="fa fa-envelope" style="padding: 3px"></span> <a href="mailto:hello@world.com?subject=cv_volunteer">hello@world.com</a>  </p>
+									<p><span class="fa fa-envelope" style="padding: 3px"></span> <a href="mailto:hello@world.com?subject=cv_volunteer">Email@employer</a>  </p>
 								</div>
 								<div class="col-sm-6">
 									<p><span class="fa fa-phone" style="padding: 3px"></span> +62 82 111 44 1015</p>
@@ -62,14 +62,14 @@ COMPANY PROFILE
 					</div>
 					<div class="content">
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan sem eu justo imperdiet interdum. Phasellus scelerisque lobortis malesuada. In at quam pretium, fermentum lectus et, pellentesque eros. Nulla sollicitudin eros in odio pellentesque, non lacinia leo posuere. Nunc felis diam, vulputate vitae nibh sit amet, sollicitudin ultrices sapien. Quisque iaculis quam vel dolor maximus feugiat. Donec sed ante molestie, cursus elit et, blandit nisi. </p>
+						<p>{{company.company_description}}</p>
 					</div>
 
 				</div>
 				<hr class="style14">
 				<div class="my-opportunities">
 					<div class="text-title-post">
-						<h4>Apple Inc. Offer</h4>
+						<h4>{{company.company_name}} Offer(s)</h4>
 						<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
 					</div>
 					<!--kalo belom punya-->

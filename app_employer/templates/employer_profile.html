@@ -23,15 +23,15 @@ COMPANY PROFILE
 					</div>
 					<div class="col-md-10 col-sm-12 info">
 						<div class="company-name">
-							<h3>Hi, Elizabeth!</h3>
+							<h3>Hi, {{employer.first_name}}!</h3>
 						</div>
 						<div class="email-employer">
-							<p><span class="fa fa-envelope" style="padding: 3px"></span> <a href="mailto:hello@world.com?subject=cv_volunteer">hello@world.com</a>  </p>
+							<p><span class="fa fa-envelope" style="padding: 3px"></span> <a href="mailto:{{employer.email}}?subject=cv">{{employer.email}}</a>  </p>
 						</div>
 						<div class="phone-employer">
-							<p><span class="fa fa-phone" style="padding: 3px"></span> +62 82 111 44 1015</p>
+							<p><span class="fa fa-phone" style="padding: 3px"></span> {{employer.phone_number}}</p>
 						</div>
-						<button class="btn btn-customize"><span class="fa fa-pencil"></span> Edit Profile</button>
+						<a href="{% app-employer:edit-employer-profile}"><button class="btn btn-customize"><span class="fa fa-pencil"></span> Edit Profile</button></a>
 
 
 					</div>
@@ -50,17 +50,17 @@ COMPANY PROFILE
 										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
 									</div>
 									<div class="company-name">
-										<h3>Apple Inc.</h3>
+										<h3>{{company.company_name}}</h3>
 									</div>
 									<div class="row">
 										<div class="col-md-6 col-sm-12">
 											<div class="view-profile btn-padding">
-												<button class="btn btn-customize btn-block"><span class="fa fa-briefcase" style="padding: 3px"></span> View Profile</button>
+												<a href="{% app-employer: company-profile %}"><button class="btn btn-customize btn-block"><span class="fa fa-briefcase" style="padding: 3px"></span> View Profile</button></a>
 											</div>
 										</div>
 										<div class="col-md-6 col-sm-12">
 											<div class="edit-profile btn-padding">
-												<button class="btn btn-customize btn-block"><span class="fa fa-pencil" style="padding: 3px"></span> Edit Profile</button>
+												<a href="{% app-employer: edit-company-profile %}"><button class="btn btn-customize btn-block"><span class="fa fa-pencil" style="padding: 3px"></span> Edit Profile</button></a>
 											</div>
 										</div>
 									</div>
@@ -95,7 +95,7 @@ COMPANY PROFILE
           <h4 class="modal-title">Opportunity Posting</h4>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{% url 'app-employer:submit_opportunity_posting' %}">
+          <form method="POST" action="{% url 'app-employer:opportunity-posting' %}">
           	<div class="row">
           		<div class="col-sm-6">
           			<div class="form-group">
@@ -162,13 +162,6 @@ COMPANY PROFILE
           		</div>
           	</div>
 			<div class="row">
-          		<div class="col-sm-6">
-          			<div class="form-group">
-          				<label for="email">Your company's email:</label>
-          				<input type="email" class="form-control" id="email" class="form-control" placeholder="example@mail.com" name="email">
-          			</div>
-
-          		</div>
           		<div class="col-sm-6">
           			<div class="form-group">
           				<label for="contact_person_phone_number">Phone Number:</label>
