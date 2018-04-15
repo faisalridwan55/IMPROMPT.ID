@@ -35,7 +35,9 @@ def submit_job_seeker_profile(request):
             profile.phone_number = phone_number
             profile.birthday = birthday
             profile.save()
-            return HttpResponseRedirect(reverse('app-job-seeker:home-job-seeker'))
+            return redirect(reverse('app-job-seeker:home-job-seeker'))
+    print("=====================================")
+    return HttpResponse("Fuck")
 
 def apply(request):
     if request.session['status'] == "job_seeker":

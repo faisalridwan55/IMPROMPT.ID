@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .models import Employer, Company, Opportunity
 from .forms import EmployerProfileEdit, CompanyProfileEdit
 from app_job_seeker.models import Application_Form
@@ -16,7 +16,10 @@ def home_employer(request):
 def my_company_profile(request):
     if request.session['status'] == "employer":
         response['logged_in'] = True
-        company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
+        try:
+            company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
+        except Exception as e:
+            return redirect(reverse('app-employer:edit-company-profile'))
         response['company'] = company
         return render(request, 'company_profile.html', response)
 
@@ -41,8 +44,8 @@ def edit_employer_profile(request):
         response['employer_form'] = EmployerProfileEdit
         return render(request, 'edit_employer_profile.html', response)
 
-@csrf_exempt
 def submit_company_profile(request):
+    print("MASUK SINI")
     if request.session['status'] == "employer":
         form = CompanyProfileEdit(request.POST or None)
         if(request.method == 'POST' and form.is_valid()):
@@ -78,7 +81,7 @@ def submit_company_profile(request):
                     company_website = company_website,
                     company_logo = company_logo
                 )
-        return redirect(reverse('app_employer:company_profile'))
+        return redirect(reverse('app-employer:company_profile'))
 
 @csrf_exempt
 def submit_employer_profile(request):
