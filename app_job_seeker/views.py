@@ -13,6 +13,11 @@ def home_job_seeker(request):
 def edit_profile(request):
     if request.session['status'] == "job_seeker":
         response['logged_in'] = True
+        try:
+            exist_profile = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
+            response['exist_profile'] = exist_profile
+        except Exception as e:
+            response['exist_profile'] = None
         return render(request, 'edit_profile.html', response)
 
 @csrf_exempt

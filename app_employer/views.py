@@ -35,13 +35,22 @@ def edit_company_profile(request):
         response['logged_in'] = True
         print("flag edit company profile")
         response['company_form'] = CompanyProfileEdit
-        # return HttpResponse("test")
+        try:
+            exist_profile = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
+            response['exist_profile'] = exist_profile
+        except Exception as e:
+            response['exist_profile'] = None
         return render(request, 'edit_company_profile.html', response)
 
 def edit_employer_profile(request):
     if request.session['status'] == "employer":
         response['logged_in'] = True
         response['employer_form'] = EmployerProfileEdit
+        try:
+            exist_profile = Employer.objects.get(profile_id=request.session['profile_id'])
+            response['exist_profile'] = exist_profile
+        except Exception as e:
+            response['exist_profile'] = None
         return render(request, 'edit_employer_profile.html', response)
 
 @csrf_exempt
