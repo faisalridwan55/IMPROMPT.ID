@@ -26,7 +26,7 @@ def my_company_profile(request):
 def employer_profile(request):
     if request.session['status'] == "employer":
         response['logged_in'] = True
-        employer = Employer.objects.get(company_creator_profile_id=request.session['profile_id'])
+        employer = Employer.objects.get(profile_id=request.session['profile_id'])
         response['employer'] = employer
         return render(request, 'employer_profile.html', response)
 
@@ -82,7 +82,7 @@ def submit_company_profile(request):
                     company_website = company_website,
                     company_logo = company_logo
                 )
-        return redirect(reverse('app-employer:company_profile'))
+        return redirect(reverse('app-employer:company-profile'))
 
 @csrf_exempt
 def submit_employer_profile(request):
@@ -111,7 +111,7 @@ def submit_employer_profile(request):
                     email = email,
                     phone_number = phone_number
                 )
-        return redirect(reverse('app_employer:employer_profile'))
+        return redirect(reverse('app-employer:employer-profile'))
 
 def submit_opportunity_posting(request):
     # opportunity posting nya pake bootstrap modal

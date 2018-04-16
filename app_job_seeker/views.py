@@ -17,7 +17,6 @@ def edit_profile(request):
 
 @csrf_exempt
 def submit_job_seeker_profile(request):
-    print("masuk fungsi")
     if request.session['status'] == "job_seeker":
         print("berhasil")
         if(request.method == 'POST'):
@@ -36,8 +35,6 @@ def submit_job_seeker_profile(request):
             profile.birthday = birthday
             profile.save()
             return redirect(reverse('app-job-seeker:home-job-seeker'))
-    print("=====================================")
-    return HttpResponse("Fuck")
 
 def apply(request):
     if request.session['status'] == "job_seeker":
