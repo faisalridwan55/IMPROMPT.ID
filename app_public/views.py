@@ -11,6 +11,9 @@ def home_public(request):
     response['news_page'] = False
     response['about'] = False
     response['opportunity_page'] = False
+    all_opportunity = Opportunity.objects.all()
+    response['opportunity'] = all_opportunity
+    #nanti mau ditambahin paginator kalo udah banyak
 
     return render(request, 'home_public.html', response)
 

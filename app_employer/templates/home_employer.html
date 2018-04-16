@@ -2,20 +2,99 @@
 {% load staticfiles %}
 {% load static %}
 
-{% block meta %}
-{% endblock %}
-
 {% block title %}
-HOME
+COMPANY PROFILE
 {% endblock %}
 
 {% block css %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
 {% endblock %}
 
 {% block content %}
-<h2>EMPLOYER HOME</h2>
-{% endblock %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="dashboard-custom">
+				<div class="row">
+					<div class="my-company">
+						<div class="row">
 
-{% block javascript %}
+							<div class="col-sm-6 col-sm-offset-3 text-center">
+								<div class="text-title-post">
+									
+								</div>
+								<div class="thumbnail" style="border-top: 3px solid #29758A">
+									<div class="company-logo">
+										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
+									</div>
+									<div class="company-name">
+										<h3><span style="color: #29758A">My Company: </span>{{company.company_name}}</h3>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-sm-12">
+											<div class="view-profile btn-padding">
+												<a href="{% url 'app-employer:company-profile' %}"><button class="btn btn-customize btn-block"><span class="fa fa-briefcase" style="padding: 3px"></span> View Profile</button></a>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12">
+											<div class="edit-profile btn-padding">
+												<a href="{% url 'app-employer:edit-company-profile' %}"><button class="btn btn-customize btn-block"><span class="fa fa-pencil" style="padding: 3px"></span> Edit Profile</button></a>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="post btn-padding">
+										<button class="btn btn-warning btn-block" data-toggle="modal" data-target="#posting">Post an opportunity</button>
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<!-- Modal -->
+  <div class="modal fade" id="posting" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Opportunity Posting</h4>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="{% url 'app-employer:opportunity-posting' %}">
+          	{% csrf_token %}
+          	<div class="row">
+			{% for field in post_opp %}
+				<div class="col-sm-6">
+					<div class="form-group">
+		              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+		              {{field}}
+		            </div>
+				</div>
+			{% endfor %}
+			</div>
+				<div class="modal-footer">
+					<input id="submit" type="submit" class="btn btn-info btn-md" value="Submit">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+          		
+			  </form>
+        </div>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
 {% endblock %}

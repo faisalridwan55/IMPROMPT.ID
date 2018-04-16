@@ -1,5 +1,26 @@
 from django.db import models
 
+CATEGORIES = (
+    ('INTERNSHIP', 'Internship'),
+    ('VOLUNTEER', 'Volunteer'),
+    ('JOBS', 'Jobs'),
+    ('CONFERENCE', 'Conference'),
+    ('COMMUNITY', 'Community'),
+)
+FIELD = (
+    ('DESIGN', 'Design'),
+    ('EVENT ORGANIZER', 'Event Organizer'),
+    ('TEACHING', 'Teaching'),
+    ('OPERATIONS', 'Operations'),
+    ('MARKETING', 'Marketing'),
+    ('PHOTOGRAPHY', 'Photograph'),
+    ('ENGINEERING', 'Engineering'),
+    ('MEDIA', 'Media and Communication'),
+    ('FINANCIAL', 'Finance'),
+    ('FASHION', 'Fashion'),
+    ('WEB DEV', 'Web Development'),
+    ('OTHER', 'Other'),
+)
 # Create your models here.
 class Employer(models.Model):
     profile_id = models.CharField(max_length=140, blank=False)
@@ -19,8 +40,8 @@ class Company(models.Model):
     company_logo = models.FileField(upload_to='company_logo/')
 
 class Opportunity(models.Model):
-    opportunity_category = models.CharField(max_length=140, blank=False)
-    opportunity_field = models.CharField(max_length=140, blank=False)
+    opportunity_category = models.CharField(max_length=140, choices=CATEGORIES)
+    opportunity_field = models.CharField(max_length=140, choices=FIELD)
     durations = models.CharField(max_length=140, blank=False)
     salary = models.CharField(max_length=140, blank=False)
     participants_needed = models.CharField(max_length=140, blank=False)

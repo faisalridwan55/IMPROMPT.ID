@@ -18,10 +18,10 @@ HOME
 				<div class="photo text-on-photo">
 					<img src="https://image.ibb.co/mJB8Zx/pexels_photo_911738.jpg">
 
-					<h1 class="text-title-opp"><b>Be one of WWF Volunteer!</b></h1>
+					<h1 class="text-title-opp"><b>Be one of Us!</b></h1>
 					<div class="category-place">
-						<span class="field-opp">Volunteer</span>
-						<span class="category-opp">Other</span>
+						<span class="field-opp">{{opportunity_field}}</span>
+						<span class="category-opp">{{opportunity_category}}</span>
 					</div>
 					<hr class="style14">
 
@@ -41,44 +41,26 @@ HOME
 										<h3><b>Job Description:</b></h3>
 									</div>
 
-									<p>uspendisse vitae risus consectetur, ullamcorper nisi non, congue felis. Mauris ac finibus velit. Curabitur commodo rutrum turpis in tempor. Cras gravida velit non fermentum lobortis. Etiam blandit lectus id lacinia congue. Aenean mattis libero ligula, at sagittis magna fringilla vel. Phasellus et magna nec turpis consectetur tincidunt.</p>
+									<p>{{description}}</p>
 								</div>
 								<div class="col-sm-6">
 									<div class="title">
 										<h3><b>Requirements:</b></h3>
 									</div>
 
-									<ul>
-										<li>Nunc felis diam, vulputate vitae nibh sit amet.</li>
-										<li>Cras gravida velit non fermentum lobortis.</li>
-										<li>Donec sed ante molestie.</li>
-										<li>Membaca dan menulis</li>
-										<li>Quisque iaculis quam vel dolor maximus feugiat.</li>
-									</ul>
+									<p>{{requirements}}</p>
 								</div>
 							</div>
-							<hr class="style14">
-							<div class="title">
-								<h3><b>Skills and insight you will get:</b></h3>
-							</div>
-
-							<ul>
-								<li>Nunc felis diam, vulputate vitae nibh sit amet.</li>
-								<li>Cras gravida velit non fermentum lobortis.</li>
-								<li>Donec sed ante molestie.</li>
-								<li>Membaca dan menulis</li>
-								<li>Quisque iaculis quam vel dolor maximus feugiat.</li>
-							</ul>
+							
+							
 						</div>
 						</div>
 						<div class="col-sm-4 sidebar-content">
 							<div class="title">
 								<h3><b>Details</b></h3>
 							</div>
-								<p><strong>Salary:</strong> $400 - $500</p>
-								<p><strong>Vacancy:</strong> Lorem ipsum</p>
-								<p><strong>Duration:</strong> 3 Months</p>
-								<p><strong>Required Skills:</strong> Photography, Swim, etc.</p>
+								<p><strong>Salary:</strong> {{salary}}</p>
+								<p><strong>Duration:</strong> {{durations}}</p>
 								<hr class="style14">
 								<p><strong>Social Media</strong></p>
 								<span class="fa fa-twitter-square" style="font-size: 20px" style="margin: 20px"></span>
@@ -87,7 +69,7 @@ HOME
 								<span class="fa fa-instagram" style="font-size: 20px" ></span>
 								<hr class="style14">
 								<p><strong>Contact Person</strong></p>
-								<a href="mailto:hello@world.com?subject=cv_volunteer">hello@world.com</a>
+								<p>{{contact_person_phone_number}}</p>
 								<div style="margin-top: 30px">
 									<button type="button" class="btn btn-warning btn-block">Apply Now!</button>
 									<!--if not login-->

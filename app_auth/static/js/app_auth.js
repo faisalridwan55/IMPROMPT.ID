@@ -14,7 +14,7 @@ function loadDoc(profile_id, first_name, last_name, email, status) {
       console.log("berhasil masuk");
       alert(data)
       if (data == "employer baru") {
-        window.open("http://localhost:8000/employer/edit_company_profile/", '_self');
+        window.open("http://localhost:8000/employer/edit_employer_profile/", '_self');
       } else if (data == "employer lama") {
         window.open("http://localhost:8000/employer/home/", '_self');
       } else if (data == "job_seeker baru") {

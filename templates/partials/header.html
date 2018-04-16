@@ -11,21 +11,46 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        {% if home %}
-        <li class="active"><a href="/public/home">Home</a></li>
+        {% if logged_in %}
+          {% if home_employer %}
+          <li class="active"><a href="/employer/home">Home</a></li>
+          {% else %}
+          <li><a href="/employer/home">Home</a></li>
+          {% endif %}
+          {% if company_profile %}
+          <li class="active"><a href="/employer/company_profile">Company Profile</a></li>
+          {% else %}
+          <li><a href="/employer/company_profile">Company Profile</a></li>
+          {% endif %}
+        {% elif jobseeker %}
+          {% if home %}
+          <li class="active"><a href="/job_seeker/home">Home</a></li>
+          {% else %}
+          <li><a href="/job_seeker/home">Home</a></li>
+          {% endif %}
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Internship</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Job</a></li>
+          <li><a href="#">Conference</a>
         {% else %}
-        <li><a href="/public/home">Home</a></li>
+          {% if home %}
+          <li class="active"><a href="/public/home">Home</a></li>
+          {% else %}
+          <li><a href="/public/home">Home</a></li>
+          {% endif %}
+          {% if about %}
+          <li class="active"><a href="/public/about">About Us</a></li>
+          {% else %}
+          <li><a href="/public/about">About Us</a></li>
+          {% endif %}
+          {% if news_page %}
+          <li class="active"><a href="/public/news">News</a></li>
+          {% else %}
+          <li><a href="/public/news">News</a></li>
+          {% endif %}
         {% endif %}
-        {% if about %}
-        <li class="active"><a href="/public/about">About Us</a></li>
-        {% else %}
-        <li><a href="/public/about">About Us</a></li>
-        {% endif %}
-        {% if news_page %}
-        <li class="active"><a href="/public/news">News</a></li>
-        {% else %}
-        <li><a href="/public/news">News</a></li>
-        {% endif %}
+        
 
         <!--kalo udah login dan udah ada if, uncomment this
         <li><a href="#">Volunteer</a></li>
@@ -38,6 +63,10 @@
 
       <ul class="nav navbar-nav navbar-right">
         {% if logged_in %}
+          <li><a href="{% url 'app-employer:employer-profile' %}"><span class="fa fa-user-circle" style="font-size: 20px"></span> My Profile</a></li>
+          <li><a href="{% url 'app-auth:logout' %}" style="font-size: 16px"><strong>Logout</strong></a></li>
+        {% elif jobseeker %}
+          <li><a href="{% url 'app-job-seeker:my-profile' %}"><span class="fa fa-user-circle" style="font-size: 20px"></span> My Profile</a></li>
           <li><a href="{% url 'app-auth:logout' %}" style="font-size: 16px"><strong>Logout</strong></a></li>
         {% else %}
           {% if login_page %}

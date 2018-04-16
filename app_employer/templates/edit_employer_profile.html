@@ -7,7 +7,7 @@ EDIT PROFILE - EMPLOYER
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer1.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -23,9 +23,10 @@ EDIT PROFILE - EMPLOYER
 					<form method="POST" action="{% url 'app-employer:submit-employer-profile' %}">
 						{% csrf_token %}
 						{% for field in employer_form %}
-						<div class="form-group">
-							{{field}}
-						</div>
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{field}}
+            </div>
 						{% endfor %}
 
             <div class="btn-padding-form">

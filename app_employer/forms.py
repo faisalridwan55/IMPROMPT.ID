@@ -45,9 +45,9 @@ class CompanyProfileEdit(forms.Form):
         'placeholder': 'Country',
     }
     website = {
-        'type': 'url',
+        'type': 'text',
         'class': 'form-control',
-        'placeholder': 'Enter your company website',
+        'placeholder': 'Enter your company website, ex: www.example.com',
     }
     province = {
         'type': 'text',
@@ -72,3 +72,71 @@ class CompanyProfileEdit(forms.Form):
     city = forms.CharField(label='City', required=True, max_length=140, widget=forms.TextInput(attrs=city))
     company_website = forms.CharField(label='Company Website', required=True, max_length=140, widget=forms.TextInput(attrs=website))
     company_description = forms.CharField(label='Company Description', required=True, max_length=140, widget=forms.Textarea(attrs=company_description))
+
+class OpportunityForm(forms.Form):
+    error_message = {
+        'required': 'This field is required to fill',
+    }
+    durations = {
+        'type': 'text',
+        'class': 'form-control',
+        'placeholder': 'In days/week',
+    }
+    salary = {
+        'type': 'text',
+        'class': 'form-control',
+        'placeholder': 'Rp.xxx,00,-',
+    }
+    participants_needed = {
+        'type': 'number',
+        'class': 'form-control',
+        'placeholder': 'Enter number of participants needed',
+    }
+    requirements = {
+        'type': 'text',
+        'class': 'form-control',
+        'placeholder': 'Separated by commas',
+    }
+    description = {
+        'type': 'text',
+        'cols': 50,
+        'rows': 4,
+        'class': 'form-control desc_textarea',
+        'placeholder': 'Tell us about this opportunity briefly',
+    }
+    contact_person_phone_number = {
+        'type': 'text',
+        'class': 'form-control',
+        'placeholder': 'Enter a valid phone number',
+    }
+    categories = {
+        ('INTERNSHIP', 'Internship'),
+        ('VOLUNTEER', 'Volunteer'),
+        ('JOBS', 'Jobs'),
+        ('CONFERENCE', 'Conference'),
+        ('COMMUNITY', 'Community'),
+    }
+    field = {
+        ('DESIGN', 'Design'),
+        ('EVENT ORGANIZER', 'Event Organizer'),
+        ('TEACHING', 'Teaching'),
+        ('OPERATIONS', 'Operations'),
+        ('MARKETING', 'Marketing'),
+        ('PHOTOGRAPHY', 'Photograph'),
+        ('ENGINEERING', 'Engineering'),
+        ('MEDIA', 'Media and Communication'),
+        ('FINANCIAL', 'Finance'),
+        ('FASHION', 'Fashion'),
+        ('WEB DEV', 'Web Development'),
+        ('OTHER', 'Other'),
+    }
+    opportunity_category = forms.ChoiceField(choices=categories, required=True, widget=forms.Select(attrs={'class':'form-control'}))
+    opportunity_field = forms.ChoiceField(choices=field, required=True, widget=forms.Select(attrs={'class':'form-control'}))
+    durations = forms.CharField(label='Durations', required=True, max_length=140, widget=forms.TextInput(attrs=durations))
+    salary = forms.CharField(label='Salary', required=True, max_length=140, widget=forms.TextInput(attrs=salary))
+    participants_needed = forms.CharField(label='Participants Needed', required=True, max_length=140, widget=forms.TextInput(attrs=participants_needed))
+    requirements = forms.CharField(label='Requirements', required=True, max_length=140, widget=forms.TextInput(attrs=requirements))
+    contact_person_phone_number = forms.CharField(label='Contact Person Number', required=True, max_length=140, widget=forms.TextInput(attrs=contact_person_phone_number))
+    description = forms.CharField(label='Short Description', required=True, max_length=140, widget=forms.Textarea(attrs=description))
+    
+

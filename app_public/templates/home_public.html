@@ -70,102 +70,35 @@ HOME
 </div>
 <div class="container">
 	<div class="row opportunity">
-		<div class="col-sm-4">
-			<div class="thumbnail">
+		{% if opportunity %}
+			{% for data in opportunity %}
+			<div class="col-sm-4">
+				
+				<div class="thumbnail">
 
 
-				<img src="https://image.ibb.co/iOiHvS/pexels_photo_826349.jpg" width="100%">
-				<div class="caption">
-					<div class="category-place-main">
-						<span class="field-opp">Volunteer</span>
-						<span class="category-opp">Other</span>
-					</div>
-	            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-	            <p style="color: #999"><b>Duration:</b> May - December 2024</p>
-	            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-	          </div>
+					<img src="https://image.ibb.co/iOiHvS/pexels_photo_826349.jpg" width="100%">
+					<div class="caption">
+						<div class="category-place-main">
+							<span class="field-opp">{{data.opportunity_category}}</span>
+							<span class="category-opp">{{data.opportunity_field}}</span>
+						</div>
+			            <h4>{{data.description}}</h4>
+			            <p style="color: #999"><b>Duration:</b> {{data.durations}}</p>
+			            <a href="/public/opportunity/{{data.opportunity_category}}/{{data.id}}" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
+		          	</div>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-4">
-
-			<div class="thumbnail">
-				<img src="https://image.ibb.co/fHOvh7/pexels_photo_374074.jpg" width="100%">
-				<div class="caption">
-					<div class="category-place-main">
-						<span class="field-opp">Volunteer</span>
-						<span class="category-opp">Other</span>
-					</div>
-	            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-	            <p style="color: #999"><b>Duration:</b> May - December 2024</p>
-	            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-	          </div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-
-			<div class="thumbnail">
-				<img src="https://image.ibb.co/fCPMpn/pexels_photo_597331.jpg" width="100%">
-				<div class="caption">
-					<div class="category-place-main">
-						<span class="field-opp">Volunteer</span>
-						<span class="category-opp">Other</span>
-					</div>
-	            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-	            <p style="color: #999"><b>Duration:</b> May - December 2024</p>
-	            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-	          </div>
+				{% endfor %}
+				{% else %}
+				<div class="text-center">
+					<h3>There is no any opportunity yet</h3>
+				</div>
+			{% endif %}
 			</div>
 		</div>
 	</div>
 </div>
-<div class="container">
-	<div class="row opportunity">
-		<div class="col-sm-4">
-			<div class="thumbnail">
 
-				<img src="https://image.ibb.co/ga7nSH/pexels_photo_131772.jpg" width="100%">
-				<div class="caption">
-					<div class="category-place-main">
-						<span class="field-opp">Volunteer</span>
-						<span class="category-opp">Other</span>
-					</div>
-	            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-	            <p style="color: #999"><b>Duration:</b> May - December 2024</p>
-	            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-	          </div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-
-			<div class="thumbnail">
-				<img src="https://image.ibb.co/ekYi1c/pexels_photo_97815.jpg" width="100%">
-				<div class="caption">
-					<div class="category-place-main">
-						<span class="field-opp">Volunteer</span>
-						<span class="category-opp">Other</span>
-					</div>
-	            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-	            <p style="color: #999"><b>Duration:</b> May - December 2024</p>
-	            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-	          </div>
-			</div>
-		</div>
-		<div class="col-sm-4">
-
-			<div class="thumbnail">
-				<img src="https://image.ibb.co/jjE1nH/pexels_photo_340981.jpg" width="100%">
-				<div class="caption">
-					<div class="category-place-main">
-						<span class="field-opp">Volunteer</span>
-						<span class="category-opp">Other</span>
-					</div>
-	            <h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4>
-	            <p style="color: #999"><b>Duration:</b> May - December 2024</p>
-	            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-	          </div>
-			</div>
-		</div>
-	</div>
-</div>
 
 {% endblock %}
