@@ -163,6 +163,10 @@ def submit_employer_profile(request):
                     email = email,
                     phone_number = phone_number
                 )
+        query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
+        query_size = query.count()
+        if query_size > 0:
+            return redirect(reverse('app-employer:employer-profile'))    
         return redirect(reverse('app-employer:edit-company-profile'))
 
 
