@@ -90,14 +90,14 @@ def opportunity_detail(request, categories, pk):
     try:
         if request.session['status'] == "job_seeker":
             current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
-            query = Application_Form.objects.filter(job_seeker=current_job_seeker)
+            current_opportunity = Opportunity.objects.get(pk=pk)
+            query = Application_Form.objects.filter(job_seeker=current_job_seeker, opportunity=current_opportunity)
             query_size = query.count()
             if query_size > 0:
                 response['applied'] = True
-            else:
-                response['applied'] = False
     except Exception as e:
-        pass
+        response['applied'] = None
+        
     print("pk of opportunity:=>", pk)
     response['opportunity_page'] = True
     response['home'] = False

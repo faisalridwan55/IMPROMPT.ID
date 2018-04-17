@@ -62,7 +62,7 @@ def submit_job_seeker_profile(request):
             profile.save()
             return redirect(reverse('app-public:home-public'))
 
-def apply(request):
+def apply_opportunity(request):
     if request.session['status'] == "job_seeker":
         id_opportunity = request.POST.get('id_opportunity', False)
         current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
@@ -71,6 +71,3 @@ def apply(request):
         return HttpResponse("applied")
     else:
         return HttpResponse("can not apply")
-
-def apply_opportunity(requests):
-    pass
