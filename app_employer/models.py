@@ -1,25 +1,25 @@
 from django.db import models
 
 CATEGORIES = (
-    ('INTERNSHIP', 'Internship'),
-    ('VOLUNTEER', 'Volunteer'),
-    ('JOBS', 'Jobs'),
-    ('CONFERENCE', 'Conference'),
-    ('COMMUNITY', 'Community'),
+    ('Internship', 'Internship'),
+    ('Volunteer', 'Volunteer'),
+    ('Jobs', 'Jobs'),
+    ('Conference', 'Conference'),
+    ('Community', 'Community'),
 )
 FIELD = (
-    ('DESIGN', 'Design'),
-    ('EVENT ORGANIZER', 'Event Organizer'),
-    ('TEACHING', 'Teaching'),
-    ('OPERATIONS', 'Operations'),
-    ('MARKETING', 'Marketing'),
-    ('PHOTOGRAPHY', 'Photograph'),
-    ('ENGINEERING', 'Engineering'),
-    ('MEDIA', 'Media and Communication'),
-    ('FINANCIAL', 'Finance'),
-    ('FASHION', 'Fashion'),
-    ('WEB DEV', 'Web Development'),
-    ('OTHER', 'Other'),
+    ('Design', 'Design'),
+    ('Event', 'Event Organizer'),
+    ('Teaching', 'Teaching'),
+    ('Operations', 'Operations'),
+    ('Marketing', 'Marketing'),
+    ('Photography', 'Photography'),
+    ('Engineering', 'Engineering'),
+    ('Media', 'Media and Communication'),
+    ('Finance', 'Finance'),
+    ('Fashion', 'Fashion'),
+    ('Web Dev', 'Web Development'),
+    ('Other', 'Other'),
 )
 # Create your models here.
 class Employer(models.Model):

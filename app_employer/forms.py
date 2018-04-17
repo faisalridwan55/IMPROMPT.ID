@@ -110,25 +110,25 @@ class OpportunityForm(forms.Form):
         'placeholder': 'Enter a valid phone number',
     }
     categories = {
-        ('INTERNSHIP', 'Internship'),
-        ('VOLUNTEER', 'Volunteer'),
-        ('JOBS', 'Jobs'),
-        ('CONFERENCE', 'Conference'),
-        ('COMMUNITY', 'Community'),
+        ('Internship', 'Internship'),
+        ('Volunteer', 'Volunteer'),
+        ('Jobs', 'Jobs'),
+        ('Conference', 'Conference'),
+        ('Community', 'Community'),
     }
     field = {
-        ('DESIGN', 'Design'),
-        ('EVENT ORGANIZER', 'Event Organizer'),
-        ('TEACHING', 'Teaching'),
-        ('OPERATIONS', 'Operations'),
-        ('MARKETING', 'Marketing'),
-        ('PHOTOGRAPHY', 'Photograph'),
-        ('ENGINEERING', 'Engineering'),
-        ('MEDIA', 'Media and Communication'),
-        ('FINANCIAL', 'Finance'),
-        ('FASHION', 'Fashion'),
-        ('WEB DEV', 'Web Development'),
-        ('OTHER', 'Other'),
+        ('Design', 'Design'),
+        ('Event', 'Event Organizer'),
+        ('Teaching', 'Teaching'),
+        ('Operations', 'Operations'),
+        ('Marketing', 'Marketing'),
+        ('Photography', 'Photography'),
+        ('Engineering', 'Engineering'),
+        ('Media', 'Media and Communication'),
+        ('Finance', 'Finance'),
+        ('Fashion', 'Fashion'),
+        ('Web Dev', 'Web Development'),
+        ('Other', 'Other'),
     }
     opportunity_category = forms.ChoiceField(choices=categories, required=True, widget=forms.Select(attrs={'class':'form-control'}))
     opportunity_field = forms.ChoiceField(choices=field, required=True, widget=forms.Select(attrs={'class':'form-control'}))
@@ -138,5 +138,3 @@ class OpportunityForm(forms.Form):
     requirements = forms.CharField(label='Requirements', required=True, max_length=140, widget=forms.TextInput(attrs=requirements))
     contact_person_phone_number = forms.CharField(label='Contact Person Number', required=True, max_length=140, widget=forms.TextInput(attrs=contact_person_phone_number))
     description = forms.CharField(label='Short Description', required=True, max_length=140, widget=forms.Textarea(attrs=description))
-    
-

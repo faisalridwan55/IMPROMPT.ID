@@ -92,19 +92,19 @@ def opportunity_detail(request, categories, pk):
     response['about']= False
     response['news_page'] = False
 
-    if categories == 1:
+    if categories == 'Jobs':
         # Ambil kumpulan job dari db
         opportunity = get_opportunity_detail('job', pk)
         response['opportunity'] = opportunity
-    elif categories == 2:
+    elif categories == 'Internship':
         # Ambil kumpulan internship dari db
         opportunity = get_opportunity_detail('internship', pk)
         response['opportunity'] = opportunity
-    elif categories == 3:
+    elif categories == 'Community':
         # Ambil kumpulan community dari db
         opportunity = get_opportunity_detail('community', pk)
         response['opportunity'] = opportunity
-    elif categories == 4:
+    elif categories == 'Conference':
         # Ambil kumpulan conference dari db
         opportunity = get_opportunity_detail('conference', pk)
         response['opportunity'] = opportunity
