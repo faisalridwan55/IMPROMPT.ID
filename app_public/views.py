@@ -63,18 +63,21 @@ def opportunity_page(request, categories):
     response['home'] = False
     response['about']= False
     response['news_page'] = False
-    if categories == 1:
+    if categories == 'jobs':
         # Ambil kumpulan job dari db
-        response['opportunity_list'] = get_opportunity('job')
-    elif categories == 2:
+        response['opportunity_list'] = get_opportunity('jobs')
+    elif categories == 'internship':
         # Ambil kumpulan internship dari db
         response['opportunity_list'] = get_opportunity('internship')
-    elif categories == 3:
+    elif categories == 'community':
         # Ambil kumpulan community dari db
         response['opportunity_list'] = get_opportunity('community')
-    elif categories == 4:
+    elif categories == 'conference':
         # Ambil kumpulan conference dari db
         response['opportunity_list'] = get_opportunity('conference')
+    elif categories == 'volunteer':
+        # Ambil kumpulan conference dari db
+        response['opportunity_list'] = get_opportunity('volunteer')
     return render(request, 'opportunity_page.html', response)
 
 def opportunity_detail(request, categories, pk):
@@ -89,27 +92,31 @@ def opportunity_detail(request, categories, pk):
                 response['applied'] = False
     except Exception as e:
         pass
-
+    print("pk of opportunity:=>", pk)
     response['opportunity_page'] = True
     response['home'] = False
     response['about']= False
     response['news_page'] = False
 
-    if categories == 'Jobs':
+    if categories == 'jobs':
         # Ambil kumpulan job dari db
-        opportunity = get_opportunity_detail('job', pk)
+        opportunity = get_opportunity_detail('jobs', pk)
         response['opportunity'] = opportunity
-    elif categories == 'Internship':
+    elif categories == 'internship':
         # Ambil kumpulan internship dari db
         opportunity = get_opportunity_detail('internship', pk)
         response['opportunity'] = opportunity
-    elif categories == 'Community':
+    elif categories == 'community':
         # Ambil kumpulan community dari db
         opportunity = get_opportunity_detail('community', pk)
         response['opportunity'] = opportunity
-    elif categories == 'Conference':
+    elif categories == 'conference':
         # Ambil kumpulan conference dari db
         opportunity = get_opportunity_detail('conference', pk)
+        response['opportunity'] = opportunity
+    elif categories == 'volunteer':
+        # Ambil kumpulan conference dari db
+        opportunity = get_opportunity_detail('volunteer', pk)
         response['opportunity'] = opportunity
 
     # Kalo yang buka employer dan ini adalah opportunity yang
@@ -122,11 +129,11 @@ def opportunity_detail(request, categories, pk):
         pass
     return render(request, 'opportunity_detail.html', response)
 
-def get_opportunity(request, category):
+def get_opportunity(category):
     opportunity_list = Opportunity.objects.filter(opportunity_category=category)
     return opportunity_list
 
-def get_opportunity_detail(request, category, pk):
+def get_opportunity_detail(category, pk):
     try:
         opportunity = Opportunity.objects.get(opportunity_category=category, pk=pk)
         return opportunity

@@ -20,7 +20,7 @@ function loadDoc(profile_id, first_name, last_name, email, status) {
       } else if (data == "job_seeker baru") {
         window.open("http://localhost:8000/job_seeker/edit_profile/", '_self');
       } else if (true) {
-        window.open("http://localhost:8000/job_seeker/home/", '_self');
+        window.open("http://localhost:8000/public/home/", '_self');
       }
     },
     error: function(){

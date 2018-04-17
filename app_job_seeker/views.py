@@ -16,7 +16,7 @@ def jobseeker_profile(request):
         response['jobseeker'] = True
         try:
             jobseeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
-        
+
         except Exception as e:
             return redirect(reverse('app-job-seeker:edit-profile'))
 
@@ -30,7 +30,7 @@ def edit_profile(request):
         try:
             exist_profile = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
             response['exist_profile'] = exist_profile
-            form = ProfileEdit(initial={'first_name': exist_profile.first_name, 'last_name':exist_profile.last_name, 'birthday':exist_profile.birthday, 'phone_number':exist_profile.phone_number}) 
+            form = ProfileEdit(initial={'first_name': exist_profile.first_name, 'last_name':exist_profile.last_name, 'birthday':exist_profile.birthday, 'phone_number':exist_profile.phone_number})
             response['form_profile'] = form
         except Exception as e:
             response['exist_profile'] = None
@@ -43,20 +43,24 @@ def submit_job_seeker_profile(request):
         print("berhasil")
         if(request.method == 'POST' and form.is_valid()):
             print("masuk save")
+            profile_picture = request.POST.get('profile_picture', False)
             first_name = request.POST.get('first_name', False)
             last_name = request.POST.get('last_name', False)
             email = request.POST.get('email', False)
             phone_number = request.POST.get('phone_number', False)
             birthday = request.POST.get('birthday', False)
+            resume = request.POST.get('resume', False)
 
             profile = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
+            profile.profile_picture = profile_picture
             profile.first_name = first_name
             profile.last_name = last_name
             profile.email = email
             profile.phone_number = phone_number
             profile.birthday = birthday
+            profile.resume = resume
             profile.save()
-            return redirect(reverse('app-job-seeker:home-job-seeker'))
+            return redirect(reverse('app-public:home-public'))
 
 def apply(request):
     if request.session['status'] == "job_seeker":

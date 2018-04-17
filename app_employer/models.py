@@ -8,18 +8,18 @@ CATEGORIES = (
     ('community', 'Community'),
 )
 FIELD = (
-    ('Design', 'Design'),
-    ('Event', 'Event Organizer'),
-    ('Teaching', 'Teaching'),
-    ('Operations', 'Operations'),
-    ('Marketing', 'Marketing'),
-    ('Photography', 'Photography'),
-    ('Engineering', 'Engineering'),
-    ('Media', 'Media and Communication'),
-    ('Finance', 'Finance'),
-    ('Fashion', 'Fashion'),
-    ('Web Dev', 'Web Development'),
-    ('Other', 'Other'),
+    ('design', 'Design'),
+    ('event', 'Event Organizer'),
+    ('teaching', 'Teaching'),
+    ('operations', 'Operations'),
+    ('marketing', 'Marketing'),
+    ('photography', 'Photography'),
+    ('engineering', 'Engineering'),
+    ('media', 'Media and Communication'),
+    ('finance', 'Finance'),
+    ('fashion', 'Fashion'),
+    ('webdev', 'Web Development'),
+    ('other', 'Other'),
 )
 # Create your models here.
 class Employer(models.Model):

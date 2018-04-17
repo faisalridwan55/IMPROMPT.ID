@@ -110,25 +110,25 @@ class OpportunityForm(forms.Form):
         'placeholder': 'Enter a valid phone number',
     }
     categories = {
-        ('Internship', 'Internship'),
-        ('Volunteer', 'Volunteer'),
-        ('Jobs', 'Jobs'),
-        ('Conference', 'Conference'),
-        ('Community', 'Community'),
+        ('internship', 'Internship'),
+        ('volunteer', 'Volunteer'),
+        ('jobs', 'Jobs'),
+        ('conference', 'Conference'),
+        ('community', 'Community'),
     }
     field = {
-        ('Design', 'Design'),
-        ('Event', 'Event Organizer'),
-        ('Teaching', 'Teaching'),
-        ('Operations', 'Operations'),
-        ('Marketing', 'Marketing'),
-        ('Photography', 'Photography'),
-        ('Engineering', 'Engineering'),
-        ('Media', 'Media and Communication'),
-        ('Finance', 'Finance'),
-        ('Fashion', 'Fashion'),
-        ('Web Dev', 'Web Development'),
-        ('Other', 'Other'),
+        ('design', 'Design'),
+        ('event', 'Event Organizer'),
+        ('teaching', 'Teaching'),
+        ('operations', 'Operations'),
+        ('marketing', 'Marketing'),
+        ('photography', 'Photography'),
+        ('engineering', 'Engineering'),
+        ('media', 'Media and Communication'),
+        ('finance', 'Finance'),
+        ('fashion', 'Fashion'),
+        ('webdev', 'Web Development'),
+        ('other', 'Other'),
     }
     opportunity_category = forms.ChoiceField(choices=categories, required=True, widget=forms.Select(attrs={'class':'form-control'}))
     opportunity_field = forms.ChoiceField(choices=field, required=True, widget=forms.Select(attrs={'class':'form-control'}))

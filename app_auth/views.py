@@ -13,7 +13,7 @@ def login_page(request):
         if request.session['status'] == 'employer':
             return redirect(reverse('app_employer:home-employer'))
         elif request.session['status'] == 'job_seeker':
-            return redirect(reverse('app-job-seeker:home-job-seeker'))
+            return redirect(reverse('app-home:home-public'))
     except Exception as e:
         pass
     response['login_page'] = True

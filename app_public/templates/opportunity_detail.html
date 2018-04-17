@@ -65,7 +65,7 @@ Opportunity Detail
 								<p><strong>Contact Person</strong></p>
 								<p>{{opportunity.contact_person_phone_number}}</p>
 								<div style="margin-top: 30px">
-									{% if logged_in %}
+									{% if request.session.status == 'job_seeker' %}
 										<a href="{% url 'app-job-seeker:apply'}"><button type="button" class="btn btn-warning btn-block">Apply Now!</button></a>
 									{% else %}
 									<!--if not login-->
