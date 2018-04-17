@@ -3,6 +3,8 @@ from .models import Imprompt_Profile, News
 from app_employer.models import Opportunity
 from app_employer.views import check_applicant
 from app_job_seeker.models import Job_Seeker, Application_Form
+from .forms import SearchDropdown
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 response = {}
 
@@ -11,7 +13,8 @@ def home_public(request):
     response['news_page'] = False
     response['about'] = False
     response['opportunity_page'] = False
-    all_opportunity = Opportunity.objects.all()
+    all_opportunity = Opportunity.objects.all().order_by('-id')
+    response['search'] = SearchDropdown
     response['opportunity'] = all_opportunity
     #nanti mau ditambahin paginator kalo udah banyak
 
@@ -63,6 +66,9 @@ def opportunity_page(request, categories):
     response['home'] = False
     response['about']= False
     response['news_page'] = False
+    response['search'] = SearchDropdown
+    response['search_result'] = False
+    response['category'] = categories
     if categories == 'jobs':
         # Ambil kumpulan job dari db
         response['opportunity_list'] = get_opportunity('jobs')
@@ -140,21 +146,26 @@ def get_opportunity_detail(category, pk):
     except Exception as e:
         pass
 
+@csrf_exempt
 def search_by_drop_down(request):
+    response['search_result'] = True
     opportunity_category = request.POST.get('opportunity_category', False)
     opportunity_field = request.POST.get('opportunity_field', False)
 
+    response['opportunity_category'] = opportunity_category
+    response['opportunity_field'] = opportunity_field
+
     if opportunity_category != "null" and opportunity_field != "null":
         list_opportunity = Opportunity.objects.filter(opportunity_category=opportunity_category, opportunity_field=opportunity_field)
-        response['opportunity_list'] = opportunity_list
+        response['opportunity_list'] = list_opportunity
         return render(request, 'opportunity_page.html', response)
     elif opportunity_category == "null":
         list_opportunity = Opportunity.objects.filter(opportunity_field=opportunity_field)
-        response['opportunity_list'] = opportunity_list
+        response['opportunity_list'] = list_opportunity
         return render(request, 'opportunity_page.html', response)
     elif opportunity_field == "null":
         list_opportunity = Opportunity.objects.filter(opportunity_category=opportunity_category)
-        response['opportunity_list'] = opportunity_list
+        response['opportunity_list'] = list_opportunity
         return render(request, 'opportunity_page.html', response)
     else:
         return HttpResponse("null")

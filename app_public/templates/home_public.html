@@ -23,42 +23,25 @@ HOME
 <div class="dropdown">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
-				<div class="form-group" style="width:100%;">
-				  <select class="form-control">
-				    <option value="0">Select Category</option>
-				    <option value="1">Internships</option>
-				    <option value="2">Volunteer</option>
-				    <option value="3">Jobs</option>
-				    <option value="4">Conferences</option>
-				    <option value="5">Communities</option>
-				  </select>
+			<form method="POST" action="{% url 'app-public:search-by-drop-down' %}">
+				{% csrf_token %}
+				{% for field in search %}
+				<div class="col-sm-4">
+					<div class="form-group">
+						{{field}}
+					</div>
 				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group" style="width:100%;">
-				  <select class="form-control">
-				    <option value="0">Select Field</option>
-				    <option value="1">Design</option>
-				    <option value="2">Event Organizer</option>
-				    <option value="3">Teaching</option>
-				    <option value="4">Operations</option>
-				    <option value="5">Marketing</option>
-				    <option value="6">Photograph</option>
-				    <option value="7">Engineering</option>
-				    <option value="8">Media and Communication</option>
-				    <option value="9">Finance</option>
-				    <option value="10">Fashion</option>
-				    <option value="11">Web Developer</option>
-				    <option value="12">Other</option>
-				  </select>
+				{% endfor %}
+				<div class="col-sm-4">
+					<input type="submit" class="btn btn-primary btn-warning" value="Start!">
 				</div>
-			</div>
-			<div class="col-sm-4">
-				<button type="button" class="btn btn-primary btn-warning">Start!</button>
-			</div>
+			</form>
+
+
+
 		</div>
 	</div>
+</div>
 
 </div>
 <div class="container">
@@ -73,15 +56,15 @@ HOME
 		{% if opportunity %}
 			{% for data in opportunity %}
 			<div class="col-sm-4">
-				
+
 				<div class="thumbnail">
 
 
 					<img src="https://image.ibb.co/iOiHvS/pexels_photo_826349.jpg" width="100%">
 					<div class="caption">
 						<div class="category-place-main">
-							<span class="field-opp">{{data.opportunity_category}}</span>
-							<span class="category-opp">{{data.opportunity_field}}</span>
+							<span class="category-opp">{{data.opportunity_category}}</span>
+							<span class="field-opp">{{data.opportunity_field}}</span>
 						</div>
 			            <h4>{{data.description}}</h4>
 			            <p style="color: #999"><b>Duration:</b> {{data.durations}}</p>

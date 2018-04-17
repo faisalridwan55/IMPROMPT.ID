@@ -19,49 +19,40 @@ ALL OPPORTUNITIES
 <div class="dropdown">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
-				<div class="form-group" style="width:100%;">
-				  <select class="form-control">
-				    <option value="0">Select Category</option>
-				    <option value="1">Internships</option>
-				    <option value="2">Volunteer</option>
-				    <option value="3">Jobs</option>
-				    <option value="4">Conferences</option>
-				    <option value="5">Communities</option>
-				  </select>
+			<form method="POST" action="{% url 'app-public:search-by-drop-down' %}">
+				{% csrf_token %}
+				{% for field in search %}
+				<div class="col-sm-4">
+					<div class="form-group">
+						{{field}}
+					</div>
 				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group" style="width:100%;">
-				  <select class="form-control">
-				    <option value="0">Select Field</option>
-				    <option value="1">Design</option>
-				    <option value="2">Event Organizer</option>
-				    <option value="3">Teaching</option>
-				    <option value="4">Operations</option>
-				    <option value="5">Marketing</option>
-				    <option value="6">Photograph</option>
-				    <option value="7">Engineering</option>
-				    <option value="8">Media and Communication</option>
-				    <option value="9">Finance</option>
-				    <option value="10">Fashion</option>
-				    <option value="11">Web Developer</option>
-				    <option value="12">Other</option>
-				  </select>
+				{% endfor %}
+				<div class="col-sm-4">
+					<input type="submit" class="btn btn-primary btn-warning" value="Start!">
 				</div>
-			</div>
-			<div class="col-sm-4">
-				<button type="button" class="btn btn-primary btn-warning">Start!</button>
-			</div>
+			</form>
+
+
+
 		</div>
 	</div>
-
 </div>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 text-left" style="padding-bottom: 50px">
 			<!--if search result-->
-			<h2>Your search result in Field and Category</h2>
+			{% if search_result %}
+				{% if opportunity_category != 'null' and opportunity_field != 'null' %}
+				<h2>Your search result in field {{opportunity_field}} and category {{opportunity_category}}</h2>
+				{% elif opportunity_field == 'null' %}
+				<h2>Your search result in category {{opportunity_category}}</h2>
+				{% elif opportunity_category == 'null' %}
+				<h2>Your search result in field {{opportunity_field}}</h2>
+				{% endif %}
+			{% else %}
+				<h2 style="text-transform: uppercase">{{category}}</h2>
+			{% endif %}
 			<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
 			<!--if just spesific page like conference, volunteer, etc. uncomment this in the future
 			<h2>Name of Opportunity Field</h2>
@@ -79,8 +70,8 @@ ALL OPPORTUNITIES
 						<img src="https://image.ibb.co/iOiHvS/pexels_photo_826349.jpg" width="100%">
 						<div class="caption">
 							<div class="category-place-main">
-								<span class="field-opp">Volunteer</span>
-								<span class="category-opp">Other</span>
+								<span class="field-opp">{{data.opportunity_field}}</span>
+								<span class="category-opp">{{data.opportunity_category}}</span>
 							</div>
 							<!--rekomendasi: judul saja yang ada di tiap card-->
 			            <h4>{{data.description}}</h4>
