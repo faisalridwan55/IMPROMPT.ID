@@ -94,6 +94,8 @@ class OpportunityForm(forms.Form):
     }
     requirements = {
         'type': 'text',
+        'cols': 50,
+        'rows': 4,
         'class': 'form-control',
         'placeholder': 'Separated by commas',
     }
@@ -135,6 +137,6 @@ class OpportunityForm(forms.Form):
     durations = forms.CharField(label='Durations', required=True, max_length=140, widget=forms.TextInput(attrs=durations))
     salary = forms.CharField(label='Salary', required=True, max_length=140, widget=forms.TextInput(attrs=salary))
     participants_needed = forms.CharField(label='Participants Needed', required=True, max_length=140, widget=forms.TextInput(attrs=participants_needed))
-    requirements = forms.CharField(label='Requirements', required=True, max_length=140, widget=forms.TextInput(attrs=requirements))
     contact_person_phone_number = forms.CharField(label='Contact Person Number', required=True, max_length=140, widget=forms.TextInput(attrs=contact_person_phone_number))
+    requirements = forms.CharField(label='Requirements', required=True, max_length=140, widget=forms.Textarea(attrs=requirements))
     description = forms.CharField(label='Short Description', required=True, max_length=140, widget=forms.Textarea(attrs=description))
