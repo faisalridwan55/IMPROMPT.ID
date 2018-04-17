@@ -4,11 +4,13 @@ from app_employer.models import Opportunity
 # Create your models here.
 class Job_Seeker(models.Model):
     profile_id = models.CharField(max_length=140, blank=False)
+    profile_picture = models.FileField(upload_to='profile_picture/')
     first_name = models.CharField(max_length=140, blank=False)
     last_name = models.CharField(max_length=140, blank=False)
     email = models.CharField(max_length=140, blank=False)
     phone_number = models.CharField(max_length=20, blank=True)
     birthday = models.DateTimeField(blank=True)
+    resume = models.FileField(upload_to='resume/')
 
 class Application_Form(models.Model):
     job_seeker = models.ForeignKey('Job_Seeker')

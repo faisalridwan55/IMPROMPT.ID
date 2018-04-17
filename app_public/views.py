@@ -78,14 +78,17 @@ def opportunity_page(request, categories):
     return render(request, 'opportunity_page.html', response)
 
 def opportunity_detail(request, categories, pk):
-    if request.session['status'] == "job_seeker":
-        current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
-        query = Application_Form.objects.filter(job_seeker=current_job_seeker)
-        query_size = query.count()
-        if query_size > 0:
-            response['applied'] = True
-        else:
-            response['applied'] = False
+    try:
+        if request.session['status'] == "job_seeker":
+            current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
+            query = Application_Form.objects.filter(job_seeker=current_job_seeker)
+            query_size = query.count()
+            if query_size > 0:
+                response['applied'] = True
+            else:
+                response['applied'] = False
+    except Exception as e:
+        pass
 
     response['opportunity_page'] = True
     response['home'] = False
@@ -111,9 +114,12 @@ def opportunity_detail(request, categories, pk):
 
     # Kalo yang buka employer dan ini adalah opportunity yang
     # dia posting, maka dia bisa liat applicant
-    application_list = check_applicant(opportunity)
-    if application_list != "null":
-        response['application_list'] = application_list
+    try:
+        application_list = check_applicant(opportunity)
+        if application_list != "null":
+            response['application_list'] = application_list
+    except Exception as e:
+        pass
     return render(request, 'opportunity_detail.html', response)
 
 def get_opportunity(request, category):

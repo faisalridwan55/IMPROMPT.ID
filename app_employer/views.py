@@ -206,3 +206,5 @@ def check_applicant(requests, opportunity):
             return HttpResponse("null")
     else:
         return HttpResponse("null")
+
+

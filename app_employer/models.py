@@ -1,11 +1,11 @@
 from django.db import models
 
 CATEGORIES = (
-    ('Internship', 'Internship'),
-    ('Volunteer', 'Volunteer'),
-    ('Jobs', 'Jobs'),
-    ('Conference', 'Conference'),
-    ('Community', 'Community'),
+    ('internship', 'Internship'),
+    ('volunteer', 'Volunteer'),
+    ('jobs', 'Jobs'),
+    ('conference', 'Conference'),
+    ('community', 'Community'),
 )
 FIELD = (
     ('Design', 'Design'),

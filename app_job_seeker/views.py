@@ -67,3 +67,6 @@ def apply(request):
         return HttpResponse("applied")
     else:
         return HttpResponse("can not apply")
+
+def apply_opportunity(requests):
+    pass
