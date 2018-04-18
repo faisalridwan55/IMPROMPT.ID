@@ -30,7 +30,7 @@ def edit_profile(request):
         try:
             exist_profile = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
             response['exist_profile'] = exist_profile
-            form = ProfileEdit(initial={'first_name': exist_profile.first_name, 'last_name':exist_profile.last_name, 'birthday':exist_profile.birthday, 'phone_number':exist_profile.phone_number})
+            form = ProfileEdit(initial={'first_name': exist_profile.first_name, 'last_name':exist_profile.last_name, 'email':exist_profile.email, 'birthday':exist_profile.birthday, 'phone_number':exist_profile.phone_number})
             response['form_profile'] = form
         except Exception as e:
             response['exist_profile'] = None

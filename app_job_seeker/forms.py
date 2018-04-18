@@ -15,7 +15,7 @@ class ProfileEdit(forms.Form):
         'placeholder': 'Last Name',
     }
     birthday = {
-        'type': 'text',
+        'type': 'date',
         'class': 'form-control',
         'placeholder': 'DD/MM/YYYY',
     }
@@ -33,5 +33,5 @@ class ProfileEdit(forms.Form):
     first_name = forms.CharField(label='First Name', required=True, max_length=140, widget=forms.TextInput(attrs=first_name))
     last_name = forms.CharField(label='Last Name', required=True, max_length=140, widget=forms.TextInput(attrs=last_name))
     email = forms.CharField(label='Email', required=True, max_length=140, widget=forms.TextInput(attrs=email))
-    birthday = forms.CharField(label='Birthday Date', required=True, max_length=140, widget=forms.TextInput(attrs=birthday))
+    birthday = forms.DateField(label='Birthday Date', required=True, widget=forms.DateInput(attrs=birthday))
     phone_number = forms.CharField(label='Phone Number', required=True, max_length=140, widget=forms.TextInput(attrs=phone_number))
