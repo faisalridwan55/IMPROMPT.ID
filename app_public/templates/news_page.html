@@ -6,7 +6,7 @@
 NEWS
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -35,163 +35,53 @@ NEWS
 
 </div>
 
-<div class="container" style="margin-top: 50px">
+
+<div class="container" style="margin-top:50px">
 	<div class="row">
-		<div class="col-md-12 col-sm-12">
-
-		</div>
-
 		<div class="col-md-4 sidebar" style="padding-bottom: 25px">
 			<h3 class="text-left" style="letter-spacing: 2px; color: #333; padding-bottom: 15px"><strong>NEWS LIST</strong></h3>
 			<hr style="border-bottom: 2px solid #29758A; width: 30%; margin:0; padding: 0">
-          	<div class="news-list">
-          		<ul class="nav nav-sidebar">
-          			<!--nanti di for kan berarti-->
-					<li><a href="#">Lorem ipsum dolor sit amet</a></li>
-					<li><a href="#">Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh.</a></li>
-					<li><a href="#">Curabitur eleifend lorem est, id blandit mauris pulvinar sed. </a></li>
-					<li><a href="#">Pellentesque nec augue nec risus blandit blandit. </a></li>
-					<li><a href="#"> Integer et varius nisi. In tempus vulputate interdum.</a></li>
-					<li><a href="#">Mauris quis convallis erat. </a></li>
-					<li><a href="#">Sed et ante iaculis, sagittis ligula quis, aliquet augue.</a></li>
-					<li><a href="#">Donec dui magna, tincidunt vel justo sit amet, viverra aliquet urna.</a></li>
-					<li><a href="#">Maecenas ut tellus vel neque gravida laoreet sed eget massa.</a></li>
-					<li><a href="#">Nullam a congue nibh, vitae faucibus ipsum.</a></li>
-					<li><a href="#">Aliquam ornare urna et risus dapibus dapibus.</a></li>
-					<li><a href="#">Donec ligula metus, luctus at vehicula vitae, posuere nec dolor.</a></li>
-					<li><a href="#">Duis turpis turpis, congue vitae mi sed, tempus feugiat metus.</a></li>
-					<li><a href="#">In tempus vulputate interdum.</a></li>
+						<div class="news-list">
+							<ul class="nav nav-sidebar">
+								<!--nanti di for kan berarti-->
+								{% if news_list %}
+								{% for news in news_list %}
+								<li><a href="/public/news/{{news.id}}/">{{news.news_title}}</a></li>
+								{% endfor %}
+								{% else %}
+								<li>No news yet<li>
+								{% endif %}
 				</ul>
-          	</div>
-        </div>
-        <div class="news-main">
-        	<div class="col-sm-12 col-md-8">
-				<h3 class="text-left" style="letter-spacing: 2px; color: #333; padding-bottom: 15px"><strong>ALL NEWS</strong></h3>
-				<hr style="border-bottom: 2px solid #29758A; width: 30%; margin:0; padding: 0">
-				<div class="content" style="margin-top: 15px" align="left">
-					<div class="col-sm-7">
-						<div class="thumbnail">
-							<img src="https://image.ibb.co/iOiHvS/pexels_photo_826349.jpg" class="img-resize-thumbnail">
-							<div class="caption" style="height: 180px">
-				            <a href="#"><h4>Lorem ipsum donec id elit non</h4></a>
-				            <p>Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh. Phasellus vel hendrerit felis, maximus dapibus nisl. Sed placerat sapiens.</p>
-				            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-				          </div>
 						</div>
-					</div>
-					<div class="col-sm-5">
-						<div class="thumbnail">
-							<img src="https://image.ibb.co/fHOvh7/pexels_photo_374074.jpg" width="100%">
-							<!--ini caption kalo bisa max 200 character-->
-							<div class="caption" style="height: 180px">
-
-				            <a href="#"><h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4></a>
-				            <p>Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh. Phasellus vel hendrerit felis, maximus dapibus nisl. Sed placerat sapiens.</p>
-				            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-				          </div>
-						</div>
-					</div>
 				</div>
-
-		</div><!--
-		<div class="col-sm-4">
-			<h3 class="text-left" style="letter-spacing: 2px; color: #333; padding-bottom: 15px"><strong>NEWS LIST</strong></h3>
-			<hr style="border-bottom: 2px solid #29758A; width: 30%; margin:0; padding: 0">
-
-			<div class="news-list">
-				<ul>
-					<li><a href="#">Lorem ipsum dolor sit amet</a></li>
-					<li><a href="#">Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh.</a></li>
-					<li><a href="#">Curabitur eleifend lorem est, id blandit mauris pulvinar sed. </a></li>
-					<li><a href="#">Pellentesque nec augue nec risus blandit blandit. </a></li>
-					<li><a href="#"> Integer et varius nisi. In tempus vulputate interdum.</a></li>
-					<li><a href="#">Mauris quis convallis erat. </a></li>
-					<li><a href="#">Sed et ante iaculis, sagittis ligula quis, aliquet augue.</a></li>
-					<li><a href="#">Donec dui magna, tincidunt vel justo sit amet, viverra aliquet urna.</a></li>
-					<li><a href="#">Maecenas ut tellus vel neque gravida laoreet sed eget massa.</a></li>
-					<li><a href="#">Nullam a congue nibh, vitae faucibus ipsum.</a></li>
-					<li><a href="#">Aliquam ornare urna et risus dapibus dapibus.</a></li>
-					<li><a href="#">Donec ligula metus, luctus at vehicula vitae, posuere nec dolor.</a></li>
-					<li><a href="#">Duis turpis turpis, congue vitae mi sed, tempus feugiat metus.</a></li>
-					<li><a href="#">In tempus vulputate interdum.</a></li>
-				</ul>
-
-			</div>
-		</div>-->
-		<div class="col-sm-12 col-md-8">
-			<div class="col-sm-5">
-					<div class="thumbnail">
-						<img src="https://preview.ibb.co/jUTtgc/pexels_photo_257840.jpg">
-						<div class="caption" style="height: 180px">
-			            <a href="#"><h4>Lorem ipsum donec id elit non</h4></a>
-			            <p>Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh. Phasellus vel hendrerit felis.</p>
-			            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-			          </div>
-					</div>
-				</div>
-				<div class="col-sm-7">
-					<div class="thumbnail">
-						<img src="https://preview.ibb.co/kUo4nH/pexels_photo_635705.jpg" class="img-resize-thumbnail">
-						<!--ini caption kalo bisa max 200 character-->
-						<div class="caption" style="height: 180px">
-
-			            <a href="#"><h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4></a>
-			            <p>Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh. Phasellus vel hendrerit felis, maximus dapibus nisl. Sed placerat sapien vitae leo ultrices</p>
-			            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-			          </div>
-					</div>
-				</div>
-		</div>
-
-
-
-	</div>
-
-
-	</div>
-</div>
-<div class="container">
-	<div class="row">
 		<div class="news-main">
 			<div class="three-col">
-				<div class="col-sm-12 col-md-12">
-					<div class="col-sm-4">
-							<div class="thumbnail">
-								<img src="https://preview.ibb.co/jUTtgc/pexels_photo_257840.jpg">
-								<div class="caption" style="height: 180px">
-					            <a href="#"><h4>Lorem ipsum donec id elit non</h4></a>
-					            <p>Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh. Phasellus vel hendrerit felis.</p>
-					            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-					          </div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="thumbnail">
-								<img src="https://preview.ibb.co/kUo4nH/pexels_photo_635705.jpg" class="img-resize-thumbnail">
-								<!--ini caption kalo bisa max 200 character-->
-								<div class="caption" style="height: 180px">
+				<h3 class="text-left" style="letter-spacing: 2px; color: #333; padding-bottom: 15px"><strong>ALL NEWS</strong></h3>
+				<hr style="border-bottom: 2px solid #29758A; width: 30%; margin:0; padding: 0">
+				<div class="content" style="margin-top: 15px">
+					{% if news_list %}
+						{% for news in news_list %}
 
-					            <a href="#"><h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4></a>
-					            <p>Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh. Phasellus vel hendrerit felis, maximus dapibus nisl. Sed placerat sapien vitae leo ultrices</p>
-					            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-					          </div>
-							</div>
-						</div>
 						<div class="col-sm-4">
-							<div class="thumbnail">
-								<img src="https://preview.ibb.co/kUo4nH/pexels_photo_635705.jpg" class="img-resize-thumbnail">
-								<!--ini caption kalo bisa max 200 character-->
-								<div class="caption" style="height: 180px">
-
-					            <a href="#"><h4>Lorem ipsum donec id elit non mi porta gravida at eget metus.</h4></a>
-					            <p>Sed ante lorem, tincidunt a condimentum at, pellentesque ut nibh. Phasellus vel hendrerit felis, maximus dapibus nisl. Sed placerat sapien vitae leo ultrices</p>
-					            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
-					          </div>
+								<div class="thumbnail">
+									<img src="https://preview.ibb.co/jUTtgc/pexels_photo_257840.jpg">
+									<div class="caption" style="height: 180px">
+						            <a href="#"><h4>{{news.news_title}}</h4></a>
+						            <p>{{news.news_short_description}}</p>
+						            <a href="/public/news/{{news.id}}/" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
+						          </div>
+								</div>
 							</div>
+							{% endfor %}
+
+						{% else %}
+						<div class="text-center">
+							<h4>No news yet</h4>
 						</div>
+						{% endif %}
 				</div>
 			</div>
-		</div>
+</div>
 	</div>
 </div>
 

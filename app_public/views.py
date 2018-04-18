@@ -5,6 +5,7 @@ from app_employer.views import check_applicant
 from app_job_seeker.models import Job_Seeker, Application_Form
 from .forms import SearchDropdown
 from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 response = {}
 
@@ -17,7 +18,6 @@ def home_public(request):
     response['search'] = SearchDropdown
     response['opportunity'] = all_opportunity
     #nanti mau ditambahin paginator kalo udah banyak
-
     return render(request, 'home_public.html', response)
 
 def about_company(request):
@@ -28,8 +28,12 @@ def about_company(request):
         response['home'] = False
         response['opportunity_page'] = False
         company_profile = Imprompt_Profile.objects.get(active=True)
-        response['baris_atas'] = company_profile.baris_atas
-        response['baris_bawah'] = company_profile.baris_bawah
+        response['about'] = company_profile.baris_atas_judul
+        response['about_desc'] = company_profile.baris_atas_description
+        response['vission'] = company_profile.baris_tengah_judul
+        response['vission_desc'] = company_profile.baris_tengah
+        response['mission'] = company_profile.baris_bawah_judul
+        response['mission_desc'] = company_profile.baris_bawah
     except Exception as e:
         pass
     return render(request, 'about_company.html', response)

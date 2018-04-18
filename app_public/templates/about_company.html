@@ -7,7 +7,7 @@ ABOUT US
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -25,24 +25,24 @@ ABOUT US
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-8">
 			<div class="col-sm-12">
-				<h2><strong><i>About</i></strong></h2>
+				<h2><strong><i>{{about}}</i></strong></h2>
 				<hr style="border: 1px solid #134E5E; opacity: 0.3; width: 30%">
 			</div>
 
-			<div class="col-sm-12 jarak"><p style="font-size: 17px;">Fusce a luctus magna. Vestibulum consequat gravida purus finibus elementum. Duis interdum dapibus velit et venenatis. Proin iaculis non neque at interdum. Nulla nec lorem id metus pretium accumsan tincidunt eget ligula. Integer sodales, nunc a auctor fermentum, lacus neque finibus arcu, in aliquam lacus sem in nunc.</p></div>
+			<div class="col-sm-12 jarak"><p style="font-size: 17px;">{{about_desc}}</p></div>
 
 			<div class="col-sm-12">
-				<h2><strong><i>Vision</i></strong></h2>
+				<h2><strong><i>{{vission}}</i></strong></h2>
 				<hr style="border: 1px solid #134E5E; opacity: 0.3; width: 30%">
 			</div>
 
-			<div class="col-sm-12 jarak"><p style="font-size: 17px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio metus, finibus non orci et, egestas efficitur lorem. </p></div>
+			<div class="col-sm-12 jarak"><p style="font-size: 17px;">{{vission_desc}}</p></div>
 			<div class="col-sm-12">
-				<h2><strong><i>Mission</i></strong></h2>
+				<h2><strong><i>{{mission}}</i></strong></h2>
 				<hr style="border: 1px solid #134E5E; opacity: 0.3; width: 30%">
 			</div>
 
-			<div class="col-sm-12 jarak"><p style="font-size: 17px;">enean nec nisi sapien. Proin scelerisque, nibh in pulvinar scelerisque, mi lectus posuere elit, vitae pharetra velit enim vitae orci. </p></div>
+			<div class="col-sm-12 jarak"><p style="font-size: 17px;">{{mission_desc}} </p></div>
 
 
 
