@@ -44,27 +44,33 @@ JOBSEEKER PROFILE
 					</div>
 					<div class="my-company">
 						<div class="row">
-							<div class="col-sm-4 text-center">
-								<div class="thumbnail">
-									<div class="company-logo">
-										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
-									</div>
-									<div class="company-name">
-										<h3>Deskripsi Opportunity</h3>
-									</div>
-									<div class="row">
-										<div class="col-sm-12">
-											<div class="view-profile btn-padding">
-												<a href="#"><button class="btn btn-customize btn-block">View this opportunity</button></a>
+							{% if my_opportunities %}
+								{% for data in my_opportunities %}
+									<div class="col-sm-4 text-center">
+										<div class="thumbnail">
+											<div class="company-logo">
+												<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
 											</div>
+											<div class="company-name">
+												<h4>{{data.opportunity.description}}</h4>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="view-profile btn-padding">
+														<a href="/public/opportunity/{{data.opportunity.opportunity_category}}/{{data.opportunity.id}}/"><button class="btn btn-customize btn-block">View this opportunity</button></a>
+													</div>
+												</div>
+											</div>
+
 										</div>
+
 									</div>
-
-
-
-
-								</div>
+									{% endfor %}
+							{% else %}
+							<div class="text-center">
+								<h3>You haven't applied to any opportunity</h3>
 							</div>
+							{% endif %}
 						</div>
 					</div>
 

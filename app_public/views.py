@@ -95,9 +95,11 @@ def opportunity_detail(request, categories, pk):
             query_size = query.count()
             if query_size > 0:
                 response['applied'] = True
+            else:
+                response['applied'] = None
     except Exception as e:
         response['applied'] = None
-        
+
     print("pk of opportunity:=>", pk)
     response['opportunity_page'] = True
     response['home'] = False

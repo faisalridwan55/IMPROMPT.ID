@@ -6,7 +6,7 @@
 Opportunity Detail
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -69,7 +69,12 @@ Opportunity Detail
 								<p>{{opportunity.contact_person_phone_number}}</p>
 								<div style="margin-top: 30px">
 									{% if request.session.status == 'job_seeker' %}
-										<a href="{% url 'app-job-seeker:apply'}"><button type="button" class="btn btn-warning btn-block">Apply Now!</button></a>
+										{% if applied %}
+										<button id="apply-button" type="button" class="btn btn-info disabled btn-block">Applied</button>
+										{% else %}
+										<button id="apply-button" type="button" class="btn btn-warning btn-block">Apply Now!</button>
+										{% endif %}
+									{% elif request.session.status == 'employer' %}
 									{% else %}
 									<!--if not login-->
 										<p>Want to apply? <a href="/login/">log in</a> first!</p>
@@ -86,4 +91,32 @@ Opportunity Detail
 
 	</div>
 </div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#apply-button").click(function () {
+		var self = this;
+		$.ajax({
+			method: "POST",
+			url: '/job_seeker/opportunity/{{opportunity.opportunity_category}}/{{opportunity.id}}/apply/',
+			data: {'id_opportunity':'{{opportunity.id}}', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+			success: function (data) {
+				alert("berhasil");
+				console.log("hehe");
+				$(self).removeClass("btn-warning");
+				$(self).addClass("disabled");
+				$(self).addClass("btn-info");
+				$(self).text("Applied");
+			},
+			error: function (rs, e) {
+				alert(rs.responseText);
+			}
+		});
+
+
+	});
+})
+
+</script>
 {% endblock %}

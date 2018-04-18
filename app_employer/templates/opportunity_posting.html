@@ -6,7 +6,7 @@
 HOME
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -20,8 +20,9 @@ HOME
 
 					<h1 class="text-title-opp"><b>Be one of Us!</b></h1>
 					<div class="category-place">
-						<span class="field-opp">{{opportunity_field}}</span>
 						<span class="category-opp">{{opportunity_category}}</span>
+						<span class="field-opp">{{opportunity_field}}</span>
+
 					</div>
 					<hr class="style14">
 
@@ -31,14 +32,14 @@ HOME
 						<div class="content-text-opp">
 
 							<div class="row">
-								<div class="col-sm-6">
+								<div class="col-md-6 col-sm-6">
 									<div class="title">
 										<h3><b>Job Description:</b></h3>
 									</div>
 
 									<p>{{description}}</p>
 								</div>
-								<div class="col-sm-6">
+								<div class="col-md-6 col-sm-6">
 									<div class="title">
 										<h3><b>Requirements:</b></h3>
 									</div>
@@ -46,6 +47,7 @@ HOME
 									<p>{{requirements}}</p>
 								</div>
 							</div>
+
 
 
 						</div>
@@ -66,7 +68,7 @@ HOME
 								<p><strong>Contact Person</strong></p>
 								<p>{{contact_person_phone_number}}</p>
 								<div style="margin-top: 30px">
-									
+
 									<!--if not login-->
 									<!--uncomment ketika sudah ada condition nya
 									<p>Want to apply? <a href="/login/">log in</a> first!</p>-->

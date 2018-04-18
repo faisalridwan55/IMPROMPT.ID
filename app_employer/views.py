@@ -34,7 +34,7 @@ def my_company_profile(request):
         try:
             company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
             employer = Employer.objects.get(profile_id=request.session['profile_id'])
-        
+
         except Exception as e:
             return redirect(reverse('app-employer:edit-company-profile'))
         opportunity_list = Opportunity.objects.filter(opportunity_owner=company).order_by('-id')
@@ -90,7 +90,7 @@ def edit_employer_profile(request):
         try:
             exist_profile = Employer.objects.get(profile_id=request.session['profile_id'])
             response['exist_profile'] = exist_profile
-            form = EmployerProfileEdit(initial={'first_name': exist_profile.first_name, 'last_name':exist_profile.last_name, 'email':exist_profile.email, 'phone_number':exist_profile.phone_number}) 
+            form = EmployerProfileEdit(initial={'first_name': exist_profile.first_name, 'last_name':exist_profile.last_name, 'email':exist_profile.email, 'phone_number':exist_profile.phone_number})
             response['employer_form'] = form
         except Exception as e:
             response['exist_profile'] = None
@@ -166,7 +166,7 @@ def submit_employer_profile(request):
         query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
         query_size = query.count()
         if query_size > 0:
-            return redirect(reverse('app-employer:employer-profile'))    
+            return redirect(reverse('app-employer:employer-profile'))
         return redirect(reverse('app-employer:edit-company-profile'))
 
 
@@ -206,5 +206,3 @@ def check_applicant(requests, opportunity):
             return HttpResponse("null")
     else:
         return HttpResponse("null")
-
-

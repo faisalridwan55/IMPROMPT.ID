@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from .models import Job_Seeker, Application_Form
 from .forms import *
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from app_employer.models import Opportunity
 # Create your views here.
 response = {}
 
@@ -16,8 +17,10 @@ def jobseeker_profile(request):
         response['jobseeker'] = True
         try:
             jobseeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
-
+            my_opportunities = Application_Form.objects.filter(job_seeker=jobseeker)
+            response['my_opportunities'] = my_opportunities
         except Exception as e:
+            response['my_opportunities'] = None
             return redirect(reverse('app-job-seeker:edit-profile'))
 
         response['data_jobseeker'] = jobseeker
@@ -32,8 +35,10 @@ def edit_profile(request):
             response['exist_profile'] = exist_profile
             form = ProfileEdit(initial={'first_name': exist_profile.first_name, 'last_name':exist_profile.last_name, 'email':exist_profile.email, 'birthday':exist_profile.birthday, 'phone_number':exist_profile.phone_number})
             response['form_profile'] = form
+
         except Exception as e:
             response['exist_profile'] = None
+
         return render(request, 'edit_profile.html', response)
 
 @csrf_exempt
@@ -62,7 +67,8 @@ def submit_job_seeker_profile(request):
             profile.save()
             return redirect(reverse('app-public:home-public'))
 
-def apply_opportunity(request):
+@csrf_exempt
+def apply_opportunity(request, categories, pk):
     if request.session['status'] == "job_seeker":
         id_opportunity = request.POST.get('id_opportunity', False)
         current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
