@@ -78,7 +78,7 @@ class OpportunityForm(forms.Form):
         'required': 'This field is required to fill',
     }
     durations = {
-        'type': 'text',
+        'type': 'number',
         'class': 'form-control',
         'placeholder': 'In days/week',
     }
@@ -97,7 +97,7 @@ class OpportunityForm(forms.Form):
         'cols': 50,
         'rows': 4,
         'class': 'form-control',
-        'placeholder': 'Separated by commas',
+        'placeholder': 'Write your requirements',
     }
     description = {
         'type': 'text',

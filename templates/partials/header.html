@@ -12,10 +12,15 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         {% if request.session.status == 'employer' %}
-          {% if home_employer %}
-          <li class="active"><a href="/employer/home">Home</a></li>
+          {% if home %}
+          <li class="active"><a href="/public/home">Home</a></li>
           {% else %}
-          <li><a href="/employer/home">Home</a></li>
+          <li><a href="/public/home">Home</a></li>
+          {% endif %}
+          {% if home_employer %}
+          <li class="active"><a href="/employer/home">Dashboard</a></li>
+          {% else %}
+          <li><a href="/employer/home">Dashboard</a></li>
           {% endif %}
           {% if company_profile %}
           <li class="active"><a href="/employer/company_profile">Company Profile</a></li>

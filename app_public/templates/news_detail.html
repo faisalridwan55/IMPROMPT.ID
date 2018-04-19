@@ -6,14 +6,18 @@
 NEWS - {{news.news_title}}
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
 	<div class="row">
 		<div class="col-sm-offset-1 col-sm-10">
+			<div class="back-to">
+				<a href="/public/news/"><button class="btn btn-back btn-lg"><span class="fa fa-angle-double-left"></span> Back to News List</button></a>
+			</div>
 			<div class="content-blog">
+
 					<img src="https://image.ibb.co/kC2naS/pexels_photo_872957.jpg">
 					<h1 class="text-title"><b>{{news.news_title}}</b></h1>
 					<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">

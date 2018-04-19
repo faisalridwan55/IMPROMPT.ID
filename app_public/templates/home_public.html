@@ -6,7 +6,7 @@
 HOME
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -67,7 +67,7 @@ HOME
 							<span class="field-opp">{{data.opportunity_field}}</span>
 						</div>
 			            <h4>{{data.description}}</h4>
-			            <p style="color: #999"><b>Duration:</b> {{data.durations}}</p>
+			            <p style="color: #999"><b>Duration:</b> {{data.durations}}/week</p>
 			            <a href="/public/opportunity/{{data.opportunity_category}}/{{data.id}}" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
 		          	</div>
 				</div>
@@ -78,7 +78,7 @@ HOME
 					<h3>There is no any opportunity yet</h3>
 				</div>
 			{% endif %}
-			
+
 			</div>
 		</div>
 	</div>

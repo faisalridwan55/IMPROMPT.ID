@@ -47,6 +47,22 @@
             box-shadow: 0 1px 2px rgba(25,25,25,0.2);
             min-height: 480px;
         }
+        .back-to {
+          margin-top: 100px;
+
+        }
+        .btn-back {
+          color: #20758C;
+          background: transparent;
+          border: 2px solid #20758C;
+          border-radius: 30px;
+          transition: all 0.3s ease 0s;
+        }
+        .btn-back:hover {
+          background: #f9f9f9;
+          opacity: 0.7;
+          color: #333;
+        }
         .overlay {
               position: absolute;
               top: 0;
@@ -160,7 +176,7 @@
         }
         .content-blog {
           background: #f9f9f9;
-          margin-top: 100px;
+          margin-top: 10px;
           padding-bottom: 30px;
           border-top: 5px solid #29758A;
         }

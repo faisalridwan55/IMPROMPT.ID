@@ -6,7 +6,7 @@
 ALL OPPORTUNITIES
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -75,7 +75,7 @@ ALL OPPORTUNITIES
 							</div>
 							<!--rekomendasi: judul saja yang ada di tiap card-->
 			            <h4>{{data.description}}</h4>
-			            <p style="color: #999"><b>Duration:</b> {{data.durations}}</p>
+			            <p style="color: #999"><b>Duration:</b> {{data.durations}}/week</p>
 			            <a href="/public/opportunity/{{data.opportunity_category}}/{{data.id}}" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
 			       </div>
 					</div>
