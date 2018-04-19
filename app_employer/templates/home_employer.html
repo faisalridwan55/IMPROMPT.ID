@@ -25,7 +25,11 @@ COMPANY PROFILE
 								</div>
 								<div class="thumbnail" style="border-top: 3px solid #29758A">
 									<div class="company-logo">
-										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
+										{% if company.company_logo %}
+											<img src="{{company.company_logo.url}}" class="img-circle img-logo">
+										{% else %}	
+											<img src="https://image.ibb.co/m8UHgc/user.png" class="img-circle img-logo">
+										{% endif %}
 									</div>
 									<div class="company-name">
 										<h3><span style="color: #29758A">My Company: </span>{{company.company_name}}</h3>
@@ -47,9 +51,6 @@ COMPANY PROFILE
 									<div class="post btn-padding">
 										<button class="btn btn-warning btn-block" data-toggle="modal" data-target="#posting">Post an opportunity</button>
 									</div>
-
-
-
 								</div>
 							</div>
 						</div>
@@ -91,9 +92,7 @@ COMPANY PROFILE
           		
 			  </form>
         </div>
-        
       </div>
-
     </div>
   </div>
 </div>

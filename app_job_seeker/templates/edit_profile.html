@@ -20,7 +20,7 @@ EDIT PROFILE - JOBSEEKER
           <hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
         </div>
         <div class="form-profile">
-          <form method="POST" action="{% url 'app-job-seeker:submit-job-seeker-profile' %}">
+          <form method="POST" action="{% url 'app-job-seeker:submit-job-seeker-profile' %}" enctype="multipart/form-data">
 						{% csrf_token %}
             {% for field in form_profile %}
             <div class="form-group">
@@ -28,44 +28,10 @@ EDIT PROFILE - JOBSEEKER
               {{field}}
             </div>
             {% endfor %}
-						<div class="upload">
-							<div class="row">
-								<div class="col-sm-6">
-									<p><strong>Upload your profile picture</strong></p>
-									<div class="row">
-		                <div class="col-md-12 col-sm-12 col-lg-6">
-		                  <button class="btn btn-block btn-default">Choose File</button>
-		                </div>
-		                <div class="col-md-12 col-sm-12 col-lg-6">
-		                  <div class="text-file-name">
-		                    <p style="color:#999">No file chosen</p>
-		                  </div>
-		              </div>
-		            </div>
-								</div>
-								<div class="col-sm-6">
-									<p><strong>Upload your CV/Resume</strong></p>
-		              <div class="row">
-
-		                <div class="col-md-12 col-sm-12 col-lg-6">
-		                  <button class="btn btn-block btn-default">Choose File</button>
-		                </div>
-		                <div class="col-md-12 col-sm-12 col-lg-6">
-		                  <div class="text-file-name">
-		                    <p style="color:#999">No file chosen</p>
-		                  </div>
-		              </div>
-		            </div>
-								</div>
-							</div>
-
-
-
             <div class="btn-padding-form">
               <button id="submit" type="submit" class="btn btn-info btn-md btn-block">Submit</button>
             </div>
           </form>
-				</div>
         </div>
 			</div>
 		</div>

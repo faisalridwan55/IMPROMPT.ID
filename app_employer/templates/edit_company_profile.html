@@ -20,7 +20,7 @@ EDIT PROFILE - COMPANY
           <hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
         </div>
         <div class="form-profile">
-          <form method="POST" action="{% url 'app-employer:submit-company-profile' %}">
+          <form method="POST" action="{% url 'app-employer:submit-company-profile' %}" enctype="multipart/form-data">
 						{% csrf_token %}
 						{% for field in company_form %}
 						<div class="form-group">
@@ -28,25 +28,11 @@ EDIT PROFILE - COMPANY
 							{{field}}
 						</div>
 						{% endfor %}
-            <div class="upload">
-              <p><strong>Upload your company logo</strong></p>
-              <div class="row">
-                <div class="col-sm-4">
-                  <button class="btn btn-block btn-default">Choose File</button>
-                </div>
-                <div class="col-sm-4">
-                  <div class="text-file-name">
-                    <p style="color:#999">No file chosen</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-            <div class="btn-padding-form">
-							<button id="submit" type="submit" class="btn btn-info btn-md btn-block">Submit</button>
-            </div>
-          </form>
-
+        </div>
+        <div class="btn-padding-form">
+					<button id="submit" type="submit" class="btn btn-info btn-md btn-block">Submit</button>
+        </div>
+      </form>
         </div>
 			</div>
 		</div>

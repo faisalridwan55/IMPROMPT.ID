@@ -34,7 +34,6 @@ def my_company_profile(request):
         try:
             company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
             employer = Employer.objects.get(profile_id=request.session['profile_id'])
-
         except Exception as e:
             return redirect(reverse('app-employer:edit-company-profile'))
         opportunity_list = Opportunity.objects.filter(opportunity_owner=company).order_by('-id')
@@ -64,14 +63,21 @@ def edit_company_profile(request):
         response['edit_comp'] = True
         response['home_employer'] = False
         response['company_profile'] = False
+        response['company_logo'] = False
         response['employer_profile'] = False
         response['logged_in'] = True
-        print("flag edit company profile")
         response['company_form'] = CompanyProfileEdit
         try:
             exist_profile = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
             response['exist_profile'] = exist_profile
-            form = CompanyProfileEdit(initial={'company_name': exist_profile.company_name, 'country': exist_profile.country, 'province':exist_profile.province, 'city':exist_profile.city, 'company_description':exist_profile.company_description, 'company_website':exist_profile.company_website})
+            form = CompanyProfileEdit(initial={
+                'company_name': exist_profile.company_name,
+                'country': exist_profile.country,
+                'province':exist_profile.province,
+                'city':exist_profile.city,
+                'company_description':exist_profile.company_description,
+                'company_website':exist_profile.company_website,
+                'company_logo':exist_profile.company_logo})
             response['company_form'] = form
         except Exception as e:
             response['exist_profile'] = None
@@ -90,7 +96,11 @@ def edit_employer_profile(request):
         try:
             exist_profile = Employer.objects.get(profile_id=request.session['profile_id'])
             response['exist_profile'] = exist_profile
-            form = EmployerProfileEdit(initial={'first_name': exist_profile.first_name, 'last_name':exist_profile.last_name, 'email':exist_profile.email, 'phone_number':exist_profile.phone_number})
+            form = EmployerProfileEdit(initial={
+                'first_name': exist_profile.first_name,
+                'last_name':exist_profile.last_name,
+                'email':exist_profile.email,
+                'phone_number':exist_profile.phone_number}) 
             response['employer_form'] = form
         except Exception as e:
             response['exist_profile'] = None
@@ -98,10 +108,9 @@ def edit_employer_profile(request):
 
 @csrf_exempt
 def submit_company_profile(request):
-    print("MASUK SINI")
     if request.session['status'] == "employer":
-        form = CompanyProfileEdit(request.POST or None)
-        if(request.method == 'POST' and form.is_valid()):
+        form = CompanyProfileEdit(request.POST, request.FILES)
+        if(request.method == 'POST'):
             company_creator_profile_id = request.session['profile_id']
             country = request.POST.get('country', False)
             province = request.POST.get('province', False)
@@ -109,10 +118,10 @@ def submit_company_profile(request):
             company_name = request.POST.get('company_name', False)
             company_description = request.POST.get('company_description', False)
             company_website = request.POST.get('company_website', False)
-            company_logo = request.POST.get('company_logo', False)
 
             query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
             query_size = query.count()
+            
             if query_size > 0:
                 company = query[0]
                 company.country = country
@@ -121,7 +130,7 @@ def submit_company_profile(request):
                 company.company_name = company_name
                 company.company_description = company_description
                 company.company_website = company_website
-                company.company_logo = company_logo
+                company.company_logo = request.FILES['company_logo']
                 company.save()
             else:
                 Company.objects.create(
@@ -132,10 +141,11 @@ def submit_company_profile(request):
                     company_name = company_name,
                     company_description = company_description,
                     company_website = company_website,
-                    company_logo = company_logo
+                    company_logo = request.FILES['company_logo']
                 )
         else:
             return redirect('/')
+
         return redirect(reverse('app-employer:home-employer'))
 
 @csrf_exempt
@@ -168,7 +178,7 @@ def submit_employer_profile(request):
         query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
         query_size = query.count()
         if query_size > 0:
-            return redirect(reverse('app-employer:employer-profile'))
+            return redirect(reverse('app-employer:employer-profile'))    
         return redirect(reverse('app-employer:edit-company-profile'))
 
 

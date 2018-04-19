@@ -1,5 +1,7 @@
 from django.db import models
 
+from IMPROMPT.storage_backends import MediaStorage
+
 CATEGORIES = (
     ('internship', 'Internship'),
     ('volunteer', 'Volunteer'),
@@ -21,6 +23,7 @@ FIELD = (
     ('webdev', 'Web Development'),
     ('other', 'Other'),
 )
+
 # Create your models here.
 class Employer(models.Model):
     profile_id = models.CharField(max_length=140, blank=False)
@@ -37,7 +40,7 @@ class Company(models.Model):
     company_name = models.CharField(max_length=140, blank=False)
     company_description = models.TextField(blank=False)
     company_website = models.CharField(max_length=140, blank=False)
-    company_logo = models.FileField(upload_to='company_logo/')
+    company_logo = models.FileField()   
 
 class Opportunity(models.Model):
     opportunity_category = models.CharField(max_length=140, choices=CATEGORIES)
@@ -50,3 +53,4 @@ class Opportunity(models.Model):
     contact_person_phone_number = models.CharField(max_length=140, blank=False)
     opportunity_owner = models.ForeignKey('Company')
     created_at = models.DateTimeField(auto_now_add=True)
+
