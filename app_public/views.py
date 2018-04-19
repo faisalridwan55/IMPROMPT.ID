@@ -22,7 +22,6 @@ def home_public(request):
     return render(request, 'home_public.html', response)
 
 def about_company(request):
-    # Pake try selama belum ngisi db
     try:
         response['about'] = True
         response['news_page'] = False
