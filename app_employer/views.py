@@ -134,6 +134,8 @@ def submit_company_profile(request):
                     company_website = company_website,
                     company_logo = company_logo
                 )
+        else:
+            return redirect('/')
         return redirect(reverse('app-employer:home-employer'))
 
 @csrf_exempt
