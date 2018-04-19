@@ -27,7 +27,7 @@ def about_company(request):
         response['news_page'] = False
         response['home'] = False
         response['opportunity_page'] = False
-        company_profile = Imprompt_Profile.objects.get(active=True)
+        company_profile = Imprompt_Profile.objects.all()[0]
         response['about'] = company_profile.baris_atas_judul
         response['about_desc'] = company_profile.baris_atas_description
         response['vission'] = company_profile.baris_tengah_judul
