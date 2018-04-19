@@ -199,7 +199,7 @@ def submit_opportunity_posting(request):
         return render(request, 'opportunity_posting.html', response)
 
 # Check if the opportunity is ours
-def check_applicant(requests, opportunity):
+def check_applicant(request, opportunity):
     if request.session['status'] == "employer":
         if opportunity.opportunity_owner.company_creator_profile_id == request.session['profile_id']:
             application_list = Application_Form.objects.filter(opportunity=opportunity)
