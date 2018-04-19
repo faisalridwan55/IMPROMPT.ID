@@ -71,7 +71,14 @@ def edit_company_profile(request):
         try:
             exist_profile = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
             response['exist_profile'] = exist_profile
-            form = CompanyProfileEdit(initial={'company_name': exist_profile.company_name, 'country': exist_profile.country, 'province':exist_profile.province, 'city':exist_profile.city, 'company_description':exist_profile.company_description, 'company_website':exist_profile.company_website, 'company_logo':exist_profile.company_logo})
+            form = CompanyProfileEdit(initial={
+                'company_name': exist_profile.company_name,
+                'country': exist_profile.country,
+                'province':exist_profile.province,
+                'city':exist_profile.city,
+                'company_description':exist_profile.company_description,
+                'company_website':exist_profile.company_website,
+                'company_logo':exist_profile.company_logo})
             response['company_form'] = form
         except Exception as e:
             response['exist_profile'] = None
