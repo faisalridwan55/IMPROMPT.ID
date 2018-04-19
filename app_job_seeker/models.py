@@ -13,5 +13,5 @@ class Job_Seeker(models.Model):
     resume = models.FileField()
 
 class Application_Form(models.Model):
-    job_seeker = models.ForeignKey('Job_Seeker')
-    opportunity = models.ForeignKey('app_employer.Opportunity')
+    job_seeker = models.ForeignKey(Job_Seeker,on_delete=models.CASCADE)
+    opportunity = models.ForeignKey(Opportunity,on_delete=models.CASCADE)
