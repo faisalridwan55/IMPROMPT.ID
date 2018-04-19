@@ -6,6 +6,7 @@ from app_job_seeker.models import Job_Seeker, Application_Form
 from .forms import SearchDropdown
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpRequest
 # Create your views here.
 response = {}
 
@@ -134,11 +135,13 @@ def opportunity_detail(request, categories, pk):
     # Kalo yang buka employer dan ini adalah opportunity yang
     # dia posting, maka dia bisa liat applicant
     try:
-        application_list = check_applicant(opportunity)
+        application_list = check_applicant(request, opportunity)
         if application_list != "null":
             response['application_list'] = application_list
+        else:
+            response['application_list'] = "Tes"
     except Exception as e:
-        pass
+        response['application_list'] = "masuk except"
     return render(request, 'opportunity_detail.html', response)
 
 def get_opportunity(category):
