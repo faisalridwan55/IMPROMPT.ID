@@ -51,6 +51,6 @@ class Opportunity(models.Model):
     requirements = models.TextField(blank=False)
     description = models.TextField(blank=False)
     contact_person_phone_number = models.CharField(max_length=140, blank=False)
-    opportunity_owner = models.ForeignKey('Company')
+    opportunity_owner = models.ForeignKey(Company,on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
