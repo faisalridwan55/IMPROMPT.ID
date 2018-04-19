@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+EDIT PROFILE - COMPANY
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<div class="dashboard">
+        <div class="text-title-post">
+          <h3>Edit your company's profile</h3>
+          <hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+        </div>
+        <div class="form-profile">
+          <form method="POST" action="{% url 'app-employer:submit-company-profile' %}" enctype="multipart/form-data">
+						{% csrf_token %}
+						{% for field in company_form %}
+						<div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+							{{field}}
+						</div>
+						{% endfor %}
+        </div>
+        <div class="btn-padding-form">
+					<button id="submit" type="submit" class="btn btn-info btn-md btn-block">Submit</button>
+        </div>
+      </form>
+        </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

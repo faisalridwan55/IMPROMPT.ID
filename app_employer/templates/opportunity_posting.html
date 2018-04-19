@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+HOME
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+
+			<div class="content-opp">
+				<div class="photo text-on-photo">
+					<img src="https://image.ibb.co/mJB8Zx/pexels_photo_911738.jpg">
+
+					<h1 class="text-title-opp"><b>Be one of Us!</b></h1>
+					<div class="category-place">
+						<span class="field-opp">{{opportunity_field}}</span>
+						<span class="category-opp">{{opportunity_category}}</span>
+					</div>
+					<hr class="style14">
+
+				</div>
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="content-text-opp">
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="title">
+										<h3><b>Job Description:</b></h3>
+									</div>
+
+									<p>{{description}}</p>
+								</div>
+								<div class="col-sm-6">
+									<div class="title">
+										<h3><b>Requirements:</b></h3>
+									</div>
+
+									<p>{{requirements}}</p>
+								</div>
+							</div>
+
+
+						</div>
+						</div>
+						<div class="col-sm-4 sidebar-content">
+							<div class="title">
+								<h3><b>Details</b></h3>
+							</div>
+								<p><strong>Salary:</strong> {{salary}}</p>
+								<p><strong>Duration:</strong> {{durations}}</p>
+								<hr class="style14">
+								<p><strong>Social Media</strong></p>
+								<span class="fa fa-twitter-square" style="font-size: 20px" style="margin: 20px"></span>
+								<span class="fa fa-facebook-square" style="font-size: 20px" ></span>
+								<span class="fa fa-envelope" style="font-size: 20px" ></span>
+								<span class="fa fa-instagram" style="font-size: 20px" ></span>
+								<hr class="style14">
+								<p><strong>Contact Person</strong></p>
+								<p>{{contact_person_phone_number}}</p>
+								<div style="margin-top: 30px">
+									
+									<!--if not login-->
+									<!--uncomment ketika sudah ada condition nya
+									<p>Want to apply? <a href="/login/">log in</a> first!</p>-->
+								</div>
+						</div>
+					</div>
+
+			</div>
+			<div class="footer-blog-opp">
+			</div>
+		</div>
+
+
+	</div>
+</div>
+{% endblock %}

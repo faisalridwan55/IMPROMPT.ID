@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+HOME
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+{% endblock %}
+
+{% block content %}
+<header class="header" id="top" style="margin-top: 60px">
+	<div class="container">
+
+	</div>
+	<div class="overlay"></div>
+	<div class="centered-thing text-center">
+		<img src="https://image.ibb.co/ioE7s7/Imprompt_id_white.png" style="width:200px;">
+		<h4 style="color: white"><i>A Click with Hundred Opportunities</i></h4>
+	</div>
+</header>
+<div class="dropdown">
+	<div class="container">
+		<div class="row">
+			<form method="POST" action="{% url 'app-public:search-by-drop-down' %}">
+				{% csrf_token %}
+				{% for field in search %}
+				<div class="col-sm-4">
+					<div class="form-group">
+						{{field}}
+					</div>
+				</div>
+				{% endfor %}
+				<div class="col-sm-4">
+					<input type="submit" class="btn btn-primary btn-warning" value="Start!">
+				</div>
+			</form>
+
+
+
+		</div>
+	</div>
+</div>
+
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 text-center" style="padding-bottom: 50px">
+			<h2>Discover Latest Opportunities</h2>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row opportunity">
+		{% if opportunity %}
+			{% for data in opportunity %}
+			<div class="col-sm-4">
+
+				<div class="thumbnail">
+
+
+					<img src="https://image.ibb.co/iOiHvS/pexels_photo_826349.jpg" width="100%">
+					<div class="caption">
+						<div class="category-place-main">
+							<span class="category-opp">{{data.opportunity_category}}</span>
+							<span class="field-opp">{{data.opportunity_field}}</span>
+						</div>
+			            <h4>{{data.description}}</h4>
+			            <p style="color: #999"><b>Duration:</b> {{data.durations}}</p>
+			            <a href="/public/opportunity/{{data.opportunity_category}}/{{data.id}}" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
+		          	</div>
+				</div>
+			</div>
+				{% endfor %}
+				{% else %}
+				<div class="text-center">
+					<h3>There is no any opportunity yet</h3>
+				</div>
+			{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+JOBSEEKER PROFILE
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="dashboard">
+				<div class="row">
+					<div class="col-md-2 col-sm-12 text-center">
+						<div class="company-logo">
+						{% if data_jobseeker.profile_picture %}
+							<img src="{{data_jobseeker.profile_picture.url}}" class="img-circle img-logo">
+						{% else %}	
+							<img src="https://image.ibb.co/m8UHgc/user.png" class="img-circle img-logo">
+						{% endif %}
+						</div>
+					</div>
+					<div class="col-md-10 col-sm-12 info">
+						<div class="company-name">
+							<h3>Hi, {{data_jobseeker.first_name}}!</h3>
+						</div>
+						<div class="email-employer">
+							<p><span class="fa fa-envelope" style="padding: 3px"></span> <a href="mailto:{{employer.email}}?subject=cv">{{data_jobseeker.email}}</a>  </p>
+						</div>
+						<div class="phone-employer">
+							<p><span class="fa fa-phone" style="padding: 3px"></span> {{data_jobseeker.phone_number}}</p>
+						</div>
+						<div class="resume-employer">
+							<a href="{{data_jobseeker.resume.url}}" download="{{data_jobseeker.resume.name}}"> Download CV </a>
+						</div>
+						<a href="{% url 'app-job-seeker:edit-profile' %}"><button class="btn btn-customize"><span class="fa fa-pencil"></span> Edit Profile</button></a>
+
+
+					</div>
+				</div>
+				<hr class="style14">
+				<div class="short-desc">
+					<div class="text-title-post">
+						<h4>Applied Opportunity</h4>
+						<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+					</div>
+					<div class="my-company">
+						<div class="row">
+							<div class="col-sm-4 text-center">
+								<div class="thumbnail">
+									<div class="company-logo">
+										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
+									</div>
+									<div class="company-name">
+										<h3>Deskripsi Opportunity</h3>
+									</div>
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="view-profile btn-padding">
+												<a href="#"><button class="btn btn-customize btn-block">View this opportunity</button></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

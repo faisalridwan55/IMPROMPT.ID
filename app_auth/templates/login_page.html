@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block meta %}
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="419002796892-0tlg9tf8gr3do7ksjjbp23ckrcqnug35.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+{% endblock %}
+
+{% block title %}
+LOGIN
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-social.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 78px">
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<div class="box">
+				<div class="title text-center">
+					<h3 >Choose your role:</h3>
+					<hr style="border-bottom: 2px solid #29758A; width: 30%;">
+				</div>
+
+				<div class="text-center text-on">
+					<p>Login as Employer</p>
+					<div class="g-signin2 button-google" data-onsuccess="onSignIn_employer" data-theme="dark"></div>
+					<hr class="style14">
+					<p>Login as Job Seeker</p>
+					<div class="g-signin2 button-google" data-onsuccess="onSignIn_job_seeker" data-theme="dark"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'js/app_auth1.js' %}"></script>
+{% endblock %}

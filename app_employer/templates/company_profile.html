@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+COMPANY PROFILE
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="dashboard">
+				<div class="row">
+					<div class="col-md-2 col-sm-12 text-center">
+						<div class="company-logo">
+							{% if company.company_logo %}
+								<img src="{{company.company_logo.url}}" class="img-circle img-logo">
+							{% else %}	
+								<img src="https://image.ibb.co/m8UHgc/user.png" class="img-circle img-logo">
+							{% endif %}
+						</div>
+					</div>
+					<div class="col-md-10 col-sm-12 info">
+						<div class="company-name">
+							<h3>{{company.company_name}}</h3>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="location">
+									<p><span class="fa fa-map-marker" style="padding: 3px"></span> {{company.province}}, {{company.city}}, {{company.country}}</p>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="website">
+									<p><span class="fa fa-globe" style="padding: 3px"></span> <a href="http://{{company.company_website}}">{{company.company_website}}</a></p>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="contact">
+							<div class="row">
+								<div class="col-sm-6">
+									<p><span class="fa fa-envelope" style="padding: 3px"></span> <a href="mailto:hello@world.com?subject=cv_volunteer">{{employer.email}}</a>  </p>
+								</div>
+								<div class="col-sm-6">
+									<p><span class="fa fa-phone" style="padding: 3px"></span> {{employer.phone_number}}</p>
+								</div>
+							</div>
+						</div>
+						<!--terus dibawah button edit company-->
+						<!--button edit profil perlu ga sih?-->
+					</div>
+				</div>
+				<hr class="style14">
+				<div class="short-desc">
+					<div class="text-title-post">
+						<h4>About the company:</h4>
+						<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+					</div>
+					<div class="content">
+
+						<p>{{company.company_description}}</p>
+					</div>
+
+				</div>
+				<hr class="style14">
+				<div class="my-opportunities">
+					<div class="text-title-post">
+						<h4>{{company.company_name}} Offer(s)</h4>
+						<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+					</div>
+					<!--kalo belom punya-->
+					<div class="content">
+						<!--uncomment kalo udh ada kondisi
+						<div class="not-exist text-center">
+							<h4>Oops! You don't have any opportunity yet.</h4>
+						</div>-->
+						<!--kalo udah ada, contoh 3 col-->
+						<div class="row">
+							<div class="col-sm-12">
+								{% if opportunity_list %}
+									{% for data in opportunity_list %}
+									<div class="col-sm-4">
+										<div class="thumbnail">
+											<div class="preview">
+												<img src="https://image.ibb.co/iOiHvS/pexels_photo_826349.jpg" width="100%">
+											</div>
+
+											<div class="caption">
+												<div class="category-place-main">
+													<span class="field-opp">{{data.opportunity_field}}</span>
+													<span class="category-opp">{{data.opportunity_category}}</span>
+												</div>
+												<h4>{{data.description}}</h4>
+									            <p style="color: #999"><b>Participants Needed:</b> {{participants_needed}}</p><!--cuma bisa diliat sama company-->
+									            <a href="#" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									{% else %}
+										<div class="not-exist text-center">
+											<h4>Oops! You don't have any opportunity yet.</h4>
+										</div>
+								{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

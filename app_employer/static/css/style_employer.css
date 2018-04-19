@@ -1,0 +1,142 @@
+ /* here start opportunity posting style */
+        .dashboard {
+          box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+          background: #f9f9f9;
+          border-radius: 10px;
+          color: black;
+          margin-top: 100px;
+          padding: 20px 30px;
+        }
+        .img-logo {
+          width: 125px;
+          height: 125px;
+          object-fit: cover;
+        }
+        .button-post {
+          margin-top: 40px;
+        }
+        .contact {
+          margin-top: 7px;
+        }
+        .text-title-post {
+          color: #333;
+          letter-spacing: 0.7px;
+        }
+        .content {
+          padding-top: 20px;
+        }
+        .content .thumbnail{
+          padding: 10px 5px;
+          border: 1px solid #999;
+          border-radius: 5px;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
+          height: 370px;
+        }
+        .preview img{
+          width: 100%;
+          height: 125px;
+          object-fit: cover;
+        }
+        .category-place-main {
+          padding: 10px 0px;
+        }
+        .btn-customize {
+          border-radius: 20px;
+          border: 1px solid #bdc3c7;
+          background: #ecf0f1;
+          padding: 4px 30px;
+        }
+        .btn-warning {
+          border-radius: 20px;
+
+        }
+        .btn-padding {
+          padding: 10px 20px;
+        }
+        /*content untuk home employer*/
+        .my-company {
+          margin-top:25px;
+        }
+        .my-company .thumbnail {
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
+          padding: 30px 20px;
+        }
+        @media (max-width: 768px) {
+          .info {
+            text-align: center;
+          }
+          .content .thumbnail {
+            min-height: 350px;
+            height: auto;
+          }
+        }
+        @media (min-width: 768px) and (max-width: 992px) {
+          .content .thumbnail {
+            height: 460px;
+          }
+          .info {
+            .text-align: center;
+          }
+        }
+        @media (min-width: 992px) and (max-width: 1200px) {
+          .content .thumbnail {
+            height: 380px
+          }
+        }
+        /* buat form */
+        .form-profile {
+          margin-top: 30px;
+        }
+        .btn-warning {
+          border-radius: 20px;
+
+        }
+        .btn-padding-form {
+          padding: 10px 0px;
+          text-align: center;
+          margin-top: 20px;
+        }
+        .text-file-name {
+          margin-top: 5px;
+        }
+        .desc-textarea {
+          width: 100%;
+        }
+        .category-opp {
+            display: inline-block;
+            padding: 3px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #fff;
+            line-height: 14px;
+            border-radius: 10px;
+            background-color: orange;
+            margin-right: 8px;
+            position:static;
+            text-transform: uppercase;
+
+        }
+        .field-opp {
+            display: inline-block;
+            padding: 3px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #fff;
+            line-height: 14px;
+            border-radius: 10px;
+            background-color: #29758A;
+            margin-right: 8px;
+            position:static;
+            text-transform: uppercase;
+        }
+        .dashboard-custom {
+          background: none;
+          border-radius: 10px;
+          color: black;
+          margin-top: 100px;
+          padding: 20px 30px;
+        }

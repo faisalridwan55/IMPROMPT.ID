@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+EDIT PROFILE - JOBSEEKER
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<div class="dashboard">
+        <div class="text-title-post">
+          <h3>Edit your profile</h3>
+          <hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+        </div>
+        <div class="form-profile">
+          <form method="POST" action="{% url 'app-job-seeker:submit-job-seeker-profile' %}" enctype="multipart/form-data">
+						{% csrf_token %}
+            {% for field in form_profile %}
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{field}}
+            </div>
+            {% endfor %}
+            <div class="btn-padding-form">
+              <button id="submit" type="submit" class="btn btn-info btn-md btn-block">Submit</button>
+            </div>
+          </form>
+        </div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

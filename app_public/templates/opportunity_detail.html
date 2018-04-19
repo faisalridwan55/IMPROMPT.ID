@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+Opportunity Detail
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+
+			<div class="content-opp">
+				<div class="photo text-on-photo">
+					<img src="https://image.ibb.co/mJB8Zx/pexels_photo_911738.jpg">
+
+					<h1 class="text-title-opp"><b>Work with us!</b></h1>
+					<h4 style="color:#999;padding: 5px 50px;">Created by: {{opportunity.opportunity_owner.company_name}} at {{opportunity.created_at}}</h4>
+					<div class="category-place">
+
+						<span class="category-opp">{{opportunity.opportunity_category}}</span>
+						<span class="field-opp">{{opportunity.opportunity_field}}</span>
+					</div>
+
+					<hr class="style14">
+
+				</div>
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="content-text-opp">
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="title">
+										<h3><b>Job Description:</b></h3>
+									</div>
+
+									<p>{{opportunity.description}}</p>
+								</div>
+								<div class="col-sm-6">
+									<div class="title">
+										<h3><b>Requirements:</b></h3>
+									</div>
+									<p>{{opportunity.requirements}}</p>
+								</div>
+							</div>
+
+						</div>
+						</div>
+						<div class="col-sm-4 sidebar-content">
+							<div class="title">
+								<h3><b>Details</b></h3>
+							</div>
+								<p><strong>Salary:</strong> {{opportunity.salary}}</p>
+								<p><strong>Duration:</strong> {{opportunity.durations}}</p>
+								<hr class="style14">
+								<p><strong>Social Media</strong></p>
+								<span class="fa fa-twitter-square" style="font-size: 20px" style="margin: 20px"></span>
+								<span class="fa fa-facebook-square" style="font-size: 20px" ></span>
+								<span class="fa fa-envelope" style="font-size: 20px" ></span>
+								<span class="fa fa-instagram" style="font-size: 20px" ></span>
+								<hr class="style14">
+								<p><strong>Contact Person</strong></p>
+								<p>{{opportunity.contact_person_phone_number}}</p>
+								<div style="margin-top: 30px">
+									{% if request.session.status == 'job_seeker' %}
+										<a href="{% url 'app-job-seeker:apply'}"><button type="button" class="btn btn-warning btn-block">Apply Now!</button></a>
+									{% else %}
+									<!--if not login-->
+										<p>Want to apply? <a href="/login/">log in</a> first!</p>
+									{% endif %}
+								</div>
+						</div>
+					</div>
+
+			</div>
+			<div class="footer-blog-opp">
+			</div>
+		</div>
+
+
+	</div>
+</div>
+{% endblock %}

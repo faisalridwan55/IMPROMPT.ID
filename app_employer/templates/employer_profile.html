@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+EMPLOYER PROFILE
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="dashboard">
+				<div class="row">
+					<div class="col-md-2 col-sm-12 text-center">
+						<div class="company-logo">
+							{% if company.company_logo %}
+								<img src="{{company.company_logo.url}}" class="img-circle img-logo">
+							{% else %}	
+								<img src="https://image.ibb.co/m8UHgc/user.png" class="img-circle img-logo">
+							{% endif %}
+						</div>
+					</div>
+					<div class="col-md-10 col-sm-12 info">
+						<div class="company-name">
+							<h3>Hi, {{employer.first_name}}!</h3>
+						</div>
+						<div class="email-employer">
+							<p><span class="fa fa-envelope" style="padding: 3px"></span> <a href="mailto:{{employer.email}}?subject=cv">{{employer.email}}</a>  </p>
+						</div>
+						<div class="phone-employer">
+							<p><span class="fa fa-phone" style="padding: 3px"></span> {{employer.phone_number}}</p>
+						</div>
+						<a href="{% url 'app-employer:edit-employer-profile' %}"><button class="btn btn-customize"><span class="fa fa-pencil"></span> Edit Profile</button></a>
+
+
+					</div>
+				</div>
+				<hr class="style14">
+				<div class="short-desc">
+					<div class="text-title-post">
+						<h4>My Company</h4>
+						<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+					</div>
+					<div class="my-company">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3 text-center">
+								<div class="thumbnail">
+									<div class="company-logo">
+										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
+									</div>
+									<div class="company-name">
+										<h3>{{company.company_name}}</h3>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-sm-12">
+											<div class="view-profile btn-padding">
+												<a href="{% url 'app-employer:company-profile' %}"><button class="btn btn-customize btn-block"><span class="fa fa-briefcase" style="padding: 3px"></span> View Profile</button></a>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12">
+											<div class="edit-profile btn-padding">
+												<a href="{% url 'app-employer:edit-company-profile' %}"><button class="btn btn-customize btn-block"><span class="fa fa-pencil" style="padding: 3px"></span> Edit Profile</button></a>
+											</div>
+										</div>
+									</div>
+
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

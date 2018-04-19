@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+ALL OPPORTUNITIES
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+{% endblock %}
+
+{% block content %}
+<header class="bg-header-search" id="top" style="margin-top: 60px">
+	<div class="container">
+
+	</div>
+	<div class="overlay"></div>
+</header>
+<div class="dropdown">
+	<div class="container">
+		<div class="row">
+			<form method="POST" action="{% url 'app-public:search-by-drop-down' %}">
+				{% csrf_token %}
+				{% for field in search %}
+				<div class="col-sm-4">
+					<div class="form-group">
+						{{field}}
+					</div>
+				</div>
+				{% endfor %}
+				<div class="col-sm-4">
+					<input type="submit" class="btn btn-primary btn-warning" value="Start!">
+				</div>
+			</form>
+
+
+
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 text-left" style="padding-bottom: 50px">
+			<!--if search result-->
+			{% if search_result %}
+				{% if opportunity_category != 'null' and opportunity_field != 'null' %}
+				<h2>Your search result in field {{opportunity_field}} and category {{opportunity_category}}</h2>
+				{% elif opportunity_field == 'null' %}
+				<h2>Your search result in category {{opportunity_category}}</h2>
+				{% elif opportunity_category == 'null' %}
+				<h2>Your search result in field {{opportunity_field}}</h2>
+				{% endif %}
+			{% else %}
+				<h2 style="text-transform: uppercase">{{category}}</h2>
+			{% endif %}
+			<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+			<!--if just spesific page like conference, volunteer, etc. uncomment this in the future
+			<h2>Name of Opportunity Field</h2>
+		<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">-->
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row opportunity">
+		{% if opportunity_list %}
+			{% for data in opportunity_list %}
+				<div class="col-sm-4">
+					<div class="thumbnail">
+
+						<img src="https://image.ibb.co/iOiHvS/pexels_photo_826349.jpg" width="100%">
+						<div class="caption">
+							<div class="category-place-main">
+								<span class="field-opp">{{data.opportunity_field}}</span>
+								<span class="category-opp">{{data.opportunity_category}}</span>
+							</div>
+							<!--rekomendasi: judul saja yang ada di tiap card-->
+			            <h4>{{data.description}}</h4>
+			            <p style="color: #999"><b>Duration:</b> {{data.durations}}</p>
+			            <a href="/public/opportunity/{{data.opportunity_category}}/{{data.id}}" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
+			       </div>
+					</div>
+				</div>
+				{% endfor %}
+				{% else %}
+					<div class="text-center">
+						<h4>There is no opportunity from this category.</h4>
+					</div>
+			{% endif %}
+	</div>
+</div>
+
+{% endblock %}

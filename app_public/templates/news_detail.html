@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}
+NEWS - Judul Sesuatu Disini
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/public1.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-1 col-sm-10">
+			<div class="content-blog">
+					<img src="https://image.ibb.co/kC2naS/pexels_photo_872957.jpg">
+					<h1 class="text-title"><b>FAQ: How to use this website</b></h1>
+					<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
+					<h3 class="subtitle"><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</i></h3>
+					<div class="content-text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan sem eu justo imperdiet interdum. Phasellus scelerisque lobortis malesuada. In at quam pretium, fermentum lectus et, pellentesque eros. Nulla sollicitudin eros in odio pellentesque, non lacinia leo posuere. Nunc felis diam, vulputate vitae nibh sit amet, sollicitudin ultrices sapien. Quisque iaculis quam vel dolor maximus feugiat. Donec sed ante molestie, cursus elit et, blandit nisi. </p>
+						<p><b>Cras pulvinar, metus mattis congue dignissim, mauris ante pulvinar justo</b></p>
+						<p>Pellentesque sit amet suscipit quam. Aliquam vitae finibus est. Aenean in urna ac ante tincidunt sollicitudin. Mauris nec lorem nec leo aliquet cursus. Cras justo nunc, posuere nec egestas vitae, blandit sit amet enim. Quisque vitae pharetra metus. Aliquam venenatis vehicula massa. Vivamus porta massa eget quam dapibus commodo.</p>
+						<p>Curabitur convallis dolor leo, eu eleifend elit rutrum sit amet. Morbi elit dui, tincidunt non orci eget, molestie pulvinar dui. Donec lacinia faucibus vulputate. Proin mi dui, scelerisque id massa non, fermentum suscipit leo. Maecenas mattis ante libero, elementum venenatis ex scelerisque eu.</p>
+						<p>Cras dignissim sollicitudin sapien, eget porta mauris placerat in. Quisque ac justo diam. Etiam pellentesque varius enim, in dictum augue accumsan sit amet. Morbi cursus lectus quis purus ornare fermentum. </p>
+						<p><b>Donec ultrices gravida pretium. Morbi et euismod metus.</b></p>
+						<p>Phasellus a augue finibus, varius lorem ac, tristique magna. Curabitur sit amet eros enim. Nulla hendrerit sapien pulvinar nulla viverra finibus. Nam eu odio ligula. Donec sed eleifend tortor, eu efficitur eros. </p>
+					</div>
+			</div>
+			<div class="footer-blog">
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
