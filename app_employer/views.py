@@ -10,6 +10,7 @@ response = {}
 
 def home_employer(request):
     # Pastikan yang login employer
+    print("request.session['status']")
     if request.session['status'] == "employer":
         response['logged_in'] = True
         response['posting_opportunity'] = False
@@ -19,8 +20,11 @@ def home_employer(request):
         response['company_profile'] = False
         response['employer_profile'] = False
         response['post_opp'] = OpportunityForm
-        company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
-        response['company'] = company
+        try:
+            company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
+            response['company'] = company
+        except Exception as e:
+            return redirect(reverse('app-employer:edit-company-profile'))
         return render(request, 'home_employer.html', response)
 
 def my_company_profile(request):
