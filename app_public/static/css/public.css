@@ -134,7 +134,7 @@
                 height: 100%;
             }
             .content-opp {
-              margin-top: 100px;
+              margin-top: 10px;
             }
             .content-opp-sidebar {
               margin-top: 0px;
@@ -271,7 +271,7 @@
         }
         .content-opp {
           background: #f9f9f9;
-          margin-top: 130px;
+          margin-top: 30px;
           padding-bottom: 30px;
         }
         .text-title-opp {

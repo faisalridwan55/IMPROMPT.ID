@@ -7,16 +7,36 @@ Opportunity Detail
 {% endblock %}
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
+<style>
+	.content-opp-edit {
+		background: #f9f9f9;
+		margin-top: 10px;
+		padding-bottom: 30px;
+	}
+	.button-back {
+		margin-top: 100px;
+	}
+	@media (max-width: 768px) {
+		.content-opp-edit {
+			margin-top: 10px;
+		}
+	}
+</style>
 {% endblock %}
 
 {% block content %}
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-
-			<div class="content-opp">
+			<div class="row"><div class="col-sm-2">
+				<div style="padding-top: 10px;" class="button-back">
+					<button class="btn btn-back btn-block btn-md" type=button onClick="javascript:history.go(-1);"><span class="fa fa-angle-double-left"></span> Back</button>
+				</div>
+			</div></div>
+			<div class="content-opp-edit">
 				<div class="photo text-on-photo">
 					<img src="https://image.ibb.co/mJB8Zx/pexels_photo_911738.jpg">
+
 
 					<h1 class="text-title-opp"><b>Work with us!</b></h1>
                     <h4 style="color:#999;padding: 5px 50px;">Created by: <a href="{% url 'app-employer:other-company-profile' opportunity.opportunity_owner.pk %}">{{opportunity.opportunity_owner.company_name}}</a> at {{opportunity.created_at}}</h4>
@@ -94,8 +114,8 @@ Opportunity Detail
 									<!--if not login-->
 										<p>Want to apply? <a href="/login/">log in</a> first!</p>
 									{% endif %}
-                                    <br>
-                                    <button class="btn btn-warning" type=button onClick="javascript:history.go(-1);">Back</button>
+
+
 								</div>
 						</div>
 					</div>

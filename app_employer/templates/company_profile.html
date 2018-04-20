@@ -8,6 +8,18 @@ COMPANY PROFILE
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style_employer.css' %}">
+<style>
+.btn-back {
+	color: #20758C;
+	background: transparent;
+	border: 2px solid #20758C;
+	border-radius: 30px;
+	transition: all 0.3s ease 0s;
+}
+.button-back {
+	margin-bottom: 30px;
+}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -61,8 +73,13 @@ COMPANY PROFILE
 				</div>
 				<hr class="style14">
                 {% if just_view  %}
-                <button class="btn btn-warning" type=button onClick="javascript:history.go(-1);">Back</button>
-				{% endif %}
+								<div class="row"><div class="col-sm-2">
+									<div style="padding-top: 10px;" class="button-back">
+										<button class="btn btn-back btn-block btn-md" type=button onClick="javascript:history.go(-1);"><span class="fa fa-angle-double-left"></span> Back</button>
+									</div>
+								</div></div>
+
+								{% endif %}
                 <div class="short-desc">
 					<div class="text-title-post">
 						<h4>About the company:</h4>
