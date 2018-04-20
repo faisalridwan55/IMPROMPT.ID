@@ -35,7 +35,7 @@ def edit_profile(request):
             exist_profile = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
             response['exist_profile'] = exist_profile
             form = ProfileEdit(initial={
-                'profile_picture': exists_profile.profile_picture,
+                'profile_picture': exist_profile.profile_picture,
                 'first_name'     : exist_profile.first_name,
                 'last_name'      : exist_profile.last_name,
                 'email'          : exist_profile.email,
@@ -68,9 +68,9 @@ def submit_job_seeker_profile(request):
             profile.resume = request.FILES['resume'] if 'resume' in request.FILES else None
             profile.save()
         
-        return redirect(reverse('app-public:home-public'))
+        return redirect(reverse('app-job-seeker:my-profile'))
 
-def apply_opportunity(request):
+def apply_opportunity(request, categories, pk):
     if request.session['status'] == "job_seeker":
         id_opportunity = request.POST.get('id_opportunity', False)
         current_job_seeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])

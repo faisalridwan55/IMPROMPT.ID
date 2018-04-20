@@ -35,9 +35,11 @@ JOBSEEKER PROFILE
 						<div class="phone-employer">
 							<p><span class="fa fa-phone" style="padding: 3px"></span> {{data_jobseeker.phone_number}}</p>
 						</div>
-						<div class="resume-employer">
-							<a href="{{data_jobseeker.resume.url}}" download="{{data_jobseeker.resume.name}}"> Download CV </a>
-						</div>
+                        {% if data_jobseeker.resume %}
+                            <div class="resume-employer">
+                                <a href="{{data_jobseeker.resume.url}}" download="{{data_jobseeker.resume.name}}"> Download CV </a>
+                            </div>
+                        {% endif %}
 						<a href="{% url 'app-job-seeker:edit-profile' %}"><button class="btn btn-customize"><span class="fa fa-pencil"></span> Edit Profile</button></a>
 
 
