@@ -17,16 +17,45 @@ footer {
 .outer-container {
 	margin-top:100px;
 }
+.btn-back {
+	color: #20758C;
+	background: transparent;
+	border: 2px solid #20758C;
+	border-radius: 30px;
+	transition: all 0.3s ease 0s;
+}
+.button-back {
+	margin-bottom: 10px;
+}
+.dashboard-app {
+	box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+	background: #f9f9f9;
+	border-radius: 10px;
+	color: black;
+	margin-top: 10px;
+	padding: 20px 30px;
+}
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="container outer-container" >
+	{% if just_view  %}
+	<div class="row"><div class="col-sm-2">
+		<div style="padding-top: 10px;" class="button-back">
+			<button class="btn btn-back btn-block btn-md" type=button onClick="javascript:history.go(-1);"><span class="fa fa-angle-double-left"></span> Back</button>
+		</div>
+	</div></div>
+
+	{% endif %}
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="dashboard" >
+
+			<div class="dashboard-app" >
+
 				<div class="row">
 					<div class="col-md-2 col-sm-12 text-center">
+
 						<div class="company-logo">
 						{% if applicant.profile_picture %}
 							<img src="{{applicant.profile_picture.url}}" class="img-circle img-logo">

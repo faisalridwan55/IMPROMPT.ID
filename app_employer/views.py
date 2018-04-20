@@ -247,4 +247,5 @@ def find_an_applicant(request, profile_id):
         applicant = Job_Seeker.objects.get(profile_id=profile_id)
         response['applicant'] = applicant
         response['find'] = True
+        response['just_view'] = True
         return render(request, "applicant_profile.html", response)
