@@ -18,6 +18,7 @@ def home_public(request):
     all_opportunity = Opportunity.objects.all().order_by('-id')
     response['search'] = SearchDropdown
     response['opportunity'] = all_opportunity
+    response['category'] = 'null'
     #nanti mau ditambahin paginator kalo udah banyak
     return render(request, 'home_public.html', response)
 
@@ -109,6 +110,7 @@ def opportunity_detail(request, categories, pk):
     response['home'] = False
     response['about']= False
     response['news_page'] = False
+    response['category'] = categories
 
     if categories == 'jobs':
         # Ambil kumpulan job dari db

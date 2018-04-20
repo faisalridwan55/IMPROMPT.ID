@@ -33,11 +33,31 @@
           {% else %}
           <li><a href="/public/home">Home</a></li>
           {% endif %}
+          {% if category == 'volunteer' %}
+          <li class="active"><a href="/public/opportunity/volunteer">Volunteer</a></li>
+          {% else %}
           <li><a href="/public/opportunity/volunteer">Volunteer</a></li>
+          {% endif %}
+          {% if category == "internship" %}
+          <li class="active"><a href="/public/opportunity/internship">Internship</a></li>
+          {% else %}
           <li><a href="/public/opportunity/internship">Internship</a></li>
+          {% endif %}
+          {% if category == "community" %}
+          <li class="active"><a href="/public/opportunity/community">Community</a></li>
+          {% else %}
           <li><a href="/public/opportunity/community">Community</a></li>
+          {% endif %}
+          {% if category == "jobs" %}
+          <li class="active"><a href="/public/opportunity/jobs">Jobs</a></li>
+          {% else %}
           <li><a href="/public/opportunity/jobs">Jobs</a></li>
-          <li><a href="/public/opportunity/conference">Conference</a>
+          {% endif %}
+          {% if category == "conference" %}
+          <li class="active"><a href="/public/opportunity/conference">Conference</a></li>
+          {% else %}
+          <li><a href="/public/opportunity/conference">Conference</a></li>
+          {% endif %}
         {% else %}
           {% if home %}
           <li class="active"><a href="/public/home">Home</a></li>

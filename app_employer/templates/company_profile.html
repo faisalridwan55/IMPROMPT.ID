@@ -20,7 +20,7 @@ COMPANY PROFILE
 						<div class="company-logo">
 							{% if company.company_logo %}
 								<img src="{{company.company_logo.url}}" class="img-circle img-logo">
-							{% else %}	
+							{% else %}
 								<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
 							{% endif %}
 						</div>
@@ -43,7 +43,7 @@ COMPANY PROFILE
 						</div>
 
 
-
+						{% if request.session.status == "employer" %}
 						<div class="contact">
 							<div class="row">
 								<div class="col-sm-6">
@@ -54,6 +54,7 @@ COMPANY PROFILE
 								</div>
 							</div>
 						</div>
+						{% endif %}
 						<!--terus dibawah button edit company-->
 						<!--button edit profil perlu ga sih?-->
 					</div>

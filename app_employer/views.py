@@ -141,7 +141,7 @@ def submit_company_profile(request):
 
             query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
             query_size = query.count()
-            
+
             if query_size > 0:
                 company = query[0]
                 company.country = country
@@ -198,7 +198,7 @@ def submit_employer_profile(request):
         query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
         query_size = query.count()
         if query_size > 0:
-            return redirect(reverse('app-employer:employer-profile'))    
+            return redirect(reverse('app-employer:employer-profile'))
         return redirect(reverse('app-employer:edit-company-profile'))
 
 
@@ -243,4 +243,5 @@ def find_an_applicant(request, profile_id):
     if request.session['status'] == "employer":
         applicant = Job_Seeker.objects.get(profile_id=profile_id)
         response['applicant'] = applicant
+        response['find'] = True
         return render(request, "applicant_profile.html", response)
