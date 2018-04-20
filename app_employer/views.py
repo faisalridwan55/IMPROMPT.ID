@@ -131,33 +131,20 @@ def submit_company_profile(request):
                 company.company_name = company_name
                 company.company_description = company_description
                 company.company_website = company_website
-                try:
-                    company.company_logo = request.FILES['company_logo']
-                except Exception as e:
-                    pass
+                company.company_logo = request.FILES['company_logo'] if 'company_logo' in request.FILES else None
                 company.save()
             else:
-                try:
-                    Company.objects.create(
-                        company_creator_profile_id=request.session['profile_id'],
-                        country = country,
-                        province = province,
-                        city = city,
-                        company_name = company_name,
-                        company_description = company_description,
-                        company_website = company_website,
-                        company_logo = request.FILES['company_logo']
-                    )
-                except Exception as e:
-                    Company.objects.create(
-                        company_creator_profile_id=request.session['profile_id'],
-                        country=country,
-                        province=province,
-                        city=city,
-                        company_name=company_name,
-                        company_description=company_description,
-                        company_website=company_website
-                    )
+                Company.objects.create(
+                    company_creator_profile_id=request.session['profile_id'],
+                    country = country,
+                    province = province,
+                    city = city,
+                    company_name = company_name,
+                    company_description = company_description,
+                    company_website = company_website,
+                    company_logo = request.FILES['company_logo'] if 'company_logo' in request.FILES else None
+                )
+
             return redirect(reverse('app-employer:home-employer'))
 
 @csrf_exempt
