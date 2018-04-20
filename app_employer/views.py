@@ -41,6 +41,7 @@ def my_company_profile(request):
         response['opportunity_list']=opportunity_list
         response['company'] = company
         response['employer'] = employer
+        response['just_view'] = False
         return render(request, 'company_profile.html', response)
 
 def company_profile(request, pk):
@@ -57,6 +58,7 @@ def company_profile(request, pk):
     response['opportunity_list'] = opportunity_list
     response['company'] = company
     response['employer'] = None
+    response['just_view'] = True
     return render(request, 'company_profile.html', response)
 
 
@@ -164,7 +166,7 @@ def submit_company_profile(request):
                     company_logo = request.FILES['company_logo'] if 'company_logo' in request.FILES else None
                 )
 
-            return redirect(reverse('app-employer:home-employer'))
+            return redirect(reverse('app-employer:company-profile'))
 
 @csrf_exempt
 def submit_employer_profile(request):
@@ -175,6 +177,7 @@ def submit_employer_profile(request):
             last_name = request.POST.get('last_name', False)
             email = request.POST.get('email', False)
             phone_number = request.POST.get('phone_number', False)
+            phone_number = str(phone_number)
 
             query = Employer.objects.filter(profile_id=request.session['profile_id'])
             query_size = query.count()

@@ -60,7 +60,10 @@ COMPANY PROFILE
 					</div>
 				</div>
 				<hr class="style14">
-				<div class="short-desc">
+                {% if just_view  %}
+                <button class="btn btn-warning" type=button onClick="javascript:history.go(-1);">Back</button>
+				{% endif %}
+                <div class="short-desc">
 					<div class="text-title-post">
 						<h4>About the company:</h4>
 						<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">

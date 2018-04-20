@@ -21,7 +21,7 @@ class EmployerProfileEdit(forms.Form):
         'placeholder': 'Enter valid email adress',
     }
     phone_number = {
-        'type': 'text',
+        'type': 'number',
         'class': 'form-control',
         'placeholder': 'Enter valid phone number',
     }
@@ -88,7 +88,7 @@ class OpportunityForm(forms.Form):
     salary = {
         'type': 'text',
         'class': 'form-control',
-        'placeholder': 'Rp.xxx,00,-',
+        'placeholder': 'In Rupiah',
     }
     participants_needed = {
         'type': 'number',

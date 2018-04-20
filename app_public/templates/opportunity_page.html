@@ -75,7 +75,8 @@ ALL OPPORTUNITIES
 							</div>
 							<!--rekomendasi: judul saja yang ada di tiap card-->
 			            <h4>{{data.description}}</h4>
-			            <p style="color: #999"><b>Duration:</b> {{data.durations}}/week</p>
+			            <p style="color: #999"><b>Duration:</b> {{data.durations}} days/week</p>
+                        <b>By:</b> <a href="{% url 'app-employer:other-company-profile' data.opportunity_owner.pk %}">{{ data.opportunity_owner.company_name }}</a><br>
 			            <a href="/public/opportunity/{{data.opportunity_category}}/{{data.id}}" style="color: #29758A">Read More <span class="fa fa-long-arrow-right"></span></a>
 			       </div>
 					</div>

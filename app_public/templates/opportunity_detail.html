@@ -71,7 +71,7 @@ Opportunity Detail
 							<div class="title">
 								<h3><b>Details</b></h3>
 							</div>
-								<p><strong>Salary:</strong> {{opportunity.salary}}</p>
+								<p><strong>Salary:</strong> Rp.{{opportunity.salary}}</p>
 								<p><strong>Duration:</strong> {{opportunity.durations}}/week</p>
 								<hr class="style14">
 								<p><strong>Social Media</strong></p>
@@ -94,6 +94,8 @@ Opportunity Detail
 									<!--if not login-->
 										<p>Want to apply? <a href="/login/">log in</a> first!</p>
 									{% endif %}
+                                    <br>
+                                    <button class="btn btn-warning" type=button onClick="javascript:history.go(-1);">Back</button>
 								</div>
 						</div>
 					</div>

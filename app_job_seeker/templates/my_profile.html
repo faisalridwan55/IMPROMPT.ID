@@ -58,7 +58,9 @@ JOBSEEKER PROFILE
 								<div class="col-sm-4 text-center">
 									<div class="thumbnail">
 										<div class="company-logo">
-											<img src="{{data.opportunity.opportunity_owner.company_logo.url}}" class="img-circle img-logo">
+                                            {% if data.opportunity.opportunity_owner.company_logo %}
+											    <img src="{{data.opportunity.opportunity_owner.company_logo.url}}" class="img-circle img-logo">
+                                            {% endif %}
 										</div>
 										<div class="company-name">
 											<h4>{{data.opportunity.description}}</h4>

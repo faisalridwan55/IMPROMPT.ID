@@ -19,7 +19,10 @@ def jobseeker_profile(request):
         try:
             jobseeker = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
             my_opportunities = Application_Form.objects.filter(job_seeker=jobseeker)
-            response['my_opportunities'] = my_opportunities
+            if my_opportunities.count() > 0:
+                response['my_opportunities'] = my_opportunities
+            else:
+                response['my_opportunities'] = None
         except Exception as e:
             response['my_opportunities'] = None
             return redirect(reverse('app-job-seeker:edit-profile'))
