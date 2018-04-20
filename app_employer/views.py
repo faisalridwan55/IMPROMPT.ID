@@ -184,26 +184,17 @@ def submit_employer_profile(request):
                 employer.last_name = last_name
                 employer.email = email
                 employer.phone_number = phone_number
-                employer.profile_picture = request.FILES['profile_picture']
+                employer.profile_picture = request.FILES['profile_picture'] if 'profile_picture' in request.FILES else None
                 employer.save()
             else:
-                try:
-                    Employer.objects.create(
-                        profile_id=request.session['profile_id'],
-                        first_name = first_name,
-                        last_name = last_name,
-                        email = email,
-                        phone_number = phone_number,
-                        profile_picture=request.FILES['profile_picture']
-                    )
-                except Exception as e:
-                    Employer.objects.create(
-                        profile_id=request.session['profile_id'],
-                        first_name = first_name,
-                        last_name = last_name,
-                        email = email,
-                        phone_number = phone_number
-                    )
+                Employer.objects.create(
+                    profile_id=request.session['profile_id'],
+                    first_name = first_name,
+                    last_name = last_name,
+                    email = email,
+                    phone_number = phone_number,
+                    profile_picture=request.FILES['profile_picture'] if 'profile_picture' in request.FILES else None
+                )
         query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
         query_size = query.count()
         if query_size > 0:
