@@ -4,6 +4,7 @@ from .forms import EmployerProfileEdit, CompanyProfileEdit, OpportunityForm
 from app_job_seeker.models import Application_Form
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from app_job_seeker.models import Job_Seeker
 # Create your views here.
 response = {}
 
@@ -246,3 +247,9 @@ def check_applicant(request, opportunity):
             return HttpResponse("null")
     else:
         return HttpResponse("null")
+
+def find_an_applicant(request, profile_id):
+    if request.session['status'] == "employer":
+        applicant = Job_Seeker.objects.get(profile_id=profile_id)
+        response['applicant'] = applicant
+        return render(request, "applicant_profile.html", response)

@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^home/post/$', submit_opportunity_posting, name='opportunity-posting'),
     url(r'^edit_company_profile/submit/$', submit_company_profile, name='submit-company-profile'),
     url(r'^edit_employer_profile/submit/$', submit_employer_profile, name='submit-employer-profile'),
+    url(r'^find_applicant/(?P<profile_id>\w+)/$', find_an_applicant , name='find-applicant'),
 ]
