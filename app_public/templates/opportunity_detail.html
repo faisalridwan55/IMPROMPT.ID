@@ -107,7 +107,7 @@ Opportunity Detail
 										{% if applied %}
 										<button id="apply-button" type="button" class="btn btn-info disabled btn-block">Applied</button>
 										{% else %}
-										<button id="apply-button" type="button" class="btn btn-warning btn-block">Apply Now!</button>
+										<button id="apply-button" type="button" class="btn btn-warning not-clicked btn-block">Apply Now!</button>
 										{% endif %}
 									{% elif request.session.status == 'employer' %}
 									{% else %}
@@ -132,28 +132,32 @@ Opportunity Detail
 {% block javascript %}
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#apply-button").click(function () {
-		$("#apply-button").attr("disabled", false);
-		var self = this;
-		$.ajax({
-			method: "POST",
-			url: '/job_seeker/opportunity/{{opportunity.opportunity_category}}/{{opportunity.id}}/apply/',
-			data: {'id_opportunity':'{{opportunity.id}}', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
-			success: function (data) {
+	if ($("#apply-button").hasClass("not-clicked")) {
+		$("#apply-button").click(function () {
+			$("#apply-button").attr("disabled", false);
+			var self = this;
+			$.ajax({
+				method: "POST",
+				url: '/job_seeker/opportunity/{{opportunity.opportunity_category}}/{{opportunity.id}}/apply/',
+				data: {'id_opportunity':'{{opportunity.id}}', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+				success: function (data) {
+					console.log("berhasil");
+					$(self).removeClass("btn-warning");
+					$(self).removeClass("not-clicked");
+					$(self).addClass("disabled");
+					$(self).addClass("btn-info");
+					$(self).text("Applied");
+					$("#apply-button").attr("disabled", true);
+				},
+				error: function (rs, e) {
+					alert(rs.responseText);
+				}
+			});
 
-				$(self).removeClass("btn-warning");
-				$(self).addClass("disabled");
-				$(self).addClass("btn-info");
-				$(self).text("Applied");
-				$("#apply-button").attr("disabled", true);
-			},
-			error: function (rs, e) {
-				alert(rs.responseText);
-			}
+
 		});
+	};
 
-
-	});
 })
 
 </script>
