@@ -141,8 +141,9 @@ def submit_company_profile(request):
                     company_name = company_name,
                     company_description = company_description,
                     company_website = company_website,
-                    company_logo = request.FILES['company_logo']
+                    company_logo = request.FILES['company_logo'] if 'company_logo' in request.FILES else None
                 )
+
             return redirect(reverse('app-employer:home-employer'))
 
 @csrf_exempt
