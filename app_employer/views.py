@@ -42,6 +42,24 @@ def my_company_profile(request):
         response['employer'] = employer
         return render(request, 'company_profile.html', response)
 
+def company_profile(request, pk):
+    if request.session['status'] == "employer" or request.session['status'] == "job_seeker":
+        response['logged_in'] = True
+    response['posting_opportunity'] = False
+    response['edit_empl'] = False
+    response['edit_comp'] = False
+    response['home_employer'] = False
+    response['company_profile'] = True
+    response['employer_profile'] = False
+    company = Company.objects.get(pk=pk)
+    opportunity_list = Opportunity.objects.filter(opportunity_owner=company).order_by('-id')
+    response['opportunity_list'] = opportunity_list
+    response['company'] = company
+    response['employer'] = None
+    return render(request, 'company_profile.html', response)
+
+
+
 def employer_profile(request):
     if request.session['status'] == "employer":
         response['posting_opportunity'] = False

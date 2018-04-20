@@ -19,7 +19,7 @@ Opportunity Detail
 					<img src="https://image.ibb.co/mJB8Zx/pexels_photo_911738.jpg">
 
 					<h1 class="text-title-opp"><b>Work with us!</b></h1>
-					<h4 style="color:#999;padding: 5px 50px;">Created by: {{opportunity.opportunity_owner.company_name}} at {{opportunity.created_at}}</h4>
+                    <h4 style="color:#999;padding: 5px 50px;">Created by: <a href="{% url 'app-employer:other-company-profile' opportunity.opportunity_owner.pk %}">{{opportunity.opportunity_owner.company_name}}</a> at {{opportunity.created_at}}</h4>
 					<div class="category-place">
 
 						<span class="category-opp">{{opportunity.opportunity_category}}</span>

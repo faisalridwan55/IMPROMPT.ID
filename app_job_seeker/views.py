@@ -59,13 +59,13 @@ def submit_job_seeker_profile(request):
             phone_number = request.POST.get('phone_number', False)
             birthday = request.POST.get('birthday', False)
             profile = Job_Seeker.objects.get(profile_id=request.session['profile_id'])
-            profile.profile_picture = request.FILES['profile_picture']
+            profile.profile_picture = request.FILES['profile_picture'] if 'profile_picture' in request.FILES else None
             profile.first_name = first_name
             profile.last_name = last_name
             profile.email = email
             profile.phone_number = phone_number
             profile.birthday = birthday
-            profile.resume = request.FILES['resume']
+            profile.resume = request.FILES['resume'] if 'resume' in request.FILES else None
             profile.save()
         
         return redirect(reverse('app-public:home-public'))
