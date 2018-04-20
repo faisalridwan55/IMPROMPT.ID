@@ -48,9 +48,14 @@ EMPLOYER PROFILE
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-3 text-center">
 								<div class="thumbnail">
-									<div class="company-logo">
-										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
-									</div>
+
+                                    <div class="company-logo">
+                                        {% if company.company_logo %}
+                                            <img src="{{company.company_logo.url}}" class="img-circle img-logo">
+                                        {% else %}
+                                            <img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
+                                        {% endif %}
+                                    </div>
 									<div class="company-name">
 										<h3>{{company.company_name}}</h3>
 									</div>

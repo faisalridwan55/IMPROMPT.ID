@@ -30,6 +30,7 @@ class EmployerProfileEdit(forms.Form):
     last_name = forms.CharField(label='Last Name', required=True, max_length=140, widget=forms.TextInput(attrs=last_name))
     email = forms.CharField(label='Email', required=True, max_length=140, widget=forms.TextInput(attrs=email))
     phone_number = forms.CharField(label='Phone Number', required=True, max_length=140, widget=forms.TextInput(attrs=phone_number))
+    profile_picture = forms.FileField(label='Upload Your Profile Picture', required=False)
 
 class CompanyProfileEdit(forms.Form):
     error_message = {
@@ -73,7 +74,7 @@ class CompanyProfileEdit(forms.Form):
     city = forms.CharField(label='City', required=True, max_length=140, widget=forms.TextInput(attrs=city))
     company_website = forms.CharField(label='Company Website', required=True, max_length=140, widget=forms.TextInput(attrs=website))
     company_description = forms.CharField(label='Company Description', required=True, max_length=140, widget=forms.Textarea(attrs=company_description))
-    company_logo = forms.FileField(label='Upload Your Company Logo',required=True)
+    company_logo = forms.FileField(label='Upload Your Company Logo',required=False)
 
 class OpportunityForm(forms.Form):
     error_message = {
