@@ -1,5 +1,6 @@
 from django.db import models
 from app_employer.models import Opportunity
+from django.utils import timezone
 
 # Create your models here.
 class Job_Seeker(models.Model):

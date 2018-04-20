@@ -14,13 +14,13 @@ JOBSEEKER PROFILE
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="dashboard">
+			<div class="dashboard" >
 				<div class="row">
 					<div class="col-md-2 col-sm-12 text-center">
 						<div class="company-logo">
 						{% if data_jobseeker.profile_picture %}
 							<img src="{{data_jobseeker.profile_picture.url}}" class="img-circle img-logo">
-						{% else %}	
+						{% else %}
 							<img src="https://image.ibb.co/m8UHgc/user.png" class="img-circle img-logo">
 						{% endif %}
 						</div>
@@ -51,25 +51,34 @@ JOBSEEKER PROFILE
 						<h4>Applied Opportunity</h4>
 						<hr style="border-bottom: 3px solid #29758A; width: 50%; margin:0; padding: 0">
 					</div>
-					<div class="my-company">
+					<div class="my-company" style="margin-bottom:50px">
 						<div class="row">
-							<div class="col-sm-4 text-center">
-								<div class="thumbnail">
-									<div class="company-logo">
-										<img src="https://image.ibb.co/eBitgc/pexels_photo_635705.jpg" class="img-circle img-logo">
-									</div>
-									<div class="company-name">
-										<h3>Deskripsi Opportunity</h3>
-									</div>
-									<div class="row">
-										<div class="col-sm-12">
-											<div class="view-profile btn-padding">
-												<a href="#"><button class="btn btn-customize btn-block">View this opportunity</button></a>
+							{% if my_opportunities %}
+								{% for data in my_opportunities %}
+								<div class="col-sm-4 text-center">
+									<div class="thumbnail">
+										<div class="company-logo">
+											<img src="{{data.opportunity.opportunity_owner.company_logo.url}}" class="img-circle img-logo">
+										</div>
+										<div class="company-name">
+											<h4>{{data.opportunity.description}}</h4>
+										</div>
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="view-profile btn-padding">
+													<a href="/public/opportunity/{{data.opportunity.opportunity_category}}/{{data.opportunity.id}}"><button class="btn btn-customize btn-block">View this opportunity</button></a>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+								{% endfor %}
+							{% else %}
+								<div class="text-center">
+									<h4>You have not applied to any opportunity yet</h4>
+								</div>
+							{% endif %}
+
 
 						</div>
 					</div>
