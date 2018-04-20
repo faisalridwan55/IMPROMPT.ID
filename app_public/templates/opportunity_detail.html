@@ -57,7 +57,7 @@ Opportunity Detail
 									</div>
 									{% if application_list %}
 										{% for people in application_list %}
-											<li>{{people.job_seeker.first_name}} {{people.job_seeker.last_name}}</li>
+											<li><a href="{% url 'app-employer:find-applicant' people.job_seeker.profile_id %}">{{people.job_seeker.first_name}} {{people.job_seeker.last_name}}</a></li>
 										{% endfor %}
 									{% else %}
 									<p>This opportunity doesn't have any applicants yet or you have no access for this opportunity</p>

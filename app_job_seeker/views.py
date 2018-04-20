@@ -79,3 +79,6 @@ def apply_opportunity(request, categories, pk):
         return HttpResponse("applied")
     else:
         return HttpResponse("can not apply")
+
+
+
