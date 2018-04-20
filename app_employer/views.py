@@ -19,9 +19,9 @@ def home_employer(request):
         response['home_employer'] = True
         response['company_profile'] = False
         response['employer_profile'] = False
-        response['post_opp'] = OpportunityForm
         try:
             company = Company.objects.get(company_creator_profile_id=request.session['profile_id'])
+            response['post_opp'] = OpportunityForm
             response['company'] = company
         except Exception as e:
             return redirect(reverse('app-employer:edit-company-profile'))
