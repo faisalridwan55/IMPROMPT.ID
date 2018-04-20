@@ -130,7 +130,7 @@ def submit_company_profile(request):
                 company.company_name = company_name
                 company.company_description = company_description
                 company.company_website = company_website
-                company.company_logo = request.FILES['company_logo']
+                company.company_logo = request.FILES['company_logo'] if 'company_logo' in request.FILES else None
                 company.save()
             else:
                 Company.objects.create(
