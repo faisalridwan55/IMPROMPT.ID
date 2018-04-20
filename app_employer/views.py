@@ -100,7 +100,8 @@ def edit_employer_profile(request):
                 'first_name': exist_profile.first_name,
                 'last_name':exist_profile.last_name,
                 'email':exist_profile.email,
-                'phone_number':exist_profile.phone_number}) 
+                'phone_number':exist_profile.phone_number,
+                'profile_picture':exist_profile.profile_picture})
             response['employer_form'] = form
         except Exception as e:
             response['exist_profile'] = None
@@ -177,15 +178,26 @@ def submit_employer_profile(request):
                 employer.last_name = last_name
                 employer.email = email
                 employer.phone_number = phone_number
+                employer.profile_picture = request.FILES['profile_picture']
                 employer.save()
             else:
-                Employer.objects.create(
-                    profile_id=request.session['profile_id'],
-                    first_name = first_name,
-                    last_name = last_name,
-                    email = email,
-                    phone_number = phone_number
-                )
+                try:
+                    Employer.objects.create(
+                        profile_id=request.session['profile_id'],
+                        first_name = first_name,
+                        last_name = last_name,
+                        email = email,
+                        phone_number = phone_number,
+                        profile_picture=request.FILES['profile_picture']
+                    )
+                except Exception as e:
+                    Employer.objects.create(
+                        profile_id=request.session['profile_id'],
+                        first_name = first_name,
+                        last_name = last_name,
+                        email = email,
+                        phone_number = phone_number
+                    )
         query = Company.objects.filter(company_creator_profile_id=request.session['profile_id'])
         query_size = query.count()
         if query_size > 0:
