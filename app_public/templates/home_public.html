@@ -6,7 +6,25 @@
 HOME
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/public.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/public12.css' %}">
+<style>
+.dropdown-custom {
+				background: #f9f9f9;
+				width: 80%;
+				position: relative;
+				margin: 0 auto;
+				top: -100px;
+				padding: 40px 80px;
+				-webkit-box-shadow: 0 12px 8px -8px #999;
+				-moz-box-shadow: 0 12px 8px -8px #999;
+				box-shadow: 0 12px 8px -8px #999;
+		}
+		@media (max-width: 768px) {
+				.dropdown-custom {
+						width: 100%;
+				}
+			}
+</style>
 {% endblock %}
 
 {% block content %}
@@ -20,7 +38,7 @@ HOME
 		<h4 style="color: white"><i>A Click with Hundred Opportunities</i></h4>
 	</div>
 </header>
-<div class="dropdown">
+<div class="dropdown-custom">
 	<div class="container">
 		<div class="row">
 			<form method="POST" action="{% url 'app-public:search-by-drop-down' %}">
